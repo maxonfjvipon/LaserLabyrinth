@@ -9,4 +9,14 @@
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/main.cpp
 iostream
 -
+random
+-
+SFML/Graphics.hpp
+-
+SFML/Audio.hpp
+-
+SFML/Window.hpp
+-
+SFML/System.hpp
+-
 

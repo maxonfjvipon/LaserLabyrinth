@@ -123,6 +123,60 @@ LaserLabyrinth/fast:
 	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/build
 .PHONY : LaserLabyrinth/fast
 
+cmake_modules/MainHero.o: cmake_modules/MainHero.cpp.o
+
+.PHONY : cmake_modules/MainHero.o
+
+# target to build an object file
+cmake_modules/MainHero.cpp.o:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o
+.PHONY : cmake_modules/MainHero.cpp.o
+
+cmake_modules/MainHero.i: cmake_modules/MainHero.cpp.i
+
+.PHONY : cmake_modules/MainHero.i
+
+# target to preprocess a source file
+cmake_modules/MainHero.cpp.i:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.i
+.PHONY : cmake_modules/MainHero.cpp.i
+
+cmake_modules/MainHero.s: cmake_modules/MainHero.cpp.s
+
+.PHONY : cmake_modules/MainHero.s
+
+# target to generate assembly for a file
+cmake_modules/MainHero.cpp.s:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.s
+.PHONY : cmake_modules/MainHero.cpp.s
+
+cmake_modules/Mirror.o: cmake_modules/Mirror.cpp.o
+
+.PHONY : cmake_modules/Mirror.o
+
+# target to build an object file
+cmake_modules/Mirror.cpp.o:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.o
+.PHONY : cmake_modules/Mirror.cpp.o
+
+cmake_modules/Mirror.i: cmake_modules/Mirror.cpp.i
+
+.PHONY : cmake_modules/Mirror.i
+
+# target to preprocess a source file
+cmake_modules/Mirror.cpp.i:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.i
+.PHONY : cmake_modules/Mirror.cpp.i
+
+cmake_modules/Mirror.s: cmake_modules/Mirror.cpp.s
+
+.PHONY : cmake_modules/Mirror.s
+
+# target to generate assembly for a file
+cmake_modules/Mirror.cpp.s:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.s
+.PHONY : cmake_modules/Mirror.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +213,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... LaserLabyrinth"
+	@echo "... cmake_modules/MainHero.o"
+	@echo "... cmake_modules/MainHero.i"
+	@echo "... cmake_modules/MainHero.s"
+	@echo "... cmake_modules/Mirror.o"
+	@echo "... cmake_modules/Mirror.i"
+	@echo "... cmake_modules/Mirror.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

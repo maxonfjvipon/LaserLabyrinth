@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/LaserLabyrinth.dir/main.cpp.o"
+  "CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o"
+  "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.o"
   "LaserLabyrinth.pdb"
   "LaserLabyrinth"
 )

@@ -71,7 +71,7 @@ CMAKE_BINARY_DIR = /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake-bu
 CMakeFiles/LaserLabyrinth.dir/all:
 	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/depend
 	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target LaserLabyrinth"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target LaserLabyrinth"
 .PHONY : CMakeFiles/LaserLabyrinth.dir/all
 
 # Include target in all.
@@ -81,7 +81,7 @@ all: CMakeFiles/LaserLabyrinth.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/LaserLabyrinth.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake-build-debug/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/LaserLabyrinth.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/LaserLabyrinth.dir/rule

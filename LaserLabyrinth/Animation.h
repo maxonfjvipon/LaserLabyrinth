@@ -1,0 +1,10 @@
+#ifndef LASERLABYRINTH_ANIMATION_H
+#define LASERLABYRINTH_ANIMATION_H
+
+
+class Animation {
+
+};
+
+
+#endif //LASERLABYRINTH_ANIMATION_H

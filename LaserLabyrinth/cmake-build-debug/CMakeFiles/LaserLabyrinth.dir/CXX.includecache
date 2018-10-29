@@ -6,6 +6,28 @@
 
 #IncludeRegexTransform: 
 
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/MainHero.cpp
+MainHero.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/MainHero.h
+iostream
+-
+
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/MainHero.h
+iostream
+-
+SFML/Graphics.hpp
+-
+SFML/Audio.hpp
+-
+SFML/Window.hpp
+-
+fstream
+-
+Mirror.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h
+
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h
+
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/main.cpp
 iostream
 -
@@ -19,4 +41,6 @@ SFML/Window.hpp
 -
 SFML/System.hpp
 -
+cmake_modules/MainHero.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/MainHero.h
 

@@ -34,8 +34,7 @@ int main() {
         userActions(event,time,window,hero);
         window.clear();
 
-        hero.drawing(window); //drawing hero
-
+        window.draw(hero.getSprite());
         window.display();
     }
 

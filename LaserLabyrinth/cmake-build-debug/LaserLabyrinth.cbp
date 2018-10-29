@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/Animation.cpp">
+			<Option target="LaserLabyrinth"/>
+		</Unit>
+		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/Animation.h">
+			<Option target="LaserLabyrinth"/>
+		</Unit>
 		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/MainHero.cpp">
 			<Option target="LaserLabyrinth"/>
 		</Unit>

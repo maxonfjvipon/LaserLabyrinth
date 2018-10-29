@@ -23,8 +23,6 @@ class MainHero {
 
     void move(sf::Event &event);
 
-    void draw(sf::RenderWindow &window);
-
 public:
     MainHero();
 
@@ -32,8 +30,8 @@ public:
         move(event);
     }
 
-    void drawing(sf::RenderWindow &window){
-        draw(window);
+    sf::Sprite &getSprite(){
+        return heroSprite;
     }
 
 };

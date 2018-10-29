@@ -123,6 +123,33 @@ LaserLabyrinth/fast:
 	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/build
 .PHONY : LaserLabyrinth/fast
 
+Animation.o: Animation.cpp.o
+
+.PHONY : Animation.o
+
+# target to build an object file
+Animation.cpp.o:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/Animation.cpp.o
+.PHONY : Animation.cpp.o
+
+Animation.i: Animation.cpp.i
+
+.PHONY : Animation.i
+
+# target to preprocess a source file
+Animation.cpp.i:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/Animation.cpp.i
+.PHONY : Animation.cpp.i
+
+Animation.s: Animation.cpp.s
+
+.PHONY : Animation.s
+
+# target to generate assembly for a file
+Animation.cpp.s:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/Animation.cpp.s
+.PHONY : Animation.cpp.s
+
 cmake_modules/MainHero.o: cmake_modules/MainHero.cpp.o
 
 .PHONY : cmake_modules/MainHero.o
@@ -213,6 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... LaserLabyrinth"
+	@echo "... Animation.o"
+	@echo "... Animation.i"
+	@echo "... Animation.s"
 	@echo "... cmake_modules/MainHero.o"
 	@echo "... cmake_modules/MainHero.i"
 	@echo "... cmake_modules/MainHero.s"

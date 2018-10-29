@@ -10,6 +10,8 @@ MainHero::MainHero() {
     sf::Texture heroTexture;
     heroTexture.loadFromFile(textureFileName);
     heroSprite.setTexture(heroTexture);
+    std::cout << textureFileName << std::endl;
+    heroSprite.setTextureRect(sf::IntRect(0,0,spriteWidth,spriteHeight)); //fixme
 }
 
 void MainHero::move(sf::Event &event) {
@@ -25,11 +27,7 @@ void MainHero::move(sf::Event &event) {
             break;
         case sf::Keyboard::D:
             this->xPos += speed;
+            this->heroSprite.move(speed,0);
+            break;
     }
-}
-
-void MainHero::draw(sf::RenderWindow &window) {
-    heroSprite.setTextureRect(sf::IntRect(0, 0, spriteWidth, spriteHeight)); //fixme
-    heroSprite.setPosition(xPos + spriteWidth / 2, yPos + spriteHeight / 2);
-    window.draw(heroSprite);
 }

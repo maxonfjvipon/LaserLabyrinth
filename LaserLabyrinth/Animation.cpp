@@ -6,19 +6,21 @@
 
 Animation::Animation(const std::string &textureFileName, ushort spriteWidth, ushort spriteHeight) {
     sf::Texture texture;
-    if(texture.loadFromFile("images/heroWalkForward.png")){
-        std::cout << "invalid" << std::endl;
+    if(!texture.loadFromFile("images/heroWalkForward.png")){
+        std::cout << "Couldn't open texture file" << std::endl;
     }
     sprite.setTexture(texture);
     sprite.setTextureRect(sf::IntRect(0,0,spriteWidth,spriteHeight));
+    sprite.setScale(4,4);
+    sprite.move(100,100);
 }
 
-void Animation::Animate(float time) {
+void Animation::Animate(float time, ushort speed) {
     currentFrame += 0.005 * time;
     if (currentFrame > 8) {
         currentFrame -= 8;
     }
     sprite.setTextureRect(sf::IntRect(24 * (int)currentFrame,0,24,15));
-    sprite.move(0, static_cast<float>(-0.1 * time));
+    sprite.move(0, static_cast<float>(-speed * time));
 
 }

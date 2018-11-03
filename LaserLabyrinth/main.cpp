@@ -25,19 +25,16 @@ int main() {
     sf::Event event{}; //event
     sf::Clock clock; //clock
 
-
-    MainHero hero;
+    MainHero hero; //main hero
 
     //main game loop
     while (window.isOpen()) {
         restartClock(clock,time);
         userActions(event,time,window,hero);
         window.clear();
-
-        window.draw(hero.getSprite());
+        window.draw(hero.animation.sprite);
         window.display();
     }
-
     return 0;
 }
 
@@ -45,12 +42,11 @@ int main() {
 void restartClock(sf::Clock &clock, float &time){
     time += clock.getElapsedTime().asMilliseconds();
     clock.restart();
-}
+}2
 
 void userActions(sf::Event &event, float &time, sf::RenderWindow &window, MainHero &hero){
     float delay = 0.1; //delay
     if(time > delay){
-        time = 0;
         while(window.pollEvent(event)){
             if(event.type == sf::Event::Closed) { //if "ESC" was pressed
                 window.close();
@@ -60,5 +56,6 @@ void userActions(sf::Event &event, float &time, sf::RenderWindow &window, MainHe
                 hero.heroMoves(event,time);
             }
         }
+        time = 0;
     }
 }

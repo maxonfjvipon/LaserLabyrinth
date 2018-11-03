@@ -6,19 +6,19 @@
 
 class Animation {
 
-    void Animate(float time);
+    void Animate(float time, ushort speed);
 
 public:
 
     float currentFrame = 0; // хранит текущий кадр
-    sf::Sprite sprite;
+    sf::Sprite sprite; //хранит спрайт
 
     Animation() = default;
 
     Animation(const std::string &textureFileName, ushort spriteWidth, ushort spriteHeight);
 
-    void animate(float time){
-        Animate(time);
+    void animate(float time, ushort speed) {
+        Animate(time, speed);
     }
 
 };

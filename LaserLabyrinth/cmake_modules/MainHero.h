@@ -15,7 +15,6 @@ enum mainHeroMode {
 
 //main hero
 class MainHero {
-    Animation animation;
     int xPos{}, yPos{}; // position
     u_short speed = 2; //speed of walking
     u_short mode{};
@@ -25,13 +24,16 @@ class MainHero {
     void move(sf::Event &event, float time);
 
 public:
+
+    Animation animation;
+
     MainHero();
 
     void heroMoves(sf::Event &event, float time) {
         move(event, time);
     }
 
-    sf::Sprite &getSprite(){
+    sf::Sprite getSprite(){
         return animation.sprite;
     }
 

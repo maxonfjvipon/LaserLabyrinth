@@ -7,6 +7,7 @@
 #include <SFML/Window.hpp>
 #include <fstream>
 #include "Mirror.h"
+#include "../Animation.h"
 
 enum mainHeroMode {
     walk, moveMirror, rotateMirror
@@ -14,24 +15,24 @@ enum mainHeroMode {
 
 //main hero
 class MainHero {
+    Animation animation;
     int xPos{}, yPos{}; // position
     u_short speed = 2; //speed of walking
     u_short mode{};
-    sf::Sprite heroSprite;
-    u_short spriteHeight = 20; //fixme
-    u_short spriteWidth = 20; //fixme
+    u_short spriteHeight = 15; //fixme
+    u_short spriteWidth = 24; //fixme
 
-    void move(sf::Event &event);
+    void move(sf::Event &event, float time);
 
 public:
     MainHero();
 
-    void heroMoves(sf::Event &event) {
-        move(event);
+    void heroMoves(sf::Event &event, float time) {
+        move(event, time);
     }
 
     sf::Sprite &getSprite(){
-        return heroSprite;
+        return animation.sprite;
     }
 
 };

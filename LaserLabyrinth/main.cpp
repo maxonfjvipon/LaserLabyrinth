@@ -57,7 +57,7 @@ void userActions(sf::Event &event, float &time, sf::RenderWindow &window, MainHe
                 break;
             }
             if(event.type == sf::Event::KeyPressed) { //fixme
-                hero.heroMoves(event);
+                hero.heroMoves(event,time);
             }
         }
     }

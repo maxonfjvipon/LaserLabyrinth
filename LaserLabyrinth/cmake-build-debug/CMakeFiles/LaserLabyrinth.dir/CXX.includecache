@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/Animation.cpp
+Animation.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/Animation.h
+SFML/Graphics.hpp
+-
+SFML/System.hpp
+-
+SFML/Window.hpp
+-
+iostream
+-
+
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/Animation.h
+SFML/Graphics.hpp
+-
+
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/MainHero.cpp
 MainHero.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/MainHero.h
@@ -25,22 +41,8 @@ fstream
 -
 Mirror.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h
+../Animation.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/Animation.h
 
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h
-
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/main.cpp
-iostream
--
-random
--
-SFML/Graphics.hpp
--
-SFML/Audio.hpp
--
-SFML/Window.hpp
--
-SFML/System.hpp
--
-cmake_modules/MainHero.h
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/MainHero.h
 

@@ -4,6 +4,7 @@
 CMakeFiles/LaserLabyrinth.dir/Animation.cpp.o: ../Animation.cpp
 CMakeFiles/LaserLabyrinth.dir/Animation.cpp.o: ../Animation.h
 
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o: ../Animation.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o: ../cmake_modules/MainHero.cpp
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o: ../cmake_modules/MainHero.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o: ../cmake_modules/Mirror.h
@@ -11,6 +12,7 @@ CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o: ../cmake_modules/Mir
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.o: ../cmake_modules/Mirror.cpp
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.o: ../cmake_modules/Mirror.h
 
+CMakeFiles/LaserLabyrinth.dir/main.cpp.o: ../Animation.h
 CMakeFiles/LaserLabyrinth.dir/main.cpp.o: ../cmake_modules/MainHero.h
 CMakeFiles/LaserLabyrinth.dir/main.cpp.o: ../cmake_modules/Mirror.h
 CMakeFiles/LaserLabyrinth.dir/main.cpp.o: ../main.cpp

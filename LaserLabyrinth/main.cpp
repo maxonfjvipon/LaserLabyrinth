@@ -42,7 +42,7 @@ int main() {
 void restartClock(sf::Clock &clock, float &time){
     time += clock.getElapsedTime().asMilliseconds();
     clock.restart();
-}2
+}
 
 void userActions(sf::Event &event, float &time, sf::RenderWindow &window, MainHero &hero){
     float delay = 0.1; //delay
@@ -53,7 +53,7 @@ void userActions(sf::Event &event, float &time, sf::RenderWindow &window, MainHe
                 break;
             }
             if(event.type == sf::Event::KeyPressed) { //fixme
-                hero.heroMoves(event,time);
+                hero.heroMoves(event,time, window);
             }
         }
         time = 0;

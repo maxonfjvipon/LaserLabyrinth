@@ -11,7 +11,8 @@ class Animation {
 public:
 
     float currentFrame = 0; // хранит текущий кадр
-    sf::Sprite sprite; //хранит спрайт
+    sf::Sprite sprite; // хранит спрайт
+    sf::Texture texture; // хранит текстуру для спрайта
 
     Animation() = default;
 

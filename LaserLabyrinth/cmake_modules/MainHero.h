@@ -17,11 +17,11 @@ enum mainHeroMode {
 class MainHero {
     int xPos{}, yPos{}; // position
     u_short speed = 2; //speed of walking
-    u_short mode{};
+//    u_short mode{};
     u_short spriteHeight = 15; //fixme
     u_short spriteWidth = 24; //fixme
 
-    void move(sf::Event &event, float time);
+    void move(sf::Event &event, float time, sf::RenderWindow &window);
 
 public:
 
@@ -29,8 +29,8 @@ public:
 
     MainHero();
 
-    void heroMoves(sf::Event &event, float time) {
-        move(event, time);
+    void heroMoves(sf::Event &event, float time, sf::RenderWindow &window) {
+        move(event, time, window);
     }
 
     sf::Sprite getSprite(){

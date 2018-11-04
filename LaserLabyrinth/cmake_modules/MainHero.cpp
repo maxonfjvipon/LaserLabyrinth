@@ -7,16 +7,16 @@ MainHero::MainHero() {
     mainHeroInputFile >> xPos >> yPos; // input position
     mainHeroInputFile >> textureFileName;
     textureFileName += ".png";
-//    std::cout << textureFileName;
     animation = Animation(textureFileName,spriteWidth,spriteHeight);
 }
 
-void MainHero::move(sf::Event &event, float time) {
+void MainHero::move(sf::Event &event, float time, sf::RenderWindow &window) {
     switch (event.key.code) {
         case sf::Keyboard::W:
             this->yPos -= speed;
             std::cout << yPos << " ";
             animation.animate(time, speed);
+            window.draw(animation.sprite);
             break;
         case sf::Keyboard::S:
             this->yPos += speed;

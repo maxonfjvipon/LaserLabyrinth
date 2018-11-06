@@ -123,33 +123,6 @@ LaserLabyrinth/fast:
 	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/build
 .PHONY : LaserLabyrinth/fast
 
-Animation.o: Animation.cpp.o
-
-.PHONY : Animation.o
-
-# target to build an object file
-Animation.cpp.o:
-	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/Animation.cpp.o
-.PHONY : Animation.cpp.o
-
-Animation.i: Animation.cpp.i
-
-.PHONY : Animation.i
-
-# target to preprocess a source file
-Animation.cpp.i:
-	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/Animation.cpp.i
-.PHONY : Animation.cpp.i
-
-Animation.s: Animation.cpp.s
-
-.PHONY : Animation.s
-
-# target to generate assembly for a file
-Animation.cpp.s:
-	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/Animation.cpp.s
-.PHONY : Animation.cpp.s
-
 cmake_modules/MainHero.o: cmake_modules/MainHero.cpp.o
 
 .PHONY : cmake_modules/MainHero.o
@@ -204,6 +177,33 @@ cmake_modules/Mirror.cpp.s:
 	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.s
 .PHONY : cmake_modules/Mirror.cpp.s
 
+cmake_modules/Picture.o: cmake_modules/Picture.cpp.o
+
+.PHONY : cmake_modules/Picture.o
+
+# target to build an object file
+cmake_modules/Picture.cpp.o:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Picture.cpp.o
+.PHONY : cmake_modules/Picture.cpp.o
+
+cmake_modules/Picture.i: cmake_modules/Picture.cpp.i
+
+.PHONY : cmake_modules/Picture.i
+
+# target to preprocess a source file
+cmake_modules/Picture.cpp.i:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Picture.cpp.i
+.PHONY : cmake_modules/Picture.cpp.i
+
+cmake_modules/Picture.s: cmake_modules/Picture.cpp.s
+
+.PHONY : cmake_modules/Picture.s
+
+# target to generate assembly for a file
+cmake_modules/Picture.cpp.s:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Picture.cpp.s
+.PHONY : cmake_modules/Picture.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -240,15 +240,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... LaserLabyrinth"
-	@echo "... Animation.o"
-	@echo "... Animation.i"
-	@echo "... Animation.s"
 	@echo "... cmake_modules/MainHero.o"
 	@echo "... cmake_modules/MainHero.i"
 	@echo "... cmake_modules/MainHero.s"
 	@echo "... cmake_modules/Mirror.o"
 	@echo "... cmake_modules/Mirror.i"
 	@echo "... cmake_modules/Mirror.s"
+	@echo "... cmake_modules/Picture.o"
+	@echo "... cmake_modules/Picture.i"
+	@echo "... cmake_modules/Picture.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

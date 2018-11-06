@@ -13,8 +13,10 @@ void userActions(sf::Event &event, float &time, sf::RenderWindow &window, MainHe
 int main() {
 
     //screen geometry
-    const u_short screenWidth = 800;
-    const u_short screenHeight = 600;
+//    const u_short screenWidth = 800;
+//    const u_short screenHeight = 600;
+    const u_short screenWidth = 2000;
+    const u_short screenHeight = 1000;
 
     float time = 0; //time
 
@@ -32,7 +34,7 @@ int main() {
         restartClock(clock,time);
         userActions(event,time,window,hero);
         window.clear();
-        window.draw(hero.animation.sprite);
+        window.draw(hero.getPicture());
         window.display();
     }
     return 0;
@@ -53,7 +55,7 @@ void userActions(sf::Event &event, float &time, sf::RenderWindow &window, MainHe
                 break;
             }
             if(event.type == sf::Event::KeyPressed) { //fixme
-                hero.heroMoves(event,time, window);
+                hero.heroMoves(event);
             }
         }
         time = 0;

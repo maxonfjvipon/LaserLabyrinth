@@ -17,8 +17,8 @@ enum mainHeroMode {
 class MainHero {
 
     int xPos{}, yPos{}; // position
-    bool stay;
-    u_short speed = 10; //speed of walking
+    bool stay = true;
+    u_short speed = 20; //speed of walking
     u_short mode{};
     u_short spriteHeight = 32;
     u_short spriteWidth = 32;
@@ -32,14 +32,20 @@ class MainHero {
 
     void EButton();
 
-    void heroActions(sf::Event &event);
+    bool heroActions(sf::Event &event);
+
+    void Stays();
 
 public:
 
     MainHero();
 
-    void actions(sf::Event &event) {
-        heroActions(event);
+    bool actions(sf::Event &event) {
+        return heroActions(event);
+    }
+
+    void stays(){
+        Stays();
     }
 
     sf::Sprite &getPicture(){

@@ -1,7 +1,7 @@
 #include "Picture.h"
 #include <iostream>
 
-void Picture::animatePicture(int xOffset, int yOffset, ushort spriteWidth, ushort spriteHeight,
+void Picture::animatePicture(int xPos, int yPos, ushort spriteWidth, ushort spriteHeight,
                              ushort direction, ushort &currentDirection) {
     currentFrame += 0.5;
     if (currentFrame >= 8) {
@@ -15,7 +15,7 @@ void Picture::animatePicture(int xOffset, int yOffset, ushort spriteWidth, ushor
         sprite.rotate(90);
     }
 
-    sprite.setPosition(xOffset,yOffset);
+    sprite.setPosition(xPos, yPos);
 
 }
 
@@ -26,9 +26,11 @@ void Picture::setSprite(const std::string &fileName, ushort spriteWidth, ushort 
     }
     sprite.setTexture(texture);
     sprite.setTextureRect(sf::IntRect(0, 0, spriteWidth, spriteHeight));
-    sprite.move(xPos, yPos);
+    sprite.setPosition(xPos,yPos);
     sprite.setScale(10, 10); //todo delete this
-    sprite.setRotation(rotation);
+    if(rotation != 47) {
+        sprite.setRotation(rotation);
+    }
     sprite.setOrigin(spriteWidth/2, spriteHeight/2);
     isPictureSet = true;
 }

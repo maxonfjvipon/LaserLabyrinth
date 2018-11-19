@@ -14,52 +14,45 @@ MainHero::MainHero() {
     mainHeroInputFile.close();
 }
 
-void MainHero::heroActions(sf::Event &event) {
-    event.type = sf::Event::KeyPressed;
-    event.key.code = sf::Keyboard::D;
-
-    if (event.type == sf::Event::KeyPressed) {
-        switch (event.key.code) {
-            case sf::Keyboard::W:
-                WASD(270, 0, -speed, 3, yPos, -speed);
-                break;
-            case sf::Keyboard::A:
-                WASD(180, -speed, 0, 2, xPos, -speed);
-                break;
-            case sf::Keyboard::S:
-                WASD(90, 0, speed, 1, yPos, speed);
-                break;
-            case sf::Keyboard::D:
-                WASD(0, xPos, yPos, 0, xPos, speed);
-                break;
-            case sf::Keyboard::R:
-                RButton();
-                break;
-            case sf::Keyboard::E:
-                break;
-        }
-    } else { //todo fixme !!! нету анимации!
-
-        if (!stay) {
-
-            stay = true;
-            switch (mode) {
-                case Walk:
-                    picture.set("images/heroStays.png", spriteWidth, spriteHeight, xPos, yPos,
-                                static_cast<ushort>(currentDirection * 90));
-                    break;
-                case PushMirror:
-                    picture.set("images/heroPushStays.png", spriteWidth, spriteHeight, xPos, yPos,
-                                static_cast<ushort>(currentDirection * 90));
-                    break;
-                case RotateMirror:
-                    picture.set("images/heroRotateStays.png", spriteWidth, spriteHeight, xPos, yPos,
-                                static_cast<ushort>(currentDirection * 90));
-            }
-        }
+bool MainHero::heroActions(sf::Event &event) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+        WASD(180, xPos, yPos, 2, xPos, -speed);
+        return true;
     }
-}
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+        WASD(0, xPos, yPos, 0, xPos, speed);
+        return true;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+        WASD(90, xPos, yPos, 1, yPos, speed);
+        return true;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+        WASD(270, xPos, yPos, 3, yPos, -speed);
+        return true;
+    }
+    return false;
 
+//    std::cout << "1 ";
+//    switch (event.key.code) {
+//        case sf::Keyboard::W:
+//            WASD(270, xPos, yPos, 3, yPos, -speed);
+//            break;
+//        case sf::Keyboard::A:
+//            WASD(180, xPos, yPos, 2, xPos, -speed);
+//            break;
+//        case sf::Keyboard::S:
+//            WASD(90, xPos, yPos, 1, yPos, speed);
+//            break;
+//        case sf::Keyboard::D:
+//            WASD(0, xPos, yPos, 0, xPos, speed);
+//            break;
+//        case sf::Keyboard::R:
+//            RButton();
+//            break;
+//        case sf::Keyboard::E:
+//            break;
+}
 
 void MainHero::WASD(ushort angle, int xPos, int yPos, ushort direction, int &coordinate,
                     int speed) {
@@ -67,7 +60,7 @@ void MainHero::WASD(ushort angle, int xPos, int yPos, ushort direction, int &coo
         case Walk:
             if (stay) {
                 stay = false;
-                picture.set("images/sprHeroWalk.png", spriteWidth, spriteHeight, xPos, yPos, angle);
+                picture.set("images/sprHeroWalk.png", spriteWidth, spriteHeight, xPos, yPos, 47);
             }
             coordinate += speed;
             picture.animate(xPos, yPos, spriteWidth, spriteHeight, direction,
@@ -76,8 +69,8 @@ void MainHero::WASD(ushort angle, int xPos, int yPos, ushort direction, int &coo
         case RotateMirror:
             if (stay) {
                 stay = false;
-                picture.set("images/sprHeroRotateMirror.png", spriteWidth, spriteHeight, xPos,
-                            yPos, angle);
+                picture.set("images/sprHeroRotateMirror.png", spriteWidth, spriteHeight, xPos, yPos,
+                            47);
             }
             //указатель на зеркало.rotate(rotateDirection);
             break;
@@ -85,7 +78,7 @@ void MainHero::WASD(ushort angle, int xPos, int yPos, ushort direction, int &coo
             if (stay) {
                 stay = false;
                 picture.set("images/sprHeroPushMirror.png", spriteWidth, spriteHeight, xPos,
-                            yPos, angle);
+                            yPos, 47);
             }
             coordinate += speed;
             picture.animate(xPos, yPos, spriteWidth, spriteHeight, direction,
@@ -104,4 +97,23 @@ void MainHero::RButton() {
 void MainHero::EButton() {
     mode = (mode == PushMirror ? Walk : PushMirror);
     stay = true;
+}
+
+void MainHero::Stays() {
+    if (!stay) {
+        stay = true;
+        switch (mode) {
+            case Walk:
+                picture.set("images/heroStays.png", spriteWidth, spriteHeight, xPos, yPos,
+                            static_cast<ushort>(currentDirection * 90));
+                break;
+            case PushMirror:
+                picture.set("images/heroPushStays.png", spriteWidth, spriteHeight, xPos, yPos,
+                            static_cast<ushort>(currentDirection * 90));
+                break;
+            case RotateMirror:
+                picture.set("images/heroRotateStays.png", spriteWidth, spriteHeight, xPos, yPos,
+                            static_cast<ushort>(currentDirection * 90));
+        }
+    }
 }

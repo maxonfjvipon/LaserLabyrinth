@@ -10,24 +10,28 @@ class Picture {
     sf::Sprite sprite;
     sf::Texture texture;
 
-    void animatePicture(float xOffset, float yOffset, ushort spriteWidth, ushort spriteHeight,
-                        ushort direction);
+    void animatePicture(int xOffset, int yOffset, ushort spriteWidth, ushort spriteHeight,
+                        ushort direction, ushort &currentDirection);
 
     void setSprite(const std::string &fileName, ushort spriteWidth, ushort spriteHeight,
-                   int xPos, int yPos);
+                   int xPos, int yPos, ushort rotation);
+
+
 
 public:
+
+    bool isPictureSet{};
 
     Picture() = default;
 
     void set(const std::string &fileName, ushort spriteWidth, ushort spriteHeight,
-             int xPos, int yPos) {
-        setSprite(fileName, spriteWidth, spriteHeight, xPos, yPos);
+             int xPos, int yPos, ushort rotation) {
+        setSprite(fileName, spriteWidth, spriteHeight, xPos, yPos, rotation);
     }
 
-    void animate(float xOffset, float yOffset, ushort spriteWidth, ushort spriteHeight,
-                 ushort direction) {
-        animatePicture(xOffset, yOffset, spriteWidth, spriteHeight, direction);
+    void animate(int xOffset, int yOffset, ushort spriteWidth, ushort spriteHeight,
+                 ushort direction, ushort &currentDirection) {
+        animatePicture(xOffset, yOffset, spriteWidth, spriteHeight, direction, currentDirection);
     }
 
     sf::Sprite &getSprite() {

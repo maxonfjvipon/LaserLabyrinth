@@ -6,7 +6,7 @@
 #include <SFML/System.hpp>
 #include "cmake_modules/MainHero.h"
 
-void restartClock(sf::Clock& clock, float &time);
+void restartClock(sf::Clock &clock, float &time);
 
 void userActions(sf::Event &event, float &time, sf::RenderWindow &window, MainHero &hero);
 
@@ -20,7 +20,6 @@ int main() {
 
     float time = 0; //time
 
-
     //window
     sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "LASER_LABYRINTH");
 
@@ -31,9 +30,9 @@ int main() {
 
     //main game loop
     while (window.isOpen()) {
-        restartClock(clock,time);
-        userActions(event,time,window,hero);
+        restartClock(clock, time);
         window.clear();
+        userActions(event, time, window, hero);
         window.draw(hero.getPicture());
         window.display();
     }
@@ -41,22 +40,20 @@ int main() {
 }
 
 // set time and restart clock
-void restartClock(sf::Clock &clock, float &time){
+void restartClock(sf::Clock &clock, float &time) {
     time += clock.getElapsedTime().asMilliseconds();
     clock.restart();
 }
 
-void userActions(sf::Event &event, float &time, sf::RenderWindow &window, MainHero &hero){
+void userActions(sf::Event &event, float &time, sf::RenderWindow &window, MainHero &hero) {
     float delay = 0.1; //delay
-    if(time > delay){
-        while(window.pollEvent(event)){
-            if(event.type == sf::Event::Closed) { //if "ESC" was pressed
+    if (time > delay) {
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) { //if "ESC" was pressed
                 window.close();
                 break;
             }
-            if(event.type == sf::Event::KeyPressed) { //fixme
-                hero.heroMoves(event);
-            }
+            hero.actions(event);
         }
         time = 0;
     }

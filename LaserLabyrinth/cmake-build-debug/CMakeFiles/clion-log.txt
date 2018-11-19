@@ -1,5 +1,9 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth
--- Found SFML 2.5.1 in /Library/Frameworks/SFML.framework
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake-build-debug
+CMake Error at cmake_modules/FindSFML.cmake:354 (message):
+  SFML found but version too low (requested: 2.5.1, found: 2.5.0)
+Call Stack (most recent call first):
+  CMakeLists.txt:11 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake-build-debug/CMakeFiles/CMakeOutput.log".

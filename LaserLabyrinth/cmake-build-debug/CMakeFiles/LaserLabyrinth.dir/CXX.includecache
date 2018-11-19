@@ -6,6 +6,7 @@
 
 #IncludeRegexTransform: 
 
+<<<<<<< HEAD
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/Animation.h
 SFML/Graphics.hpp
 -
@@ -39,6 +40,15 @@ iostream
 -
 random
 -
+=======
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Picture.cpp
+Picture.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Picture.h
+iostream
+-
+
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Picture.h
+>>>>>>> 8d6be9ac0227ec66b5b985fd15ec89f2d9df7714
 SFML/Graphics.hpp
 -
 SFML/Audio.hpp

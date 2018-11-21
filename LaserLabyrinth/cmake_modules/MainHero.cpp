@@ -1,4 +1,5 @@
 #include "MainHero.h"
+#include "Mirror.h"
 #include <iostream>
 
 MainHero::MainHero() {
@@ -8,54 +9,37 @@ MainHero::MainHero() {
     std::string textureFileName;
     mainHeroInputFile >> xPos >> yPos; // input position
     mainHeroInputFile >> textureFileName;
-    textureFileName += ".png";
     picture = Picture();
     picture.set(textureFileName, spriteWidth, spriteHeight, xPos, yPos, 0);
     mainHeroInputFile.close();
 }
 
-bool MainHero::heroActions(sf::Event &event) {
+bool MainHero::heroActions(sf::Event &event, Mirror &mirror) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        WASD(180, xPos, yPos, 2, xPos, -speed);
+        WASD(xPos, yPos, 2, xPos, -speed, mirror, -1);
         return true;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        WASD(0, xPos, yPos, 0, xPos, speed);
+        WASD(xPos, yPos, 0, xPos, speed, mirror, 1);
         return true;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        WASD(90, xPos, yPos, 1, yPos, speed);
+        WASD(xPos, yPos, 1, yPos, speed, mirror, 0);
         return true;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        WASD(270, xPos, yPos, 3, yPos, -speed);
+        WASD(xPos, yPos, 3, yPos, -speed, mirror, 0);
+        return true;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
+        RButton();
         return true;
     }
     return false;
-
-//    std::cout << "1 ";
-//    switch (event.key.code) {
-//        case sf::Keyboard::W:
-//            WASD(270, xPos, yPos, 3, yPos, -speed);
-//            break;
-//        case sf::Keyboard::A:
-//            WASD(180, xPos, yPos, 2, xPos, -speed);
-//            break;
-//        case sf::Keyboard::S:
-//            WASD(90, xPos, yPos, 1, yPos, speed);
-//            break;
-//        case sf::Keyboard::D:
-//            WASD(0, xPos, yPos, 0, xPos, speed);
-//            break;
-//        case sf::Keyboard::R:
-//            RButton();
-//            break;
-//        case sf::Keyboard::E:
-//            break;
 }
 
-void MainHero::WASD(ushort angle, int xPos, int yPos, ushort direction, int &coordinate,
-                    int speed) {
+void MainHero::WASD(int xPos, int yPos, ushort direction, int &coordinate,
+                    int speed, Mirror &mirror, short coef) {
     switch (mode) {
         case Walk:
             if (stay) {
@@ -64,7 +48,7 @@ void MainHero::WASD(ushort angle, int xPos, int yPos, ushort direction, int &coo
             }
             coordinate += speed;
             picture.animate(xPos, yPos, spriteWidth, spriteHeight, direction,
-                            currentDirection);
+                            currentDirection, 1);
             break;
         case RotateMirror:
             if (stay) {
@@ -72,7 +56,9 @@ void MainHero::WASD(ushort angle, int xPos, int yPos, ushort direction, int &coo
                 picture.set("images/sprHeroRotateMirror.png", spriteWidth, spriteHeight, xPos, yPos,
                             47);
             }
-            //указатель на зеркало.rotate(rotateDirection);
+            picture.animate(xPos, yPos, spriteWidth, spriteHeight, currentDirection,
+                            currentDirection, coef);
+            mirror.rotate(coef);
             break;
         case PushMirror:
             if (stay) {
@@ -82,13 +68,14 @@ void MainHero::WASD(ushort angle, int xPos, int yPos, ushort direction, int &coo
             }
             coordinate += speed;
             picture.animate(xPos, yPos, spriteWidth, spriteHeight, direction,
-                            currentDirection);
+                            currentDirection, 1);
             break;
     }
 }
 
 //todo расстояние между героем и зеркалом
 void MainHero::RButton() {
+    std::cout << "R pressed" << std::endl;
     mode = (mode == RotateMirror ? Walk : RotateMirror);
     stay = true;
 }
@@ -114,6 +101,7 @@ void MainHero::Stays() {
             case RotateMirror:
                 picture.set("images/heroRotateStays.png", spriteWidth, spriteHeight, xPos, yPos,
                             static_cast<ushort>(currentDirection * 90));
+                break;
         }
     }
 }

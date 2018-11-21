@@ -18,21 +18,22 @@ class MainHero {
 
     int xPos{}, yPos{}; // position
     bool stay = true;
-    u_short speed = 20; //speed of walking
+    u_short speed = 30; //speed of walking
     u_short mode{};
     u_short spriteHeight = 32;
     u_short spriteWidth = 32;
-    ushort  currentDirection = 0;
+    ushort currentDirection = 0;
 
     Picture picture;
 
-    void WASD(ushort angle, int xOffset, int yOffset, ushort direction, int &coordinate, int speed);
+    void WASD(int xOffset, int yOffset, ushort direction, int &coordinate, int speed,
+              Mirror &mirror, short coef);
 
     void RButton();
 
     void EButton();
 
-    bool heroActions(sf::Event &event);
+    bool heroActions(sf::Event &event, Mirror &mirror);
 
     void Stays();
 
@@ -40,15 +41,15 @@ public:
 
     MainHero();
 
-    bool actions(sf::Event &event) {
-        return heroActions(event);
+    bool actions(sf::Event &event, Mirror &mirror) {
+        return heroActions(event, mirror);
     }
 
-    void stays(){
+    void stays() {
         Stays();
     }
 
-    sf::Sprite &getPicture(){
+    sf::Sprite &getPicture() {
         return picture.getSprite();
     }
 

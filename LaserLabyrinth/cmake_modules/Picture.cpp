@@ -2,20 +2,22 @@
 #include <iostream>
 
 void Picture::animatePicture(int xPos, int yPos, ushort spriteWidth, ushort spriteHeight,
-                             ushort direction, ushort &currentDirection) {
-    currentFrame += 0.5;
-    if (currentFrame >= 8) {
-        currentFrame -= 8;
-    }
-    sprite.setTextureRect(sf::IntRect(spriteWidth * (int) currentFrame, 0,
-                                      spriteWidth, spriteHeight));
+                             ushort direction, ushort &currentDirection, short coef) {
+    if(coef != 0) {
+        currentFrame ++;
+        if (currentFrame >= 8) {
+            currentFrame -= 8;
+        }
+        sprite.setTextureRect(sf::IntRect(spriteWidth * (int) currentFrame, 0,
+                                          spriteWidth, spriteHeight));
 
-    while (currentDirection != direction) {
-        currentDirection = static_cast<ushort>((currentDirection + 1) % 4);
-        sprite.rotate(90);
-    }
+        while (currentDirection != direction) {
+            currentDirection = static_cast<ushort>((currentDirection + 1) % 4);
+            sprite.rotate(90);
+        }
 
-    sprite.setPosition(xPos, yPos);
+        sprite.setPosition(xPos, yPos);
+    }
 
 }
 

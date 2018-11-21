@@ -1,5 +1,6 @@
 #include <iostream>
 #include <random>
+#include <fstream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Window.hpp>
@@ -8,7 +9,7 @@
 
 void restartClock(sf::Clock &clock, float &time);
 
-void userActions(float &time, sf::RenderWindow &window, MainHero &hero);
+void userActions(float &time, sf::RenderWindow &window, MainHero &hero, Mirror &mirror);
 
 int main() {
 
@@ -25,16 +26,24 @@ int main() {
 
     sf::Clock clock; //clock
 
+    std::ifstream mirrorFin("files/constructMirror.txt");
+
+    Mirror mirror(mirrorFin);
+
     MainHero hero; //main hero
 
     //main game loop
     while (window.isOpen()) {
         restartClock(clock, time);
         window.clear();
-        userActions(time, window, hero);
+        userActions(time, window, hero, mirror);
         window.draw(hero.getPicture());
+        window.draw(mirror.getPicture());
         window.display();
     }
+
+    mirrorFin.close();
+
     return 0;
 }
 
@@ -44,8 +53,8 @@ void restartClock(sf::Clock &clock, float &time) {
     clock.restart();
 }
 
-void userActions(float &time, sf::RenderWindow &window, MainHero &hero) {
-    float delay = 0.05; //delay
+void userActions(float &time, sf::RenderWindow &window, MainHero &hero, Mirror &mirror) {
+    float delay = 0.1; //delay
     sf::Event event{};
     if (time > delay) {
         while (window.pollEvent(event)) {
@@ -53,7 +62,7 @@ void userActions(float &time, sf::RenderWindow &window, MainHero &hero) {
                 window.close();
             }
         }
-        if(!hero.actions(event)) {
+        if(!hero.actions(event, mirror)) {
             hero.stays();
         }
         time = 0;

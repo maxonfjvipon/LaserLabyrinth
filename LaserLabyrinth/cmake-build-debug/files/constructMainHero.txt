@@ -1,2 +1,2 @@
 200 200
-images/heroStays
+images/heroStays.png

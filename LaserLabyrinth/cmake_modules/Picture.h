@@ -11,12 +11,10 @@ class Picture {
     sf::Texture texture;
 
     void animatePicture(int xPos, int yPos, ushort spriteWidth, ushort spriteHeight,
-                        ushort direction, ushort &currentDirection);
+                        ushort direction, ushort &currentDirection, short coef);
 
     void setSprite(const std::string &fileName, ushort spriteWidth, ushort spriteHeight,
                    int xPos, int yPos, ushort rotation);
-
-
 
 public:
 
@@ -29,9 +27,13 @@ public:
         setSprite(fileName, spriteWidth, spriteHeight, xPos, yPos, rotation);
     }
 
+    void rotate(short rotateSpeed){
+        sprite.rotate(rotateSpeed);
+    }
+
     void animate(int xPos, int yPos, ushort spriteWidth, ushort spriteHeight,
-                 ushort direction, ushort &currentDirection) {
-        animatePicture(xPos, yPos, spriteWidth, spriteHeight, direction, currentDirection);
+                 ushort direction, ushort &currentDirection, short coef) {
+        animatePicture(xPos, yPos, spriteWidth, spriteHeight, direction, currentDirection, coef);
     }
 
     sf::Sprite &getSprite() {

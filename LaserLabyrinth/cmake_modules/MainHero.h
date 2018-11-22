@@ -24,16 +24,18 @@ class MainHero {
     u_short spriteWidth = 32;
     ushort currentDirection = 0;
 
+    int mirrorIndex = -1;
+
     Picture picture;
 
     void WASD(int xOffset, int yOffset, ushort direction, int &coordinate, int speed,
-              Mirror &mirror, short coef);
+              std::vector<Mirror> &mirrors, short coef);
 
-    void RButton();
+    void RButton(std::vector<Mirror> &mirrors);
 
     void EButton();
 
-    bool heroActions(sf::Event &event, Mirror &mirror);
+    bool heroActions(sf::Event &event, std::vector<Mirror> &mirrors);
 
     void Stays();
 
@@ -41,9 +43,11 @@ public:
 
     MainHero();
 
-    bool actions(sf::Event &event, Mirror &mirror) {
-        return heroActions(event, mirror);
+    bool actions(sf::Event &event, std::vector<Mirror> &mirrors) {
+        return heroActions(event, mirrors);
     }
+
+    bool isMirrorOnWay();
 
     void stays() {
         Stays();

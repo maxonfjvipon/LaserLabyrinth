@@ -1,6 +1,7 @@
 #include <iostream>
 #include <random>
 #include <fstream>
+#include <vector>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Window.hpp>
@@ -9,7 +10,10 @@
 
 void restartClock(sf::Clock &clock, float &time);
 
-void userActions(float &time, sf::RenderWindow &window, MainHero &hero, Mirror &mirror);
+void userActions(float &time, sf::RenderWindow &window, MainHero &hero,
+                 std::vector<Mirror> &mirrors);
+
+void initMirrors(std::vector<Mirror> &mirrors);
 
 int main() {
 
@@ -26,9 +30,8 @@ int main() {
 
     sf::Clock clock; //clock
 
-    std::ifstream mirrorFin("files/constructMirror.txt");
-
-    Mirror mirror(mirrorFin);
+    std::vector<Mirror> mirrors;
+    initMirrors(mirrors);
 
     MainHero hero; //main hero
 
@@ -36,15 +39,26 @@ int main() {
     while (window.isOpen()) {
         restartClock(clock, time);
         window.clear();
-        userActions(time, window, hero, mirror);
+        userActions(time, window, hero, mirrors);
         window.draw(hero.getPicture());
-        window.draw(mirror.getPicture());
+        for(auto &mirror : mirrors) {
+            window.draw(mirror.getPicture());
+        }
+//        window.draw(mirror.getPicture());
         window.display();
     }
 
-    mirrorFin.close();
-
     return 0;
+}
+
+void initMirrors(std::vector<Mirror> &mirrors) {
+    ushort mirrorsQuantity;
+    std::ifstream fin("files/constructMirror.txt");
+    fin >> mirrorsQuantity;
+    for (ushort i = 0; i < mirrorsQuantity; i++) {
+        mirrors.emplace_back(fin);
+    }
+    fin.close();
 }
 
 // set time and restart clock
@@ -53,7 +67,9 @@ void restartClock(sf::Clock &clock, float &time) {
     clock.restart();
 }
 
-void userActions(float &time, sf::RenderWindow &window, MainHero &hero, Mirror &mirror) {
+//user actions
+void userActions(float &time, sf::RenderWindow &window, MainHero &hero,
+                 std::vector<Mirror> &mirrors) {
     float delay = 0.1; //delay
     sf::Event event{};
     if (time > delay) {
@@ -62,7 +78,7 @@ void userActions(float &time, sf::RenderWindow &window, MainHero &hero, Mirror &
                 window.close();
             }
         }
-        if(!hero.actions(event, mirror)) {
+        if (!hero.actions(event, mirrors)) {
             hero.stays();
         }
         time = 0;

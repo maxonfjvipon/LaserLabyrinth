@@ -2,6 +2,7 @@
 #include "Mirror.h"
 #include <iostream>
 
+//Конструктор
 MainHero::MainHero() {
     mode = Walk;
     stay = true;
@@ -14,32 +15,34 @@ MainHero::MainHero() {
     mainHeroInputFile.close();
 }
 
-bool MainHero::heroActions(sf::Event &event, Mirror &mirror) {
+//Кнопки нажаты?
+bool MainHero::heroActions(sf::Event &event, std::vector<Mirror> &mirrors) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        WASD(xPos, yPos, 2, xPos, -speed, mirror, -1);
+        WASD(xPos, yPos, 2, xPos, -speed, mirrors, -1);
         return true;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        WASD(xPos, yPos, 0, xPos, speed, mirror, 1);
+        WASD(xPos, yPos, 0, xPos, speed, mirrors, 1);
         return true;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        WASD(xPos, yPos, 1, yPos, speed, mirror, 0);
+        WASD(xPos, yPos, 1, yPos, speed, mirrors, 0);
         return true;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        WASD(xPos, yPos, 3, yPos, -speed, mirror, 0);
+        WASD(xPos, yPos, 3, yPos, -speed, mirrors, 0);
         return true;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
-        RButton();
+        RButton(mirrors);
         return true;
     }
     return false;
 }
 
+//Обработка нажатий на WASD
 void MainHero::WASD(int xPos, int yPos, ushort direction, int &coordinate,
-                    int speed, Mirror &mirror, short coef) {
+                    int speed, std::vector<Mirror> &mirrors, short coef) {
     switch (mode) {
         case Walk:
             if (stay) {
@@ -58,7 +61,7 @@ void MainHero::WASD(int xPos, int yPos, ushort direction, int &coordinate,
             }
             picture.animate(xPos, yPos, spriteWidth, spriteHeight, currentDirection,
                             currentDirection, coef);
-            mirror.rotate(coef);
+            mirrors[mirrorIndex].rotate(coef);
             break;
         case PushMirror:
             if (stay) {
@@ -73,19 +76,43 @@ void MainHero::WASD(int xPos, int yPos, ushort direction, int &coordinate,
     }
 }
 
-//todo расстояние между героем и зеркалом
-void MainHero::RButton() {
-    std::cout << "R pressed" << std::endl;
-    mode = (mode == RotateMirror ? Walk : RotateMirror);
+//Обработка нажатий на кнопку R
+void MainHero::RButton(std::vector<Mirror> &mirrors) {
+    if(mode == RotateMirror) {
+        mode = Walk;
+        stay = true;
+        mirrorIndex = -1;
+        return;
+    }
+
+    if(mode == PushMirror) {
+        mode = RotateMirror;
+        stay = true;
+        return;
+    }
+
+    for(ushort i = 0; i < mirrors.size(); i++) {
+        if(isMirrorOnWay()) {
+            mirrorIndex = i;
+            break;
+        }
+    }
+    if(mirrorIndex == -1) {
+        return;
+    }
+
+    mode = RotateMirror;
     stay = true;
+
 }
 
-//todo расстояние между героем и зеркалом
+//Обработка нажатий на кнопку Е
 void MainHero::EButton() {
     mode = (mode == PushMirror ? Walk : PushMirror);
     stay = true;
 }
 
+//Герой неподвижен
 void MainHero::Stays() {
     if (!stay) {
         stay = true;
@@ -104,4 +131,10 @@ void MainHero::Stays() {
                 break;
         }
     }
+}
+
+//todo доделать
+//Есть ли зеркало перед героем?
+bool MainHero::isMirrorOnWay() {
+    return false;
 }

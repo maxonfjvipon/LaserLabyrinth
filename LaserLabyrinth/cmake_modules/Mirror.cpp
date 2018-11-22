@@ -1,8 +1,7 @@
 #include "Mirror.h"
 #include <fstream>
 
-
-Mirror::Mirror(std::ifstream &fin) {
+void Mirror::set(std::ifstream &fin) {
     fin >> xPos >> yPos >> rotateAngle;
     std::string textureFileName;
     fin >> textureFileName;

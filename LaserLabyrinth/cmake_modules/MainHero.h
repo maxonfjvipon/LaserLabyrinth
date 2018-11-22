@@ -47,11 +47,13 @@ public:
         return heroActions(event, mirrors);
     }
 
-    bool isMirrorOnWay();
+    bool isMirrorOnWay(Mirror &mirror);
 
     void stays() {
         Stays();
     }
+
+
 
     sf::Sprite &getPicture() {
         return picture.getSprite();

@@ -28,11 +28,11 @@ void Picture::setSprite(const std::string &fileName, ushort spriteWidth, ushort 
     }
     sprite.setTexture(texture);
     sprite.setTextureRect(sf::IntRect(0, 0, spriteWidth, spriteHeight));
+    sprite.setOrigin(spriteWidth/2, spriteHeight/2);
     sprite.setPosition(xPos,yPos);
     sprite.setScale(10, 10); //todo delete this
     if(rotation != 47) {
         sprite.setRotation(rotation);
     }
-    sprite.setOrigin(spriteWidth/2, spriteHeight/2);
     isPictureSet = true;
 }

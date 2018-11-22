@@ -7,6 +7,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include "cmake_modules/MainHero.h"
+#include "cmake_modules/Mirror.h"
 
 void restartClock(sf::Clock &clock, float &time);
 
@@ -44,19 +45,20 @@ int main() {
         for(auto &mirror : mirrors) {
             window.draw(mirror.getPicture());
         }
-//        window.draw(mirror.getPicture());
         window.display();
     }
 
     return 0;
 }
 
+// Инициализация зеркал
 void initMirrors(std::vector<Mirror> &mirrors) {
     ushort mirrorsQuantity;
     std::ifstream fin("files/constructMirror.txt");
     fin >> mirrorsQuantity;
-    for (ushort i = 0; i < mirrorsQuantity; i++) {
-        mirrors.emplace_back(fin);
+    mirrors.resize(mirrorsQuantity);
+    for (auto &mirror : mirrors) {
+        mirror.set(fin);
     }
     fin.close();
 }

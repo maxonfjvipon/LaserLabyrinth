@@ -43,6 +43,7 @@ bool MainHero::heroActions(sf::Event &event, std::vector<Mirror> &mirrors) {
 //Обработка нажатий на WASD
 void MainHero::WASD(int xPos, int yPos, ushort direction, int &coordinate,
                     int speed, std::vector<Mirror> &mirrors, short coef) {
+
     switch (mode) {
         case Walk:
             if (stay) {
@@ -92,7 +93,7 @@ void MainHero::RButton(std::vector<Mirror> &mirrors) {
     }
 
     for(ushort i = 0; i < mirrors.size(); i++) {
-        if(isMirrorOnWay()) {
+        if(isMirrorOnWay(mirrors[i])) {
             mirrorIndex = i;
             break;
         }
@@ -135,6 +136,20 @@ void MainHero::Stays() {
 
 //todo доделать
 //Есть ли зеркало перед героем?
-bool MainHero::isMirrorOnWay() {
+bool MainHero::isMirrorOnWay(Mirror &mirror) {
+    switch(currentDirection) {
+        case 0: //Right
+            if(mirror.getXPos() - mirror.getPicture().get)
+            break;
+        case 1: //Down
+            break;
+        case 2: //Left
+            break;
+        case 3: //Up
+            break;
+        default:
+            std::cout << "Major system error ... " << std::endl;
+            return false;
+    }
     return false;
 }

@@ -5,25 +5,36 @@
 #include "Picture.h"
 
 class Mirror {
-    int xPos{}, yPos{};
+
+    int xPos {}, yPos {};
     //todo fix this
     u_short spriteHeight = 32;
     u_short spriteWidth = 32;
-    ushort rotateAngle;
+    ushort rotateAngle {};
     ushort rotateSpeed = 2;
 
     Picture picture;
 
 public:
 
-    Mirror(std::ifstream &fin);
+    Mirror() = default;
+
+    void set(std::ifstream &fin);
 
     void rotate(short coef) {
         picture.rotate(rotateSpeed * coef);
     }
 
-    sf::Sprite &getPicture(){
+    sf::Sprite &getPicture() {
         return picture.getSprite();
+    }
+
+    int getXPos() {
+        return xPos;
+    }
+
+    int getYPos() {
+        return yPos;
     }
 
 };

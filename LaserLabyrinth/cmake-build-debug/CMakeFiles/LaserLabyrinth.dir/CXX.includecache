@@ -51,4 +51,6 @@ SFML/System.hpp
 -
 cmake_modules/MainHero.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/MainHero.h
+cmake_modules/Mirror.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h
 

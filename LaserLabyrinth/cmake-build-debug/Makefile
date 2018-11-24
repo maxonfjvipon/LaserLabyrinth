@@ -123,6 +123,33 @@ LaserLabyrinth/fast:
 	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/build
 .PHONY : LaserLabyrinth/fast
 
+cmake_modules/LaserCannon.o: cmake_modules/LaserCannon.cpp.o
+
+.PHONY : cmake_modules/LaserCannon.o
+
+# target to build an object file
+cmake_modules/LaserCannon.cpp.o:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/LaserCannon.cpp.o
+.PHONY : cmake_modules/LaserCannon.cpp.o
+
+cmake_modules/LaserCannon.i: cmake_modules/LaserCannon.cpp.i
+
+.PHONY : cmake_modules/LaserCannon.i
+
+# target to preprocess a source file
+cmake_modules/LaserCannon.cpp.i:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/LaserCannon.cpp.i
+.PHONY : cmake_modules/LaserCannon.cpp.i
+
+cmake_modules/LaserCannon.s: cmake_modules/LaserCannon.cpp.s
+
+.PHONY : cmake_modules/LaserCannon.s
+
+# target to generate assembly for a file
+cmake_modules/LaserCannon.cpp.s:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/LaserCannon.cpp.s
+.PHONY : cmake_modules/LaserCannon.cpp.s
+
 cmake_modules/MainHero.o: cmake_modules/MainHero.cpp.o
 
 .PHONY : cmake_modules/MainHero.o
@@ -240,6 +267,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... LaserLabyrinth"
+	@echo "... cmake_modules/LaserCannon.o"
+	@echo "... cmake_modules/LaserCannon.i"
+	@echo "... cmake_modules/LaserCannon.s"
 	@echo "... cmake_modules/MainHero.o"
 	@echo "... cmake_modules/MainHero.i"
 	@echo "... cmake_modules/MainHero.s"

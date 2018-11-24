@@ -37,6 +37,10 @@ bool MainHero::heroActions(sf::Event &event, std::vector<Mirror> &mirrors) {
         RButton(mirrors);
         return true;
     }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
+        EButton(mirrors);
+        return true;
+    }
     return false;
 }
 
@@ -67,9 +71,15 @@ void MainHero::WASD(int xPos, int yPos, ushort direction, int &coordinate,
         case PushMirror:
             if (stay) {
                 stay = false;
-                picture.set("images/sprHeroPushMirror.png", spriteWidth, spriteHeight, xPos,
+                picture.set("images/sprHeroWalk.png", spriteWidth, spriteHeight, xPos,
                             yPos, 47);
             }
+            if (currentDirection == 1 || currentDirection == 3) {
+                mirrors[mirrorIndex].moveByY(speed);
+            } else if (currentDirection == 0 || currentDirection == 2){
+                mirrors[mirrorIndex].moveByX(speed);
+            }
+            std::cout << "xPos: " << mirrors[mirrorIndex].getXPos() << std::endl;
             coordinate += speed;
             picture.animate(xPos, yPos, spriteWidth, spriteHeight, direction,
                             currentDirection, 1);
@@ -79,26 +89,27 @@ void MainHero::WASD(int xPos, int yPos, ushort direction, int &coordinate,
 
 //Обработка нажатий на кнопку R
 void MainHero::RButton(std::vector<Mirror> &mirrors) {
-    if(mode == RotateMirror) {
+    std::cout << "R pressed" << std::endl;
+    if (mode == RotateMirror) {
         mode = Walk;
         stay = true;
         mirrorIndex = -1;
         return;
     }
 
-    if(mode == PushMirror) {
+    if (mode == PushMirror) {
         mode = RotateMirror;
         stay = true;
         return;
     }
 
-    for(ushort i = 0; i < mirrors.size(); i++) {
-        if(isMirrorOnWay(mirrors[i])) {
+    for (ushort i = 0; i < mirrors.size(); i++) {
+        if (isMirrorOnWay(mirrors[i])) {
             mirrorIndex = i;
             break;
         }
     }
-    if(mirrorIndex == -1) {
+    if (mirrorIndex == -1) {
         return;
     }
 
@@ -107,9 +118,36 @@ void MainHero::RButton(std::vector<Mirror> &mirrors) {
 
 }
 
+//todo сделать красивую анимацию толкания зеркала
+//todo расстояние между героем и зеркалом
 //Обработка нажатий на кнопку Е
-void MainHero::EButton() {
-    mode = (mode == PushMirror ? Walk : PushMirror);
+void MainHero::EButton(std::vector<Mirror> &mirrors) {
+    std::cout << "E pressed" << std::endl;
+    if (mode == PushMirror) {
+        mode = Walk;
+        stay = true;
+        mirrorIndex = -1;
+        return;
+    }
+
+    if (mode == RotateMirror) {
+        mode = PushMirror;
+        stay = true;
+        return;
+    }
+
+    for (ushort i = 0; i < mirrors.size(); i++) {
+        if (isMirrorOnWay(mirrors[i])) {
+            mirrorIndex = i;
+            break;
+        }
+    }
+
+    if (mirrorIndex == -1) {
+        return;
+    }
+
+    mode = PushMirror;
     stay = true;
 }
 
@@ -122,8 +160,8 @@ void MainHero::Stays() {
                 picture.set("images/heroStays.png", spriteWidth, spriteHeight, xPos, yPos,
                             static_cast<ushort>(currentDirection * 90));
                 break;
-            case PushMirror:
-                picture.set("images/heroPushStays.png", spriteWidth, spriteHeight, xPos, yPos,
+            case PushMirror: //fixme
+                picture.set("images/heroStays.png", spriteWidth, spriteHeight, xPos, yPos,
                             static_cast<ushort>(currentDirection * 90));
                 break;
             case RotateMirror:
@@ -134,18 +172,45 @@ void MainHero::Stays() {
     }
 }
 
-//todo доделать
+//todo оптимальное расстояние до зеркала, зависимость от sprite.scale
 //Есть ли зеркало перед героем?
 bool MainHero::isMirrorOnWay(Mirror &mirror) {
-    switch(currentDirection) {
+    switch (currentDirection) {
         case 0: //Right
-            if(mirror.getXPos() - mirror.getPicture().get)
+            if (mirror.getXPos() - xPos <= spriteWidth / 2 + mirror.getSpriteWidth() / 2 + 50) {
+                if (abs(mirror.getYPos() - yPos) <= 20) {
+                    xPos = mirror.getXPos() - mirror.getSpriteWidth() / 2 - spriteWidth / 2;
+                    yPos = mirror.getYPos();
+                    return true;
+                }
+            }
             break;
         case 1: //Down
+            if (mirror.getYPos() - yPos <= spriteHeight / 2 + mirror.getSpriteHeigth() / 2 + 20) {
+                if (abs(mirror.getXPos() - xPos) <= 20) {
+                    xPos = mirror.getXPos();
+                    yPos = mirror.getYPos() - mirror.getSpriteHeigth() / 2 - spriteHeight / 2;
+                    return true;
+                }
+            }
             break;
         case 2: //Left
+            if (xPos - mirror.getXPos() <= spriteWidth / 2 + mirror.getSpriteWidth() / 2 + 20) {
+                if (abs(mirror.getYPos() - yPos) <= 20) {
+                    xPos = mirror.getXPos() + mirror.getSpriteWidth() / 2 + spriteWidth / 2;
+                    yPos = mirror.getYPos();
+                    return true;
+                }
+            }
             break;
         case 3: //Up
+            if (yPos - mirror.getYPos() <= spriteWidth / 2 + mirror.getSpriteWidth() / 2 + 20) {
+                if (abs(mirror.getXPos() - xPos) <= 20) {
+                    xPos = mirror.getXPos();
+                    yPos = mirror.getYPos() + spriteHeight / 2 + mirror.getSpriteHeigth() / 2;
+                    return true;
+                }
+            }
             break;
         default:
             std::cout << "Major system error ... " << std::endl;

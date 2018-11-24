@@ -33,6 +33,18 @@ public:
         return xPos;
     }
 
+    ushort getSpriteWidth(){
+        return spriteWidth;
+    }
+
+    ushort getSpriteHeigth() {
+        return spriteHeight;
+    }
+
+    void moveByY(int speed);
+
+    void moveByX(int speed);
+
     int getYPos() {
         return yPos;
     }

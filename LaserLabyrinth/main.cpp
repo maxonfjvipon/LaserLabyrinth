@@ -6,6 +6,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
+#include "cmake_modules/LaserCannon.h"
 #include "cmake_modules/MainHero.h"
 #include "cmake_modules/Mirror.h"
 

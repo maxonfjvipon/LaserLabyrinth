@@ -33,7 +33,7 @@ class MainHero {
 
     void RButton(std::vector<Mirror> &mirrors);
 
-    void EButton();
+    void EButton(std::vector<Mirror> &mirrors);
 
     bool heroActions(sf::Event &event, std::vector<Mirror> &mirrors);
 
@@ -52,8 +52,6 @@ public:
     void stays() {
         Stays();
     }
-
-
 
     sf::Sprite &getPicture() {
         return picture.getSprite();

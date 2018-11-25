@@ -1,0 +1,2 @@
+files/constructMainHero.txt
+files/constructMirrors.txt

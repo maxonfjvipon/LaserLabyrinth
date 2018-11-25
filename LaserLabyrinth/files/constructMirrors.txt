@@ -1,0 +1,4 @@
+3
+500 500 30 32 32 images/mirror.png
+1000 200 0 32 32 images/mirror.png
+1500 300 45 32 32 images/mirror.png

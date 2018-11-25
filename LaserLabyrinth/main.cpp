@@ -6,16 +6,11 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
-#include "cmake_modules/LaserCannon.h"
-#include "cmake_modules/MainHero.h"
-#include "cmake_modules/Mirror.h"
+#include "cmake_modules/GameField.h"
 
 void restartClock(sf::Clock &clock, float &time);
 
-void userActions(float &time, sf::RenderWindow &window, MainHero &hero,
-                 std::vector<Mirror> &mirrors);
-
-void initMirrors(std::vector<Mirror> &mirrors);
+void actions(float &time, sf::RenderWindow &window, GameField &gameField);
 
 int main() {
 
@@ -32,36 +27,33 @@ int main() {
 
     sf::Clock clock; //clock
 
-    std::vector<Mirror> mirrors;
-    initMirrors(mirrors);
-
-    MainHero hero; //main hero
+    auto gameField = GameField();
 
     //main game loop
     while (window.isOpen()) {
         restartClock(clock, time);
         window.clear();
-        userActions(time, window, hero, mirrors);
-        window.draw(hero.getPicture());
-        for(auto &mirror : mirrors) {
-            window.draw(mirror.getPicture());
-        }
+        actions(time,window, gameField);
+        gameField.draw(window);
+
         window.display();
     }
 
     return 0;
 }
 
-// Инициализация зеркал
-void initMirrors(std::vector<Mirror> &mirrors) {
-    ushort mirrorsQuantity;
-    std::ifstream fin("files/constructMirror.txt");
-    fin >> mirrorsQuantity;
-    mirrors.resize(mirrorsQuantity);
-    for (auto &mirror : mirrors) {
-        mirror.set(fin);
+void actions(float &time, sf::RenderWindow &window, GameField &gameField) {
+    float delay = 0.1; //delay
+    sf::Event event{};
+    if(time > delay) {
+        while (window.pollEvent(event)) {
+            if(event.type == sf::Event::Closed) {
+                window.close();
+            }
+        }
+        gameField.actions(event);
+        time = 0;
     }
-    fin.close();
 }
 
 // set time and restart clock
@@ -71,19 +63,19 @@ void restartClock(sf::Clock &clock, float &time) {
 }
 
 //user actions
-void userActions(float &time, sf::RenderWindow &window, MainHero &hero,
-                 std::vector<Mirror> &mirrors) {
-    float delay = 0.1; //delay
-    sf::Event event{};
-    if (time > delay) {
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) { //if "ESC" was pressed
-                window.close();
-            }
-        }
-        if (!hero.actions(event, mirrors)) {
-            hero.stays();
-        }
-        time = 0;
-    }
-}
+//void userActions(float &time, sf::RenderWindow &window, MainHero &hero,
+//                 std::vector<Mirror> &mirrors) {
+//    float delay = 0.1; //delay
+//    sf::Event event{};
+//    if (time > delay) {
+//        while (window.pollEvent(event)) {
+//            if (event.type == sf::Event::Closed) { //if "ESC" was pressed
+//                window.close();
+//            }
+//        }
+//        if (!hero.actions(event, mirrors)) {
+//            hero.stays();
+//        }
+//        time = 0;
+//    }
+//}

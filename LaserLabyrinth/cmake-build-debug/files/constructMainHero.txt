@@ -1,2 +1,1 @@
-200 200
-images/heroStays.png
+100 100 0 32 32 images/heroStays.png

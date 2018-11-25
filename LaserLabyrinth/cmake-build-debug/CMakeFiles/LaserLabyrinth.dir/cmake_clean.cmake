@@ -2,8 +2,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/LaserLabyrinth.dir/main.cpp.o"
   "CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o"
   "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.o"
-  "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Picture.cpp.o"
-  "CMakeFiles/LaserLabyrinth.dir/cmake_modules/LaserCannon.cpp.o"
+  "CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.o"
+  "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Transform.cpp.o"
+  "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Image.cpp.o"
+  "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Collision.cpp.o"
   "LaserLabyrinth.pdb"
   "LaserLabyrinth"
 )

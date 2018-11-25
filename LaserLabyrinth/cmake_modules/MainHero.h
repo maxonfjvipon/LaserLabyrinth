@@ -7,56 +7,30 @@
 #include <SFML/Window.hpp>
 #include <fstream>
 #include "Mirror.h"
-#include "Picture.h"
+#include "Transform.h"
+#include "Image.h"
 
 enum mainHeroMode {
     Walk, PushMirror, RotateMirror
 };
 
 //main hero
-class MainHero {
+class MainHero{
+public:
 
-    int xPos{}, yPos{}; // position
-    bool stay = true;
-    u_short speed = 30; //speed of walking
-    u_short mode{};
-    u_short spriteHeight = 32;
-    u_short spriteWidth = 32;
+    Transform transform;
+
+    Image image;
+    bool isStaying;
+    u_short walkSpeed = 30; //speed of walking
+    u_short mode;
+
     ushort currentDirection = 0;
+
 
     int mirrorIndex = -1;
 
-    Picture picture;
-
-    void WASD(int xOffset, int yOffset, ushort direction, int &coordinate, int speed,
-              std::vector<Mirror> &mirrors, short coef);
-
-    void RButton(std::vector<Mirror> &mirrors);
-
-    void EButton(std::vector<Mirror> &mirrors);
-
-    bool heroActions(sf::Event &event, std::vector<Mirror> &mirrors);
-
-    void Stays();
-
-public:
-
     MainHero();
-
-    bool actions(sf::Event &event, std::vector<Mirror> &mirrors) {
-        return heroActions(event, mirrors);
-    }
-
-    bool isMirrorOnWay(Mirror &mirror);
-
-    void stays() {
-        Stays();
-    }
-
-    sf::Sprite &getPicture() {
-        return picture.getSprite();
-    }
-
 
 };
 

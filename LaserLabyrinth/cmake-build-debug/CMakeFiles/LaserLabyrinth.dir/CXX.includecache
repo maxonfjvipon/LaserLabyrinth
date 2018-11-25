@@ -6,19 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.cpp
-Mirror.h
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h
-fstream
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Collision.cpp
+SFML/Graphics.hpp
+-
+Collision.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Collision.h
+cmath
 -
 
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h
-iostream
--
-Picture.h
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Picture.h
-
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Picture.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Collision.h
 SFML/Graphics.hpp
 -
 

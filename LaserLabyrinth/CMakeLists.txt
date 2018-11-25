@@ -3,7 +3,9 @@ project(LaserLabyrinth)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp cmake_modules/MainHero.cpp cmake_modules/MainHero.h cmake_modules/Mirror.cpp cmake_modules/Mirror.h cmake_modules/Picture.cpp cmake_modules/Picture.h cmake_modules/LaserCannon.cpp cmake_modules/LaserCannon.h)
+set(SOURCE_FILES main.cpp cmake_modules/MainHero.cpp cmake_modules/MainHero.h
+        cmake_modules/Mirror.cpp cmake_modules/Mirror.h
+        cmake_modules/GameField.cpp cmake_modules/GameField.h cmake_modules/Transform.cpp cmake_modules/Transform.h cmake_modules/Image.cpp cmake_modules/Image.h)
 
 add_executable(LaserLabyrinth ${SOURCE_FILES})
 

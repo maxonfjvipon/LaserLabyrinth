@@ -1,6 +1,8 @@
 #include "GameField.h"
+#include "MainHero.h"
 #include <fstream>
 #include <iostream>
+#include <cmath>
 
 template<class T>
 void setNewImage(T &object, const std::string &fileName, ushort rotateAngle) {
@@ -12,19 +14,32 @@ GameField::GameField() {
 
     std::ifstream fin("files/constructMirrors.txt");
     fin >> mirrorsQuantity;
-    mirrors.resize(mirrorsQuantity);
-    for (auto &mirror : mirrors) {
-        mirror.set(fin);
+    for (short i = 0; i < mirrorsQuantity; i++) {
+        gameObjects.push_back(new Mirror());
+        gameObjects[i]->set(fin);
     }
+    //todo другие объекты
+    gameObjects.push_back(new LaserCannon());
+    laserCannonIndex = gameObjects.size() - 1;
+    gameObjects[laserCannonIndex]->set(fin);
+    ray.set(gameObjects[laserCannonIndex]->transform.x, gameObjects[laserCannonIndex]->transform.y,
+            gameObjects[laserCannonIndex]->transform.rotateAngle);
     fin.close();
+
+    view.setCenter(hero.transform.x, hero.transform.y);
+    //todo map????
 
 }
 
 void GameField::draw(sf::RenderWindow &window) {
     window.draw(hero.image.sprite);
-    for (auto &mirror : mirrors) {
-        window.draw(mirror.image.sprite);
+    for (auto &gameObject : gameObjects) {
+        window.draw(gameObject->image.sprite);
     }
+    for (auto &ray : rays) {
+        window.draw(ray.line);
+    }
+
 }
 
 bool GameField::wasButtonPressed(sf::Event &event) {
@@ -86,44 +101,31 @@ void GameField::WASD(ushort direction) {
             switch (direction) {
                 case 0:
                     hero.transform.x += hero.walkSpeed;
-                    for (auto &mirror : mirrors) {
-                        if (collide(hero, mirror)) {
-                            hero.transform.x -= hero.walkSpeed;
-                            break;
-                        }
+                    if (collider()) {
+                        hero.transform.x -= hero.walkSpeed;
                     }
                     break;
                 case 1:
                     hero.transform.y += hero.walkSpeed;
-                    for (auto &mirror : mirrors) {
-                        if (collide(hero, mirror)) {
-                            hero.transform.y -= hero.walkSpeed;
-                            break;
-                        }
+                    if (collider()) {
+                        hero.transform.y -= hero.walkSpeed;
                     }
                     break;
                 case 2:
                     hero.transform.x -= hero.walkSpeed;
-                    for (auto &mirror : mirrors) {
-                        if (collide(hero, mirror)) {
-                            hero.transform.x += hero.walkSpeed;
-                            break;
-                        }
+                    if (collider()) {
+                        hero.transform.x += hero.walkSpeed;
                     }
                     break;
                 default:
                     hero.transform.y -= hero.walkSpeed;
-                    for (auto &mirror : mirrors) {
-                        if (collide(hero, mirror)) {
-                            hero.transform.y += hero.walkSpeed;
-                            break;
-                        }
+                    if (collider()) {
+                        hero.transform.y += hero.walkSpeed;
                     }
                     break;
             }
-            std::cout << hero.transform.x << ":" << hero.transform.y << std::endl;
-            hero.image.animate(hero.transform.x, hero.transform.y, direction, hero.currentDirection,
-                               true);
+            hero.image.animate(hero.transform.x, hero.transform.y, direction,
+                               hero.currentDirection, true);
             break;
         case RotateMirror:
             if (hero.isStaying) {
@@ -132,14 +134,14 @@ void GameField::WASD(ushort direction) {
             }
             switch (direction) {
                 case 0:
-                    mirrors[hero.mirrorIndex].rotate(-1);
+                    gameObjects[hero.mirrorIndex]->rotate(1);
                     break;
                 case 2:
-                    mirrors[hero.mirrorIndex].rotate(1);
+                    gameObjects[hero.mirrorIndex]->rotate(-1);
                     break;
             }
-            hero.image.animate(hero.transform.x, hero.transform.y, direction, hero.currentDirection,
-                               false);
+            hero.image.animate(hero.transform.x, hero.transform.y, direction,
+                               hero.currentDirection, false);
             break;
         case PushMirror:
             if (hero.isStaying) {
@@ -148,43 +150,59 @@ void GameField::WASD(ushort direction) {
             }
             switch (direction) {
                 case 0:
-                    hero.transform.x += hero.walkSpeed;
-                    mirrors[hero.mirrorIndex].transform.x += hero.walkSpeed;
-                    mirrors[hero.mirrorIndex].image.sprite.setPosition(
-                            mirrors[hero.mirrorIndex].transform.x,
-                            mirrors[hero.mirrorIndex].transform.y);
+                    hero.transform.x += hero.pushSpeed;
+                    gameObjects[hero.mirrorIndex]->moveByX(hero.pushSpeed);
+                    if (collider()) {
+                        hero.transform.x -= hero.pushSpeed;
+                        gameObjects[hero.mirrorIndex]->moveByX(-hero.pushSpeed);
+                    }
+                    gameObjects[hero.mirrorIndex]->image.sprite.setPosition(
+                            gameObjects[hero.mirrorIndex]->transform.x,
+                            gameObjects[hero.mirrorIndex]->transform.y);
                     break;
                 case 1:
-                    hero.transform.y += hero.walkSpeed;
-                    mirrors[hero.mirrorIndex].transform.y += hero.walkSpeed;
-                    mirrors[hero.mirrorIndex].image.sprite.setPosition(
-                            mirrors[hero.mirrorIndex].transform.x,
-                            mirrors[hero.mirrorIndex].transform.y);
+                    hero.transform.y += hero.pushSpeed;
+                    gameObjects[hero.mirrorIndex]->moveByY(hero.pushSpeed);
+                    if (collider()) {
+                        hero.transform.y -= hero.pushSpeed;
+                        gameObjects[hero.mirrorIndex]->moveByY(-hero.pushSpeed);
+                    }
+                    gameObjects[hero.mirrorIndex]->image.sprite.setPosition(
+                            gameObjects[hero.mirrorIndex]->transform.x,
+                            gameObjects[hero.mirrorIndex]->transform.y);
                     break;
                 case 2:
-                    hero.transform.x -= hero.walkSpeed;
-                    mirrors[hero.mirrorIndex].transform.x -= hero.walkSpeed;
-                    mirrors[hero.mirrorIndex].image.sprite.setPosition(
-                            mirrors[hero.mirrorIndex].transform.x,
-                            mirrors[hero.mirrorIndex].transform.y);
+                    hero.transform.x -= hero.pushSpeed;
+                    gameObjects[hero.mirrorIndex]->moveByX(-hero.pushSpeed);
+                    if (collider()) {
+                        hero.transform.x += hero.pushSpeed;
+                        gameObjects[hero.mirrorIndex]->moveByX(hero.pushSpeed);
+                    }
+                    gameObjects[hero.mirrorIndex]->image.sprite.setPosition(
+                            gameObjects[hero.mirrorIndex]->transform.x,
+                            gameObjects[hero.mirrorIndex]->transform.y);
                     break;
                 case 3:
-                    hero.transform.y -= hero.walkSpeed;
-                    mirrors[hero.mirrorIndex].transform.y -= hero.walkSpeed;
-                    mirrors[hero.mirrorIndex].image.sprite.setPosition(
-                            mirrors[hero.mirrorIndex].transform.x,
-                            mirrors[hero.mirrorIndex].transform.y);
+                    hero.transform.y -= hero.pushSpeed;
+                    gameObjects[hero.mirrorIndex]->moveByY(-hero.pushSpeed);
+                    if (collider()) {
+                        hero.transform.y += hero.pushSpeed;
+                        gameObjects[hero.mirrorIndex]->moveByY(hero.pushSpeed);
+                    }
+                    gameObjects[hero.mirrorIndex]->image.sprite.setPosition(
+                            gameObjects[hero.mirrorIndex]->transform.x,
+                            gameObjects[hero.mirrorIndex]->transform.y);
                     break;
             }
-            hero.image.animate(hero.transform.x, hero.transform.y, direction, hero.currentDirection,
-                               false);
+            hero.image.animate(hero.transform.x, hero.transform.y, direction,
+                               hero.currentDirection, false);
             break;
     }
 }
 
+
 // R button
 void GameField::R() {
-    std::cout << "R pressed" << std::endl;
     switch (hero.mode) {
         case RotateMirror:
             hero.mode = Walk;
@@ -196,8 +214,8 @@ void GameField::R() {
             hero.isStaying = true;
             return;
         case Walk:
-            for (auto i = 0; i < mirrors.size(); i++) {
-                if (isMirrorOnHerosWay(mirrors[i])) {
+            for (auto i = 0; i < gameObjects.size(); i++) {
+                if (isMirrorOnHerosWay(*(gameObjects[i]))) {
                     hero.mirrorIndex = i;
                     break;
                 }
@@ -214,7 +232,6 @@ void GameField::R() {
 }
 
 void GameField::E() {
-    std::cout << "E pressed" << std::endl;
     switch (hero.mode) {
         case PushMirror:
             hero.mode = Walk;
@@ -226,8 +243,8 @@ void GameField::E() {
             hero.isStaying = true;
             return;
         case Walk:
-            for (auto i = 0; i < mirrors.size(); i++) {
-                if (isMirrorOnHerosWay(mirrors[i])) {
+            for (auto i = 0; i < gameObjects.size(); i++) {
+                if (isMirrorOnHerosWay(*(gameObjects[i]))) {
                     hero.mirrorIndex = i;
                     break;
                 }
@@ -244,73 +261,166 @@ void GameField::E() {
 }
 
 // fixme учесть расстояние между краем спрайта и реальной картинкой
-bool GameField::isMirrorOnHerosWay(Mirror &mirror) {
-    switch (hero.currentDirection) {
-        case 0: //Hero -> Mirror
-            if (mirror.transform.x - mirror.image.width / 2 * mirror.image.scale
-                - hero.transform.x + hero.image.width / 2 * hero.image.scale <=
-                distanseForInteract) {
-                if (abs(mirror.transform.y - hero.transform.y) <= distanseForInteract / 2) {
-                    hero.transform.x = mirror.transform.x - mirror.image.width / 2
-                                                            * mirror.image.scale -
-                                       hero.image.width / 2 * hero.image.scale;
-                    hero.transform.y = mirror.transform.y;
-                    return true;
+bool GameField::isMirrorOnHerosWay(GameObject &gameObject) {
+    if (gameObject.name == "Mirror") {
+        switch (hero.currentDirection) {
+            case 0: //Hero -> Mirror
+                if (gameObject.transform.x - gameObject.image.width / 2 * gameObject.image.scale
+                    - hero.transform.x + hero.image.width / 2 * hero.image.scale <=
+                    distanceForInteract) {
+                    if (abs(gameObject.transform.y - hero.transform.y) <=
+                        distanceForInteract / 2) {
+                        hero.transform.x = gameObject.transform.x - distanceForInteract
+                                           + 10 * gameObject.image.scale;
+                        hero.transform.y = gameObject.transform.y;
+                        return true;
+                    }
                 }
-            }
-            break;
-        case 2: // Mirror <- Hero
-            if (hero.transform.x - hero.image.width / 2 * hero.image.scale
-                - mirror.transform.x + mirror.image.width / 2 * mirror.image.scale <=
-                distanseForInteract) {
-                if (abs(mirror.transform.y - hero.transform.y) <= distanseForInteract / 2) {
-                    hero.transform.x = mirror.transform.x + mirror.image.width / 2
-                                                            * mirror.image.scale +
-                                       hero.image.width / 2 * hero.image.scale;
-                    hero.transform.y = mirror.transform.y;
-                    return true;
-                }
-            }
-            break;
-            //Hero
-            //Mirror
-        case 1:
-            if (mirror.transform.y - mirror.image.height / 2 * mirror.image.scale
-                - hero.transform.y + hero.image.height / 2 * hero.image.scale <=
-                distanseForInteract) {
-                if (abs(mirror.transform.x - hero.transform.x) <= distanseForInteract / 2) {
-                    hero.transform.y = mirror.transform.y - mirror.image.height / 2
-                                                            * mirror.image.scale
-                                       - hero.image.height / 2 * hero.image.scale;
-                    hero.transform.x = mirror.transform.x;
-                    return true;
-                }
-            }
-            break;
-            //Mirror
-            //Hero
-        case 3:
-            if (hero.transform.x - hero.image.height / 2 * hero.image.scale
-                - mirror.transform.y + mirror.image.height / 2 * mirror.image.scale <=
-                distanseForInteract) {
-                if (abs(mirror.transform.x - hero.transform.x) <= distanseForInteract / 2) {
-                    hero.transform.y = mirror.transform.y + mirror.image.height / 2
-                                                            * mirror.image.scale
-                                       + hero.image.height / 2 * hero.image.scale;
-                    hero.transform.x = mirror.transform.x;
-                    return true;
-                }
-            }
-            break;
 
+                break;
+            case 2: // Mirror <- Hero
+                if (hero.transform.x - hero.image.width / 2 * hero.image.scale
+                    - gameObject.transform.x +
+                    gameObject.image.width / 2 * gameObject.image.scale <=
+                    distanceForInteract) {
+                    if (abs(gameObject.transform.y - hero.transform.y) <=
+                        distanceForInteract / 2) {
+                        hero.transform.x = gameObject.transform.x + distanceForInteract
+                                           - 10 * gameObject.image.scale;
+                        hero.transform.y = gameObject.transform.y;
+                        return true;
+                    }
+                }
+                break;
+                //Hero
+                //Mirror
+            case 1:
+                if (gameObject.transform.y -
+                    gameObject.image.height / 2 * gameObject.image.scale
+                    - hero.transform.y + hero.image.height / 2 * hero.image.scale <=
+                    distanceForInteract) {
+                    if (abs(gameObject.transform.x - hero.transform.x) <=
+                        distanceForInteract / 2) {
+                        hero.transform.y = gameObject.transform.y - distanceForInteract
+                                           + 10 * gameObject.image.scale;
+                        hero.transform.x = gameObject.transform.x;
+                        return true;
+                    }
+                }
+                break;
+                //Mirror
+                //Hero
+            case 3:
+                if (hero.transform.x - hero.image.height / 2 * hero.image.scale
+                    - gameObject.transform.y +
+                    gameObject.image.height / 2 * gameObject.image.scale <=
+                    distanceForInteract) {
+                    if (abs(gameObject.transform.x - hero.transform.x) <=
+                        distanceForInteract / 2) {
+                        hero.transform.y = gameObject.transform.y + distanceForInteract
+                                           - 10 * gameObject.image.scale;
+                        hero.transform.x = gameObject.transform.x;
+                        return true;
+                    }
+                }
+                break;
+        }
     }
     return false;
 }
 
-template<class type1, class type2>
-bool GameField::collide(type1 &object1, type2 &object2) {
-    if (object1.image.sprite.getGlobalBounds().intersects(object2.image.sprite.getGlobalBounds())) {
-        return true;
+bool GameField::collider() {
+    for (auto it = gameObjects.begin(); it < gameObjects.end(); it++) {
+        if (hero.getRect().intersects((*it)->getRect())) {
+            return true;
+        }
+        for (auto jt = it + 1; jt < gameObjects.end(); jt++) {
+            if ((*it)->getRect().intersects((*jt)->getRect())) {
+                return true;
+            }
+        }
     }
     return false;
+}
+
+void reflectRay(double &rayAngle, double &mirrorAngle) {
+    rayAngle = -rayAngle;
+    mirrorAngle = -mirrorAngle;
+    if (mirrorAngle >= 0 && mirrorAngle <= M_PI_2) {
+        rayAngle = (2 * M_PI - rayAngle * 2 * mirrorAngle);
+    } else if (mirrorAngle >= M_PI_2 && mirrorAngle <= M_PI) {
+        rayAngle = (-rayAngle - 2 * (M_PI - mirrorAngle));
+    } else {
+        std::cout << "Invalid angles range" << std::endl;
+        return;
+    }
+    rayAngle = -rayAngle;
+}
+
+void GameField::drawAnyRay() {
+
+    short globalIndex;
+    std::vector<short> globalIndexes;
+    short index;
+    Line mirror{};
+    std::vector<Line> tempMirrors;
+    int prevReflIndex; //номер зеркала отразившего предыдущий отрезок
+    bool allow = false; //разрешение на отражение отрезка
+
+    for (index = 0; index < mirrorsQuantity; index++) {
+        mirror = gameObjects[index]->getLine();
+        if (!gameObjects[index]->canReflect && getIntersectionPoint(index, mirror)) {
+            tempMirrors.push_back(mirror);
+            globalIndexes.push_back(index);
+        }
+    }
+
+    if (!tempMirrors.empty()) {
+
+        double d;
+        gameObjects[prevReflIndex]->canReflect = false;
+        prevReflIndex = index = 0;
+
+        for (double delta = fabs(tempMirrors[prevReflIndex].x - ray.x);
+             index < tempMirrors.size(); index++) {
+            d = fabs(tempMirrors[index].x - ray.x);
+            if (d <= delta && isDirectionCorrect(tempMirrors[index])) {
+                globalIndex = globalIndexes[index];
+                delta = d;
+                prevReflIndex = index;
+                allow = true;
+            }
+        }
+        if (allow) {
+            auto _ray = Ray();
+            _ray.set(ray.x, ray.y, ray.x = tempMirrors[prevReflIndex].x,
+                     ray.y = tempMirrors[prevReflIndex].y, ray.angle);
+            rays.push_back(_ray);
+            reflectRay(ray.angle, gameObjects[prevReflIndex = globalIndex]->getLine().angle);
+            gameObjects[prevReflIndex]->canReflect = true;
+            ray.k = tan(ray.angle);
+            ray.b = ray.y - ray.k * ray.x;
+
+        } else {
+            std::cout << "не отражает ни одно зекало" << std::endl;
+        }
+    } else {
+        std::cout << "cant reflect ray" << std::endl;
+    }
+
+}
+
+bool GameField::getIntersectionPoint(ushort index, Line &mirror) {
+    mirror.x = (ray.b - gameObjects[index]->getLine().b)
+               / (gameObjects[index]->getLine().k - ray.k);
+    mirror.y = mirror.x * ray.k + ray.b;
+    return (mirror.y <= gameObjects[index]->getYBelow() &&
+            mirror.y >= gameObjects[index]->getYAbove());
+
+}
+
+bool GameField::isDirectionCorrect(Line &mirror) {
+    return (sqrt(pow((ray.x + cos(ray.angle) - mirror.x), 2)
+                 + pow((ray.y + sin(ray.angle) - mirror.y), 2)) <
+            sqrt(pow((ray.x - mirror.x), 2) + pow((ray.x - mirror.x), 2)));
 }

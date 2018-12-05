@@ -9,28 +9,42 @@
 #include "Mirror.h"
 #include "Transform.h"
 #include "Image.h"
+#include "GameObject.h"
 
 enum mainHeroMode {
     Walk, PushMirror, RotateMirror
 };
 
 //main hero
-class MainHero{
+class MainHero : public GameObject{
+
+    void set(std::ifstream &fin) override {};
+
+    void rotate(int side) override {};
+
+    void moveByX(int speed) override {}
+
+    void moveByY(int speed) override {} ;
+
+    Line &getLine() override {};
+
+    int getYAbove() override {};
+
+    int getYBelow() override {};
+
 public:
 
-    Transform transform;
-
-    Image image;
-    bool isStaying;
+    bool isStaying{};
     u_short walkSpeed = 30; //speed of walking
-    u_short mode;
+    u_short mode{};
+    ushort pushSpeed = static_cast<ushort>(walkSpeed / 2);
 
     ushort currentDirection = 0;
-
 
     int mirrorIndex = -1;
 
     MainHero();
+
 
 };
 

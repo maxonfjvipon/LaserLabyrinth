@@ -3,21 +3,21 @@
 
 #include <iostream>
 #include <fstream>
+#include <cmath>
 
 class Transform {
 public:
 
     int x{}, y{};
-    ushort rotateAngle{};
+    short rotateAngle{};
 
-
-    Transform() {};
+    Transform() = default;
 
     void set(std::ifstream &fin) {
         fin >> x >> y >> rotateAngle;
     }
 
-    Transform(int x, int y, ushort rotateAngle);
+    void set(int x, int y, short angle);
 
 };
 

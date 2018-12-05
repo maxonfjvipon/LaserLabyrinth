@@ -1,7 +1,7 @@
 #include "Transform.h"
 
-Transform::Transform(int x, int y, ushort rotateAngle) {
+void Transform::set(int x, int y, short angle) {
     this->x = x;
     this->y = y;
-    this->rotateAngle = rotateAngle;
+    this->rotateAngle = angle;
 }

@@ -4,22 +4,42 @@
 #include <iostream>
 #include "Image.h"
 #include "Transform.h"
+#include "GameObject.h"
+#include "Line.h"
 
-class Mirror {
+class Mirror : public GameObject {
+
+    void updateLineParameters();
+
+    Line line;
+
+    int yAbove{}, yBelow{};
+
 public:
+    ushort length;
 
-    Transform transform;
-    Image image;
+    Line &getLine() override {
+        return line;
+    }
 
     ushort rotateSpeed{};
 
+    Mirror() = default;
 
-    Mirror(){};
+    void set(std::ifstream &fin) override;
 
-    void set(std::ifstream &fin);
+    void rotate(int side) override;
 
-    void rotate(int side) {
-        image.sprite.rotate(side * rotateSpeed);
+    void moveByX(int speed) override;
+
+    void moveByY(int speed) override;
+
+    int getYAbove() override {
+        return yAbove;
+    };
+
+    int getYBelow() override {
+        return yBelow;
     }
 
 };

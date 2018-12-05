@@ -1,24 +1,42 @@
 #ifndef LASERLABYRINTH_GAMEFIELD_H
 #define LASERLABYRINTH_GAMEFIELD_H
 
+#include <SFML/Graphics.hpp>
+
 #include "MainHero.h"
 #include "Mirror.h"
+#include "GameObject.h"
+#include "LaserCannon.h"
+#include "Ray.h"
 
 class GameField {
 
+    std::vector<Ray> rays;
+
+    Line ray;
+
     MainHero hero;
-    std::vector<Mirror> mirrors;
+    std::vector<GameObject *> gameObjects;
+
+    ushort laserCannonIndex;
     ushort mirrorsQuantity;
-    ushort distanseForInteract = static_cast<ushort>(50 * hero.image.scale);
+    ushort distanceForInteract = static_cast<ushort>(30 * hero.image.scale);
+
+    sf::View view;
+
+    bool isDirectionCorrect(Line &mirror);
 
     bool wasButtonPressed(sf::Event &event);
 
-    template <class type1, class type2>
-    bool collide(type1 &object1,type2 &object2);
+    bool collider();
 
-    bool isMirrorOnHerosWay(Mirror &mirror);
+    bool isMirrorOnHerosWay(GameObject &gameObject);
+
+    bool getIntersectionPoint(ushort index, Line &mirror);
 
     void noActions();
+
+    void drawAnyRay();
 
     void WASD(ushort direction);
 
@@ -32,12 +50,18 @@ public:
 
     void draw(sf::RenderWindow &window);
 
-    void actions(sf::Event &event){
-        if(!wasButtonPressed(event)) {
-            noActions();
+    void actions(sf::Event &event) {
+        if (wasButtonPressed(event)) {
+            view.setCenter(hero.transform.x, hero.transform.y);
+            return;
         }
+        noActions();
+        drawAnyRay();
     }
 
+    sf::View &getView() {
+        return view;
+    }
 
 };
 

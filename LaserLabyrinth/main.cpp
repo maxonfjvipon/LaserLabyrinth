@@ -27,11 +27,13 @@ int main() {
 
     sf::Clock clock; //clock
 
-    auto gameField = GameField();
+    GameField gameField;
+    gameField.getView().reset(sf::FloatRect(0,0,screenWidth,screenHeight));
 
     //main game loop
     while (window.isOpen()) {
         restartClock(clock, time);
+        window.setView(gameField.getView());
         window.clear();
         actions(time,window, gameField);
         gameField.draw(window);

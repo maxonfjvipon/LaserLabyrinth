@@ -6,15 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Collision.cpp
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.h
 SFML/Graphics.hpp
 -
-Collision.h
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Collision.h
+
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Ray.cpp
+Ray.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Ray.h
 cmath
 -
 
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Collision.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Ray.h
+vector
+-
+iostream
+-
 SFML/Graphics.hpp
 -
+Line.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.h
 

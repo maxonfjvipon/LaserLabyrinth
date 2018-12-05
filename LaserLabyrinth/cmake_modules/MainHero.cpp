@@ -3,6 +3,7 @@
 #include <iostream>
 
 //Конструктор
+
 MainHero::MainHero() {
     std::ifstream fin("files/constructMainHero.txt");
 
@@ -13,6 +14,8 @@ MainHero::MainHero() {
 
     mode = Walk;
     isStaying = true;
+
+    name = "Hero";
 
     fin.close();
 }

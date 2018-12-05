@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <SFML/Graphics.hpp>
+#include "Transform.h"
 
 class Image {
 public:
@@ -27,6 +28,10 @@ public:
         textureFileName = fileName;
         this->width = width;
         this->height = height;
+    }
+
+    sf::FloatRect getRect(Transform transform) {
+        return sf::FloatRect(transform.x, transform.y, width, height);
     }
 
     void animate(int x, int y, ushort direction, ushort &currentDirection,

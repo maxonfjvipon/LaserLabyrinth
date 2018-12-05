@@ -123,33 +123,6 @@ LaserLabyrinth/fast:
 	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/build
 .PHONY : LaserLabyrinth/fast
 
-cmake_modules/Collision.o: cmake_modules/Collision.cpp.o
-
-.PHONY : cmake_modules/Collision.o
-
-# target to build an object file
-cmake_modules/Collision.cpp.o:
-	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Collision.cpp.o
-.PHONY : cmake_modules/Collision.cpp.o
-
-cmake_modules/Collision.i: cmake_modules/Collision.cpp.i
-
-.PHONY : cmake_modules/Collision.i
-
-# target to preprocess a source file
-cmake_modules/Collision.cpp.i:
-	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Collision.cpp.i
-.PHONY : cmake_modules/Collision.cpp.i
-
-cmake_modules/Collision.s: cmake_modules/Collision.cpp.s
-
-.PHONY : cmake_modules/Collision.s
-
-# target to generate assembly for a file
-cmake_modules/Collision.cpp.s:
-	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Collision.cpp.s
-.PHONY : cmake_modules/Collision.cpp.s
-
 cmake_modules/GameField.o: cmake_modules/GameField.cpp.o
 
 .PHONY : cmake_modules/GameField.o
@@ -177,6 +150,33 @@ cmake_modules/GameField.cpp.s:
 	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.s
 .PHONY : cmake_modules/GameField.cpp.s
 
+cmake_modules/GameObject.o: cmake_modules/GameObject.cpp.o
+
+.PHONY : cmake_modules/GameObject.o
+
+# target to build an object file
+cmake_modules/GameObject.cpp.o:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameObject.cpp.o
+.PHONY : cmake_modules/GameObject.cpp.o
+
+cmake_modules/GameObject.i: cmake_modules/GameObject.cpp.i
+
+.PHONY : cmake_modules/GameObject.i
+
+# target to preprocess a source file
+cmake_modules/GameObject.cpp.i:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameObject.cpp.i
+.PHONY : cmake_modules/GameObject.cpp.i
+
+cmake_modules/GameObject.s: cmake_modules/GameObject.cpp.s
+
+.PHONY : cmake_modules/GameObject.s
+
+# target to generate assembly for a file
+cmake_modules/GameObject.cpp.s:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameObject.cpp.s
+.PHONY : cmake_modules/GameObject.cpp.s
+
 cmake_modules/Image.o: cmake_modules/Image.cpp.o
 
 .PHONY : cmake_modules/Image.o
@@ -203,6 +203,60 @@ cmake_modules/Image.s: cmake_modules/Image.cpp.s
 cmake_modules/Image.cpp.s:
 	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Image.cpp.s
 .PHONY : cmake_modules/Image.cpp.s
+
+cmake_modules/LaserCannon.o: cmake_modules/LaserCannon.cpp.o
+
+.PHONY : cmake_modules/LaserCannon.o
+
+# target to build an object file
+cmake_modules/LaserCannon.cpp.o:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/LaserCannon.cpp.o
+.PHONY : cmake_modules/LaserCannon.cpp.o
+
+cmake_modules/LaserCannon.i: cmake_modules/LaserCannon.cpp.i
+
+.PHONY : cmake_modules/LaserCannon.i
+
+# target to preprocess a source file
+cmake_modules/LaserCannon.cpp.i:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/LaserCannon.cpp.i
+.PHONY : cmake_modules/LaserCannon.cpp.i
+
+cmake_modules/LaserCannon.s: cmake_modules/LaserCannon.cpp.s
+
+.PHONY : cmake_modules/LaserCannon.s
+
+# target to generate assembly for a file
+cmake_modules/LaserCannon.cpp.s:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/LaserCannon.cpp.s
+.PHONY : cmake_modules/LaserCannon.cpp.s
+
+cmake_modules/Line.o: cmake_modules/Line.cpp.o
+
+.PHONY : cmake_modules/Line.o
+
+# target to build an object file
+cmake_modules/Line.cpp.o:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Line.cpp.o
+.PHONY : cmake_modules/Line.cpp.o
+
+cmake_modules/Line.i: cmake_modules/Line.cpp.i
+
+.PHONY : cmake_modules/Line.i
+
+# target to preprocess a source file
+cmake_modules/Line.cpp.i:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Line.cpp.i
+.PHONY : cmake_modules/Line.cpp.i
+
+cmake_modules/Line.s: cmake_modules/Line.cpp.s
+
+.PHONY : cmake_modules/Line.s
+
+# target to generate assembly for a file
+cmake_modules/Line.cpp.s:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Line.cpp.s
+.PHONY : cmake_modules/Line.cpp.s
 
 cmake_modules/MainHero.o: cmake_modules/MainHero.cpp.o
 
@@ -257,6 +311,33 @@ cmake_modules/Mirror.s: cmake_modules/Mirror.cpp.s
 cmake_modules/Mirror.cpp.s:
 	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.s
 .PHONY : cmake_modules/Mirror.cpp.s
+
+cmake_modules/Ray.o: cmake_modules/Ray.cpp.o
+
+.PHONY : cmake_modules/Ray.o
+
+# target to build an object file
+cmake_modules/Ray.cpp.o:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Ray.cpp.o
+.PHONY : cmake_modules/Ray.cpp.o
+
+cmake_modules/Ray.i: cmake_modules/Ray.cpp.i
+
+.PHONY : cmake_modules/Ray.i
+
+# target to preprocess a source file
+cmake_modules/Ray.cpp.i:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Ray.cpp.i
+.PHONY : cmake_modules/Ray.cpp.i
+
+cmake_modules/Ray.s: cmake_modules/Ray.cpp.s
+
+.PHONY : cmake_modules/Ray.s
+
+# target to generate assembly for a file
+cmake_modules/Ray.cpp.s:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Ray.cpp.s
+.PHONY : cmake_modules/Ray.cpp.s
 
 cmake_modules/Transform.o: cmake_modules/Transform.cpp.o
 
@@ -321,21 +402,30 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... LaserLabyrinth"
-	@echo "... cmake_modules/Collision.o"
-	@echo "... cmake_modules/Collision.i"
-	@echo "... cmake_modules/Collision.s"
 	@echo "... cmake_modules/GameField.o"
 	@echo "... cmake_modules/GameField.i"
 	@echo "... cmake_modules/GameField.s"
+	@echo "... cmake_modules/GameObject.o"
+	@echo "... cmake_modules/GameObject.i"
+	@echo "... cmake_modules/GameObject.s"
 	@echo "... cmake_modules/Image.o"
 	@echo "... cmake_modules/Image.i"
 	@echo "... cmake_modules/Image.s"
+	@echo "... cmake_modules/LaserCannon.o"
+	@echo "... cmake_modules/LaserCannon.i"
+	@echo "... cmake_modules/LaserCannon.s"
+	@echo "... cmake_modules/Line.o"
+	@echo "... cmake_modules/Line.i"
+	@echo "... cmake_modules/Line.s"
 	@echo "... cmake_modules/MainHero.o"
 	@echo "... cmake_modules/MainHero.i"
 	@echo "... cmake_modules/MainHero.s"
 	@echo "... cmake_modules/Mirror.o"
 	@echo "... cmake_modules/Mirror.i"
 	@echo "... cmake_modules/Mirror.s"
+	@echo "... cmake_modules/Ray.o"
+	@echo "... cmake_modules/Ray.i"
+	@echo "... cmake_modules/Ray.s"
 	@echo "... cmake_modules/Transform.o"
 	@echo "... cmake_modules/Transform.i"
 	@echo "... cmake_modules/Transform.s"

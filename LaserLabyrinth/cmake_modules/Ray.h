@@ -13,6 +13,8 @@ public:
     sf::RectangleShape line;
     sf::Texture texture;
 
+    bool reflectingNow = false;
+
     Ray() = default;
 
     void set(int x1, int y1, int x2, int y2, double angle);

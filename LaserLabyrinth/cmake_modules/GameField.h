@@ -32,11 +32,15 @@ class GameField {
 
     bool isMirrorOnHerosWay(GameObject &gameObject);
 
-    bool getIntersectionPoint(ushort index, Line &mirror);
+    bool getIntersectionPoint(ushort index, Line mirror);
 
     void noActions();
 
     void drawAnyRay();
+
+//    void clearRays();
+
+    void setRay();
 
     void WASD(ushort direction);
 
@@ -56,7 +60,9 @@ public:
             return;
         }
         noActions();
-        drawAnyRay();
+        for (short i = 0; i < mirrorsQuantity; i++) {
+            drawAnyRay();
+        }
     }
 
     sf::View &getView() {

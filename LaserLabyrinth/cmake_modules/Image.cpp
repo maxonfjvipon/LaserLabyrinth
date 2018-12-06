@@ -3,7 +3,7 @@
 
 void Image::set(int xPos, int yPos, ushort rotateAngle) {
     if (!texture.loadFromFile(textureFileName)) {
-        std::cout << "Invalid loading texture from file" << std::endl;
+        std::cout << "Invalid loading texture from file2" << textureFileName << std::endl;
     }
     sprite.setTexture(texture);
     sprite.setTextureRect(sf::IntRect(0, 0, width, height));

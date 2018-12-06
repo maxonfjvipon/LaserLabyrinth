@@ -38,6 +38,10 @@ public:
 
     virtual int getYBelow() = 0;
 
+    virtual int getXLeft() = 0;
+
+    virtual int getXRigth() = 0;
+
 };
 
 

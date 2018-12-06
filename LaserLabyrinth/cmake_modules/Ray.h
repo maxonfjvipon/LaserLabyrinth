@@ -19,6 +19,8 @@ public:
 
     void set(int x1, int y1, int x2, int y2, double angle);
 
+    void set(int x, int y, double angle, uint length);
+
 };
 
 

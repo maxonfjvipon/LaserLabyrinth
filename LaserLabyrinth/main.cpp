@@ -17,8 +17,8 @@ int main() {
     //screen geometry
 //    const u_short screenWidth = 800;
 //    const u_short screenHeight = 600;
-    const u_short screenWidth = 2000;
-    const u_short screenHeight = 1000;
+    const u_short screenWidth = 5000;
+    const u_short screenHeight = 2000;
 
     float time = 0; //time
 
@@ -37,7 +37,6 @@ int main() {
         window.clear();
         actions(time,window, gameField);
         gameField.draw(window);
-
         window.display();
     }
 

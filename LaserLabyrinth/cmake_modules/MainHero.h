@@ -32,6 +32,10 @@ class MainHero : public GameObject{
 
     int getYBelow() override {};
 
+    int getXLeft() override {};
+
+    int getXRigth() override {};
+
 public:
 
     bool isStaying{};

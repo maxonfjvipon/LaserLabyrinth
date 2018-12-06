@@ -8,8 +8,7 @@ class Line {
 
 public:
 
-    double x, y;
-    double angle, k, b;
+    double x, y, b, angle, k;
 
     Line() = default;
 

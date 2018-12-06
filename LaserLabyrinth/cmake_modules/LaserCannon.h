@@ -25,6 +25,10 @@ public:
 
     int getYBelow() override {};
 
+    int getXLeft() override {};
+
+    int getXRigth() override {};
+
 };
 
 

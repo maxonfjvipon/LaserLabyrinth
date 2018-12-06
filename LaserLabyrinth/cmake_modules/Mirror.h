@@ -13,7 +13,7 @@ class Mirror : public GameObject {
 
     Line line;
 
-    int yAbove{}, yBelow{};
+    int yAbove{}, yBelow{}, xLeft{}, xRigth{};
 
 public:
     ushort length;
@@ -41,6 +41,14 @@ public:
     int getYBelow() override {
         return yBelow;
     }
+
+    int getXLeft() override {
+        return xLeft;
+    };
+
+    int getXRigth() override {
+        return xRigth;
+    };
 
 };
 

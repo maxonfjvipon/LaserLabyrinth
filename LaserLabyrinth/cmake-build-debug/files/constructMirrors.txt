@@ -1,4 +1,5 @@
-2
+3
 1000 1000 0 32 32 images/mirror.png
 500 1500 0 32 32 images/mirror.png
+500 500 0 32 32 images/mirror.png
 1500 1500 225 32 32 images/laserCannon.png

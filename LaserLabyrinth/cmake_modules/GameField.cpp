@@ -22,12 +22,29 @@ GameField::GameField() {
     gameObjects.push_back(new LaserCannon());
     laserCannonIndex = gameObjects.size() - 1;
     gameObjects[laserCannonIndex]->set(fin);
-    setRay();
+    ray.set(gameObjects[laserCannonIndex]->transform.x, gameObjects[laserCannonIndex]->transform.y,
+            gameObjects[laserCannonIndex]->transform.rotateAngle);
     fin.close();
 
     view.setCenter(hero.transform.x, hero.transform.y);
     //todo map????
 
+}
+
+void GameField::actions(sf::Event &event) {
+    if (wasButtonPressed(event)) {
+        view.setCenter(hero.transform.x, hero.transform.y);
+        return;
+    }
+    noActions();
+    rays.clear();
+    ray.set(gameObjects[laserCannonIndex]->transform.x, gameObjects[laserCannonIndex]->transform.y,
+            gameObjects[laserCannonIndex]->transform.rotateAngle);
+    do{
+    }while(drawAnyRay());
+    auto _ray = Ray();
+    _ray.set(static_cast<int>(ray.x), static_cast<int>(ray.y), ray.angle, 10000);
+    rays.push_back(_ray);
 }
 
 void GameField::draw(sf::RenderWindow &window) {
@@ -39,12 +56,6 @@ void GameField::draw(sf::RenderWindow &window) {
     for (auto &ray : rays) {
         window.draw(ray.line);
     }
-    rays.clear();
-    setRay();
-    for(short i = 0; i < mirrorsQuantity; i++) {
-        gameObjects[i]->canReflect = false;
-    }
-
 }
 
 bool GameField::wasButtonPressed(sf::Event &event) {
@@ -349,9 +360,14 @@ bool GameField::collider() {
 }
 
 void reflectRay(double &rayAngle, double &mirrorAngle) {
-    if (mirrorAngle >= 0 && mirrorAngle <= M_PI_2) {
+    while (mirrorAngle < 0) {
+        mirrorAngle += M_PI;
+    }
+    if ((mirrorAngle >= 0 && mirrorAngle <= M_PI_2) ||
+        (mirrorAngle >= M_PI && mirrorAngle <= 3 * M_PI_2)) {
         rayAngle = (2 * M_PI - rayAngle + 2 * mirrorAngle);
-    } else if (mirrorAngle >= M_PI_2 && mirrorAngle <= M_PI) {
+    } else if ((mirrorAngle >= M_PI_2 && mirrorAngle <= M_PI) ||
+               (mirrorAngle >= 3 * M_PI_2 && mirrorAngle <= 2 * M_PI)) {
         rayAngle = (-rayAngle - 2 * (M_PI - mirrorAngle));
     } else {
         std::cout << "Invalid angles range" << std::endl;
@@ -359,20 +375,20 @@ void reflectRay(double &rayAngle, double &mirrorAngle) {
     }
 }
 
-void GameField::drawAnyRay() {
+bool GameField::drawAnyRay() {
 
-    short globalIndex;
+    short globalIndex = 0;
     std::vector<short> globalIndexes;
-    short index;
-    Line mirror{};
+    ushort index;
+    Line mirror{}, intersecLine;
+    int interX, interY;
     std::vector<Line> tempMirrors;
     static int prevReflIndex; //номер зеркала отразившего предыдущий отрезок
     bool allow = false; //разрешение на отражение отрезка
 
-
     for (index = 0; index < mirrorsQuantity; index++) {
         mirror = gameObjects[index]->getLine();
-        if (!gameObjects[index]->canReflect && getIntersectionPoint(index, mirror)) {
+        if (!gameObjects[index]->canReflect && getIntersectionPoint(index, mirror, intersecLine)) {
             tempMirrors.push_back(mirror);
             globalIndexes.push_back(index);
         }
@@ -386,7 +402,7 @@ void GameField::drawAnyRay() {
 
         for (double delta = fabs(tempMirrors[prevReflIndex].x - ray.x);
              index < tempMirrors.size(); index++) {
-            d = fabs(tempMirrors[index].x - ray.x);
+            d = static_cast<uint>(abs(tempMirrors[index].x - ray.x));
             if (d <= delta && isDirectionCorrect(tempMirrors[index])) {
                 globalIndex = globalIndexes[index];
                 delta = d;
@@ -396,41 +412,37 @@ void GameField::drawAnyRay() {
         }
         if (allow) {
             auto _ray = Ray();
-            _ray.set(ray.x, ray.y, ray.x = tempMirrors[prevReflIndex].x,
-                     ray.y = tempMirrors[prevReflIndex].y, ray.angle);
-            _ray.reflectingNow = true;
+            _ray.set(static_cast<int>(ray.x), static_cast<int>(ray.y),
+                     static_cast<int>(ray.x = tempMirrors[prevReflIndex].x),
+                     static_cast<int>(ray.y = tempMirrors[prevReflIndex].y), ray.angle);
             rays.push_back(_ray);
             reflectRay(ray.angle, gameObjects[prevReflIndex = globalIndex]->getLine().angle);
             gameObjects[prevReflIndex]->canReflect = true;
             ray.k = tan(ray.angle);
             ray.b = ray.y - ray.k * ray.x;
-
+            return true;
         } else {
-            std::cout << "не отражает ни одно зекало" << std::endl;
+            return false;
         }
     } else {
-
-        std::cout << "can not reflect ray" << std::endl;
+        return false;
     }
 
 }
 
 bool GameField::getIntersectionPoint(ushort index, Line mirror) {
-    mirror.x = (ray.b - gameObjects[index]->getLine().b)
-               / (gameObjects[index]->getLine().k - ray.k);
+    mirror.x = ((ray.b - gameObjects[index]->getLine().b)
+                                / (gameObjects[index]->getLine().k - ray.k));
     mirror.y = mirror.x * ray.k + ray.b;
-    return (mirror.y <= gameObjects[index]->getYBelow() &&
-            mirror.y >= gameObjects[index]->getYAbove());
+    return ((int)mirror.y >= gameObjects[index]->getYBelow() &&
+            (int)mirror.y <= gameObjects[index]->getYAbove() &&
+            (int)mirror.x <= gameObjects[index]->getXRigth() &&
+            (int)mirror.x >= gameObjects[index]->getXLeft());
 
 }
 
 bool GameField::isDirectionCorrect(Line &mirror) {
     return (sqrt(pow((ray.x + cos(ray.angle) - mirror.x), 2)
                  + pow((ray.y + sin(ray.angle) - mirror.y), 2)) <
-            sqrt(pow((ray.x - mirror.x), 2) + pow((ray.x - mirror.x), 2)));
-}
-
-void GameField::setRay() {
-    ray.set(gameObjects[laserCannonIndex]->transform.x, gameObjects[laserCannonIndex]->transform.y,
-            gameObjects[laserCannonIndex]->transform.rotateAngle);
+            sqrt(pow((ray.x - mirror.x), 2) + pow((ray.y - mirror.y), 2)));
 }

@@ -15,3 +15,13 @@ void Ray::set(int x1, int y1, int x2, int y2, double angle) {
 //    line.setTexture(&texture);
     line.rotate(static_cast<float>(angle * 180 / M_PI));
 }
+
+void Ray::set(int x, int y, double angle, uint length) {
+    ushort width = 10;
+    line.setPosition(x, y);
+    line.setSize(sf::Vector2f(length,width));
+    line.setOrigin(0, width / 2);
+    line.setFillColor(sf::Color::Yellow);
+//    line.setTexture(&texture);
+    line.rotate(static_cast<float>(angle * 180 / M_PI));
+}

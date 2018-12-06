@@ -36,11 +36,7 @@ class GameField {
 
     void noActions();
 
-    void drawAnyRay();
-
-//    void clearRays();
-
-    void setRay();
+    bool drawAnyRay();
 
     void WASD(ushort direction);
 
@@ -54,16 +50,7 @@ public:
 
     void draw(sf::RenderWindow &window);
 
-    void actions(sf::Event &event) {
-        if (wasButtonPressed(event)) {
-            view.setCenter(hero.transform.x, hero.transform.y);
-            return;
-        }
-        noActions();
-        for (short i = 0; i < mirrorsQuantity; i++) {
-            drawAnyRay();
-        }
-    }
+    void actions(sf::Event &event);
 
     sf::View &getView() {
         return view;

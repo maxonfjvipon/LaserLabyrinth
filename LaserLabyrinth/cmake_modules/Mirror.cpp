@@ -14,7 +14,6 @@ void Mirror::set(std::ifstream &fin) {
 void Mirror::rotate(int side) {
     image.sprite.rotate(side * rotateSpeed);
     transform.rotateAngle = static_cast<short>(image.sprite.getRotation());
-    std::cout << image.sprite.getRotation() << std::endl;
     updateLineParameters();
 }
 

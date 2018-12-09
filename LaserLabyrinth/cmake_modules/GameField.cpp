@@ -44,7 +44,10 @@ void GameField::actions(sf::Event &event) {
         if (!isRayCollideNow) {
             auto _ray = Ray();
             _ray.set(static_cast<int>(ray.x), static_cast<int>(ray.y), ray.angle, 10000);
-            rays.push_back(_ray);
+            if (!rayCollider(_ray, _ray.x - 10000 * cos(_ray.angle),
+                            _ray.y - 10000 * sin(_ray.angle))) {
+                rays.push_back(_ray);
+            }
         }
         return;
     }
@@ -385,7 +388,7 @@ bool GameField::drawAnyRay() {
     short globalIndex = 0;
     std::vector<short> globalIndexes;
     ushort index;
-    Line mirror {}, intersectPoint {};
+    Line mirror{}, intersectPoint{};
     std::vector<Line> intersectPoints;
     std::vector<Line> tempMirrors;
     static int prevReflIndex; //номер зеркала отразившего предыдущий отрезок
@@ -410,7 +413,7 @@ bool GameField::drawAnyRay() {
         for (double delta = fabs(tempMirrors[prevReflIndex].x - ray.x);
              index < tempMirrors.size(); index++) {
             d = static_cast<uint>(abs(tempMirrors[index].x - ray.x));
-            if (d <= delta && isDirectionCorrect(ray,tempMirrors[index])) {
+            if (d <= delta && isDirectionCorrect(ray, tempMirrors[index])) {
                 globalIndex = globalIndexes[index];
                 delta = d;
                 prevReflIndex = index;
@@ -422,13 +425,7 @@ bool GameField::drawAnyRay() {
             _ray.set(static_cast<int>(ray.x), static_cast<int>(ray.y),
                      static_cast<int>(ray.x = intersectPoints[prevReflIndex].x),
                      static_cast<int>(ray.y = intersectPoints[prevReflIndex].y), ray.angle);
-            for (short i = mirrorsQuantity; i < gameObjects.size() - 1; i++) {
-                if (rayCollider(_ray, *(gameObjects[i]), intersectPoints[prevReflIndex].x,
-                                intersectPoints[prevReflIndex].y)) {
-                    return false;
-                }
-            }
-            if (rayCollider(_ray, hero, intersectPoints[prevReflIndex].x,
+            if (rayCollider(_ray, intersectPoints[prevReflIndex].x,
                             intersectPoints[prevReflIndex].y)) {
                 return false;
             }
@@ -467,9 +464,10 @@ bool GameField::isDirectionCorrect(Line &ray, Line &obj) {
             sqrt(pow((ray.x - obj.x), 2) + pow((ray.y - obj.y), 2)));
 }
 
+
 template<class type>
-bool GameField::rayCollider(Ray &_ray, type &object, int mX, int mY) {
-    Line objectLine {};
+bool GameField::isRayCollideWithObject(Ray &_ray, type &object, int mX, int mY) {
+    Line objectLine{};
     objectLine.x = ((_ray.b - object.getLine().b) / (object.getLine().k - _ray.k));
     objectLine.y = objectLine.x * _ray.k + _ray.b;
     if ((int) objectLine.y >= object.transform.y - object.image.height / 2 * object.image.scale &&
@@ -479,7 +477,7 @@ bool GameField::rayCollider(Ray &_ray, type &object, int mX, int mY) {
         if (abs(object.transform.x - _ray.x) < abs(mX - _ray.x) &&
             abs(object.transform.y - _ray.y) < abs(mY - _ray.y)) {
             objectLine.set(_ray.x, _ray.y, _ray.angle * 180 / M_PI);
-            if(isDirectionCorrect(objectLine, object.getLine())) {
+            if (isDirectionCorrect(objectLine, object.getLine())) {
                 ushort radius = object.image.width / 2 * object.image.scale;
                 _ray.set(_ray.x, _ray.y, object.transform.x - radius * cos(_ray.angle),
                          object.transform.y - radius * sin(_ray.angle), _ray.angle);
@@ -487,6 +485,18 @@ bool GameField::rayCollider(Ray &_ray, type &object, int mX, int mY) {
                 isRayCollideNow = true;
                 return true;
             }
+        }
+    }
+    return false;
+}
+
+bool GameField::rayCollider(Ray &_ray, int mX, int mY) {
+    if (isRayCollideWithObject(_ray, hero, mX, mY)) {
+        return true;
+    }
+    for (ushort i = mirrorsQuantity; i < gameObjects.size() - 1; i++) {
+        if (isRayCollideWithObject(_ray, *gameObjects[i], mX, mY)) {
+            return true;
         }
     }
     return false;

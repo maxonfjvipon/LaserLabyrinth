@@ -114,23 +114,3 @@ fstream
 cmath
 -
 
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/main.cpp
-iostream
--
-random
--
-fstream
--
-vector
--
-SFML/Graphics.hpp
--
-SFML/Audio.hpp
--
-SFML/Window.hpp
--
-SFML/System.hpp
--
-cmake_modules/GameField.h
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameField.h
-

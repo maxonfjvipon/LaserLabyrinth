@@ -15,10 +15,10 @@ void actions(float &time, sf::RenderWindow &window, GameField &gameField);
 int main() {
 
     //screen geometry
-    const u_short screenWidth = 800;
-    const u_short screenHeight = 600;
-//    const u_short screenWidth = 1000;
-//    const u_short screenHeight = 2000;
+//    const u_short screenWidth = 800;
+//    const u_short screenHeight = 600;
+    const u_short screenWidth = 5000;
+    const u_short screenHeight = 2000;
 
     float time = 0; //time
 

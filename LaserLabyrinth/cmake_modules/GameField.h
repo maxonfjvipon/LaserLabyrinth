@@ -32,8 +32,10 @@ class GameField {
 
     bool collider();
 
+    bool rayCollider(Ray &ray, int mX, int mY);
+
     template <class type>
-    bool rayCollider(Ray &ray, type &object, int mX, int mY);
+    bool isRayCollideWithObject(Ray &ray, type &object, int mX, int mY);
 
     bool isMirrorOnHerosWay(GameObject &gameObject);
 

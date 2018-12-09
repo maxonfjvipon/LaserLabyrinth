@@ -16,7 +16,7 @@ public:
 
     float currentFrame = 0;
 
-    ushort width {}, height {}, scale = 2;
+    ushort width {}, height {}, scale = 5;
 
     Image() {};
 

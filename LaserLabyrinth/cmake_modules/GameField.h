@@ -24,15 +24,20 @@ class GameField {
 
     sf::View view;
 
-    bool isDirectionCorrect(Line &mirror);
+    bool isRayCollideNow = false;
+
+    bool isDirectionCorrect(Line &ray, Line &obj);
 
     bool wasButtonPressed(sf::Event &event);
 
     bool collider();
 
+    template <class type>
+    bool rayCollider(Ray &ray, type &object, int mX, int mY);
+
     bool isMirrorOnHerosWay(GameObject &gameObject);
 
-    bool getIntersectionPoint(ushort index, Line mirror);
+    bool getIntersectionPoint(ushort index, Line mirror, Line &intersectPoint);
 
     void noActions();
 

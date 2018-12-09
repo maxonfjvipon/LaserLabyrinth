@@ -11,12 +11,12 @@ class Mirror : public GameObject {
 
     void updateLineParameters();
 
-    Line line;
+    Line line {};
 
     int yAbove{}, yBelow{}, xLeft{}, xRigth{};
 
 public:
-    ushort length;
+    ushort length {};
 
     Line &getLine() override {
         return line;

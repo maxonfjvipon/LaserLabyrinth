@@ -15,10 +15,10 @@ void actions(float &time, sf::RenderWindow &window, GameField &gameField);
 int main() {
 
     //screen geometry
-//    const u_short screenWidth = 800;
-//    const u_short screenHeight = 600;
-    const u_short screenWidth = 5000;
-    const u_short screenHeight = 2000;
+    const u_short screenWidth = 800;
+    const u_short screenHeight = 600;
+//    const u_short screenWidth = 1000;
+//    const u_short screenHeight = 2000;
 
     float time = 0; //time
 
@@ -62,21 +62,3 @@ void restartClock(sf::Clock &clock, float &time) {
     time += clock.getElapsedTime().asSeconds();
     clock.restart();
 }
-
-//user actions
-//void userActions(float &time, sf::RenderWindow &window, MainHero &hero,
-//                 std::vector<Mirror> &mirrors) {
-//    float delay = 0.1; //delay
-//    sf::Event event{};
-//    if (time > delay) {
-//        while (window.pollEvent(event)) {
-//            if (event.type == sf::Event::Closed) { //if "ESC" was pressed
-//                window.close();
-//            }
-//        }
-//        if (!hero.actions(event, mirrors)) {
-//            hero.stays();
-//        }
-//        time = 0;
-//    }
-//}

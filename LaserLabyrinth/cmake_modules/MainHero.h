@@ -9,6 +9,7 @@
 #include "Mirror.h"
 #include "Transform.h"
 #include "Image.h"
+#include "Line.h"
 #include "GameObject.h"
 
 enum mainHeroMode {
@@ -26,7 +27,6 @@ class MainHero : public GameObject{
 
     void moveByY(int speed) override {} ;
 
-    Line &getLine() override {};
 
     int getYAbove() override {};
 
@@ -37,6 +37,12 @@ class MainHero : public GameObject{
     int getXRigth() override {};
 
 public:
+
+    Line &getLine() override {
+        Line line{};
+        line.set(transform.x, transform.y, 0);
+        return line;
+    };
 
     bool isStaying{};
     u_short walkSpeed = 30; //speed of walking

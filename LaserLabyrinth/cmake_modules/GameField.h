@@ -37,7 +37,7 @@ class GameField {
     template <class type>
     bool isRayCollideWithObject(Ray &ray, type &object, int mX, int mY);
 
-    bool isMirrorOnHerosWay(GameObject &gameObject);
+    bool isMirrorOnHerosWay(Mirror *mirror);
 
     bool getIntersectionPoint(ushort index, Line mirror, Line &intersectPoint);
 

@@ -28,12 +28,6 @@ public:
 
     virtual void set(std::ifstream &fin) = 0;
 
-    virtual void rotate(int side) = 0;
-
-    virtual void moveByX(int speed) = 0;
-
-    virtual void moveByY(int speed) = 0;
-
     virtual int getYAbove() = 0;
 
     virtual int getYBelow() = 0;

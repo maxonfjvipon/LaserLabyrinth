@@ -28,11 +28,11 @@ public:
 
     void set(std::ifstream &fin) override;
 
-    void rotate(int side) override;
+    void rotate(int side);
 
-    void moveByX(int speed) override;
+    void moveByX(int speed);
 
-    void moveByY(int speed) override;
+    void moveByY(int speed);
 
     int getYAbove() override {
         return yAbove;

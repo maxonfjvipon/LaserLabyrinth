@@ -22,10 +22,6 @@ class GameField {
     ushort mirrorsQuantity;
     ushort distanceForInteract = static_cast<ushort>(30 * hero.image.scale);
 
-    sf::View view;
-
-    void setView(int x, int y);
-
     void setRays();
 
     bool isRayCollideNow = false;
@@ -62,10 +58,6 @@ public:
     void draw(sf::RenderWindow &window);
 
     void actions(sf::Event &event);
-
-    sf::View &getView() {
-        return view;
-    }
 
 };
 

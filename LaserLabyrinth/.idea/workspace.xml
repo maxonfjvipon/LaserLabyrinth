@@ -12,32 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df5de9c4-5188-4a88-8e8a-33824b9f7eed" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/cmake_modules/Image.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/cmake_modules/Image.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/cmake_modules/LaserCannon.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/cmake_modules/LaserCannon.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/LaserLabyrinth" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/LaserLabyrinth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/LaserLabyrinth.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/LaserLabyrinth.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/LaserLabyrinth.dir/main.cpp.o" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake_modules/GameField.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake_modules/GameField.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake_modules/GameField.h" beforeDir="false" afterPath="$PROJECT_DIR$/cmake_modules/GameField.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake_modules/GameObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/cmake_modules/GameObject.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake_modules/LaserCannon.h" beforeDir="false" afterPath="$PROJECT_DIR$/cmake_modules/LaserCannon.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake_modules/MainHero.h" beforeDir="false" afterPath="$PROJECT_DIR$/cmake_modules/MainHero.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake_modules/Mirror.h" beforeDir="false" afterPath="$PROJECT_DIR$/cmake_modules/Mirror.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake_modules/Image.h" beforeDir="false" afterPath="$PROJECT_DIR$/cmake_modules/Image.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -53,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmake_modules/GameField.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+            <state relative-caret-position="238">
+              <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -71,7 +49,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cmake_modules/Image.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
@@ -97,11 +75,11 @@
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+            <state relative-caret-position="470">
+              <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -112,8 +90,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmake_modules/GameField.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="28" column="16" lean-forward="true" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+            <state relative-caret-position="1384">
+              <caret line="60" selection-start-line="60" selection-end-line="60" />
               <folding>
                 <element signature="e#71#99#0" expanded="true" />
               </folding>
@@ -174,12 +152,12 @@
         <option value="$PROJECT_DIR$/cmake_modules/LaserCannon.h" />
         <option value="$PROJECT_DIR$/cmake_modules/Mirror.h" />
         <option value="$PROJECT_DIR$/cmake_modules/Map.cpp" />
-        <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/cmake_modules/Map.h" />
         <option value="$PROJECT_DIR$/cmake-build-debug/files/constructMainHero.txt" />
-        <option value="$PROJECT_DIR$/cmake_modules/Image.h" />
-        <option value="$PROJECT_DIR$/cmake_modules/GameField.h" />
         <option value="$PROJECT_DIR$/cmake_modules/GameField.cpp" />
+        <option value="$PROJECT_DIR$/cmake_modules/GameField.h" />
+        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/cmake_modules/Image.h" />
       </list>
     </option>
   </component>
@@ -348,7 +326,7 @@
       <workItem from="1544370913703" duration="2244000" />
       <workItem from="1544597990440" duration="2862000" />
       <workItem from="1544623333245" duration="3964000" />
-      <workItem from="1544692069690" duration="2870000" />
+      <workItem from="1544692069690" duration="3535000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1540585639943</created>
@@ -361,7 +339,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205353000" />
+    <option name="totallyTimeSpent" value="206018000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
@@ -372,13 +350,13 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.328879" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49086577" visible="true" weight="0.2190052" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49086577" weight="0.2190052" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49761716" weight="0.4142539" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.490701" weight="0.43207127" />
+      <window_info active="true" anchor="bottom" id="Messages" order="8" sideWeight="0.490701" visible="true" weight="0.43207127" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50913423" side_tool="true" weight="0.3192279" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
@@ -685,16 +663,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake_modules/GameField.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="28" column="16" lean-forward="true" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
-          <folding>
-            <element signature="e#71#99#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/files/constructMainHero.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -705,20 +673,20 @@
     <entry file="file://$PROJECT_DIR$/images/map.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake_modules/Image.h">
+    <entry file="file://$PROJECT_DIR$/cmake_modules/GameField.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+        <state relative-caret-position="1384">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
           <folding>
-            <element signature="e#63#82#0" expanded="true" />
+            <element signature="e#71#99#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cmake_modules/GameField.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+        <state relative-caret-position="238">
+          <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
@@ -727,10 +695,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+        <state relative-caret-position="470">
+          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake_modules/Image.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+          <folding>
+            <element signature="e#63#82#0" expanded="true" />
           </folding>
         </state>
       </provider>

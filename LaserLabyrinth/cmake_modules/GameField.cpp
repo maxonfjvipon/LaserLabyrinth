@@ -31,7 +31,6 @@ GameField::GameField() {
     setRays();
     fin.close();
 
-//    setView(hero.transform.x, hero.transform.y);
     //todo map????
 
 //    delete laserCannon;
@@ -40,12 +39,10 @@ GameField::GameField() {
 
 void GameField::actions(sf::Event &event) {
     if (wasButtonPressed(event)) {
-        setView(hero.transform.x, hero.transform.y);
         setRays();
         return;
     }
     noActions();
-//    setView(hero.transform.x, hero.transform.y);
 }
 
 void GameField::setRays() {
@@ -506,17 +503,4 @@ bool GameField::rayCollider(Ray &_ray, int mX, int mY) {
         }
     }
     return false;
-}
-
-void GameField::setView(int x, int y) {
-    int tX = x, tY = y;
-
-    if (x < 0) tX = 0;
-    if (y < 0) tY = 0;
-    if (y > 1600) tY = 1600;
-    if (x > 2560) tX = 2560;
-
-    view.setCenter(tX, tY);
-
-
 }

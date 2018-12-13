@@ -15,8 +15,8 @@ void actions(float &time, sf::RenderWindow &window, GameField &gameField);
 int main() {
 
     //screen geometry
-    const u_short screenWidth = 2560;
-    const u_short screenHeight = 1600;
+    const u_short screenWidth = 1440;
+    const u_short screenHeight = 900;
 
     float time = 0; //time
     //window
@@ -25,12 +25,10 @@ int main() {
     sf::Clock clock; //clock
 
     GameField gameField;
-    gameField.getView().reset(sf::FloatRect(0,0,screenWidth,screenHeight));
 
     //main game loop
     while (window.isOpen()) {
         restartClock(clock, time);
-        window.setView(gameField.getView());
         window.clear();
         actions(time,window, gameField);
         gameField.draw(window);

@@ -15,20 +15,6 @@ public:
 
     Line &getLine() override {}
 
-    void rotate(int side) override {};
-
-    void moveByX(int speed) override {};
-
-    void moveByY(int speed) override {};
-
-    int getYAbove() override {};
-
-    int getYBelow() override {};
-
-    int getXLeft() override {};
-
-    int getXRigth() override {};
-
 };
 
 

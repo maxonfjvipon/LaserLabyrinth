@@ -21,21 +21,6 @@ class MainHero : public GameObject{
 
     void set(std::ifstream &fin) override {};
 
-    void rotate(int side) override {};
-
-    void moveByX(int speed) override {}
-
-    void moveByY(int speed) override {} ;
-
-
-    int getYAbove() override {};
-
-    int getYBelow() override {};
-
-    int getXLeft() override {};
-
-    int getXRigth() override {};
-
 public:
 
     Line &getLine() override {

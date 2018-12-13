@@ -41,6 +41,9 @@ CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o: ../cmake_modules/Mai
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o: ../cmake_modules/Mirror.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o: ../cmake_modules/Transform.h
 
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Map.cpp.o: ../cmake_modules/Map.cpp
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Map.cpp.o: ../cmake_modules/Map.h
+
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.o: ../cmake_modules/GameObject.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.o: ../cmake_modules/Image.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.o: ../cmake_modules/Line.h

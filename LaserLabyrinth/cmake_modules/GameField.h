@@ -24,6 +24,10 @@ class GameField {
 
     sf::View view;
 
+    void setView(int x, int y);
+
+    void setRays();
+
     bool isRayCollideNow = false;
 
     bool isDirectionCorrect(Line &ray, Line &obj);
@@ -39,7 +43,7 @@ class GameField {
 
     bool isMirrorOnHerosWay(Mirror *mirror);
 
-    bool getIntersectionPoint(ushort index, Line mirror, Line &intersectPoint);
+    bool getIntersectionPoint(Mirror *currentMirror, Line &intersectPoint);
 
     void noActions();
 

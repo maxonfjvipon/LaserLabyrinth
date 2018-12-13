@@ -34,19 +34,19 @@ public:
 
     void moveByY(int speed);
 
-    int getYAbove() override {
+    int getYAbove() {
         return yAbove;
     };
 
-    int getYBelow() override {
+    int getYBelow() {
         return yBelow;
     }
 
-    int getXLeft() override {
+    int getXLeft() {
         return xLeft;
     };
 
-    int getXRigth() override {
+    int getXRigth() {
         return xRigth;
     };
 

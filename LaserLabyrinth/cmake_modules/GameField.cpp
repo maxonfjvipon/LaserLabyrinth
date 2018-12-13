@@ -23,43 +23,47 @@ GameField::GameField() {
 
     //todo другие объекты
 
-    LaserCannon *laserCannon = new LaserCannon();
+    auto *laserCannon = new LaserCannon();
     laserCannon->set(fin);
     gameObjects.push_back(laserCannon);
     laserCannonIndex = static_cast<ushort>(gameObjects.size() - 1);
     ray.set(laserCannon->transform.x, laserCannon->transform.y, laserCannon->transform.rotateAngle);
-
+    setRays();
     fin.close();
 
-    view.setCenter(hero.transform.x, hero.transform.y);
+//    setView(hero.transform.x, hero.transform.y);
     //todo map????
 
-    delete laserCannon;
+//    delete laserCannon;
 
 }
 
 void GameField::actions(sf::Event &event) {
     if (wasButtonPressed(event)) {
-        view.setCenter(hero.transform.x, hero.transform.y);
-        rays.clear();
-        auto *laserCannon = gameObjects[laserCannonIndex];
-        isRayCollideNow = false;
-        ray.set(laserCannon->transform.x, laserCannon->transform.y,
-                laserCannon->transform.rotateAngle);
-        do {
-        } while (drawAnyRay());
-        if (!isRayCollideNow) {
-            auto _ray = Ray();
-            _ray.set(static_cast<int>(ray.x), static_cast<int>(ray.y), ray.angle, 10000);
-            if (!rayCollider(_ray, static_cast<int>(_ray.x - 10000 * cos(_ray.angle)),
-                             static_cast<int>(_ray.y - 10000 * sin(_ray.angle)))) {
-                rays.push_back(_ray);
-            }
-        }
+        setView(hero.transform.x, hero.transform.y);
+        setRays();
         return;
     }
     noActions();
-    view.setCenter(hero.transform.x, hero.transform.y);
+//    setView(hero.transform.x, hero.transform.y);
+}
+
+void GameField::setRays() {
+    rays.clear();
+    auto *laserCannon = gameObjects[laserCannonIndex];
+    isRayCollideNow = false;
+    ray.set(laserCannon->transform.x, laserCannon->transform.y,
+            laserCannon->transform.rotateAngle);
+    do {
+    } while (drawAnyRay());
+    if (!isRayCollideNow) {
+        auto _ray = Ray();
+        _ray.set(static_cast<int>(ray.x), static_cast<int>(ray.y), ray.angle, 10000);
+        if (!rayCollider(_ray, static_cast<int>(_ray.x - 10000 * cos(_ray.angle)),
+                         static_cast<int>(_ray.y - 10000 * sin(_ray.angle)))) {
+            rays.push_back(_ray);
+        }
+    }
 }
 
 void GameField::draw(sf::RenderWindow &window) {
@@ -174,7 +178,6 @@ void GameField::WASD(ushort direction) {
             }
             hero.image.animate(hero.transform.x, hero.transform.y, direction,
                                hero.currentDirection, false);
-            delete mirror;
         }
             break;
         case PushMirror: {
@@ -270,8 +273,10 @@ void GameField::E() {
             hero.isStaying = true;
             return;
         case Walk:
+            Mirror *mirror;
             for (auto i = 0; i < gameObjects.size(); i++) {
-                if (isMirrorOnHerosWay() { //fixme
+                mirror = (Mirror *) gameObjects[i];
+                if (isMirrorOnHerosWay(mirror)) { //fixme
                     hero.mirrorIndex = i;
                     break;
                 }
@@ -388,7 +393,7 @@ bool GameField::drawAnyRay() {
     short globalIndex = 0;
     std::vector<short> globalIndexes;
     ushort index;
-    Line mirror {}, intersectPoint {};
+    Line intersectPoint{};
     std::vector<Line> intersectPoints;
     std::vector<Line> tempMirrors;
     static int prevReflIndex; //номер зеркала отразившего предыдущий отрезок
@@ -396,11 +401,9 @@ bool GameField::drawAnyRay() {
 
     Mirror *currMirror;
     for (index = 0; index < mirrorsQuantity; index++) {
-        currMirror = (Mirror*)gameObjects[index];
-        mirror = currMirror->getLine();
-        if (!currMirror->canReflect && getIntersectionPoint(index, mirror,
-                                                                    intersectPoint)) {
-            tempMirrors.push_back(mirror);
+        currMirror = (Mirror *) gameObjects[index];
+        if (!currMirror->canReflect && getIntersectionPoint(currMirror, intersectPoint)) {
+            tempMirrors.push_back(currMirror->getLine());
             intersectPoints.push_back(intersectPoint);
             globalIndexes.push_back(index);
         }
@@ -431,9 +434,10 @@ bool GameField::drawAnyRay() {
                             intersectPoints[prevReflIndex].y)) {
                 return false;
             }
+            currMirror = (Mirror *) gameObjects[prevReflIndex = globalIndex];
             rays.push_back(_ray);
-            reflectRay(ray.angle, gameObjects[prevReflIndex = globalIndex]->getLine().angle);
-            gameObjects[prevReflIndex]->canReflect = true;
+            reflectRay(ray.angle, currMirror->getLine().angle);
+            currMirror->canReflect = true;
             ray.k = tan(ray.angle);
             ray.b = ray.y - ray.k * ray.x;
             return true;
@@ -447,16 +451,16 @@ bool GameField::drawAnyRay() {
 }
 
 
-bool GameField::getIntersectionPoint(ushort index, Line mirror, Line &intersectionPoint) {
-    mirror.x = ((ray.b - gameObjects[index]->getLine().b)
-                / (gameObjects[index]->getLine().k - ray.k));
-    mirror.y = mirror.x * ray.k + ray.b;
-    intersectionPoint.x = mirror.x;
-    intersectionPoint.y = mirror.y;
-    return ((int) mirror.y >= gameObjects[index]->getYBelow() &&
-            (int) mirror.y <= gameObjects[index]->getYAbove() &&
-            (int) mirror.x <= gameObjects[index]->getXRigth() &&
-            (int) mirror.x >= gameObjects[index]->getXLeft());
+bool GameField::getIntersectionPoint(Mirror *currMirror, Line &intersectionPoint) {
+    Line mirrorLine;
+    mirrorLine.x = ((ray.b - currMirror->getLine().b) / (currMirror->getLine().k - ray.k));
+    mirrorLine.y = mirrorLine.x * ray.k + ray.b;
+    intersectionPoint.x = mirrorLine.x;
+    intersectionPoint.y = mirrorLine.y;
+    return ((int) mirrorLine.y >= currMirror->getYBelow() &&
+            (int) mirrorLine.y <= currMirror->getYAbove() &&
+            (int) mirrorLine.x <= currMirror->getXRigth() &&
+            (int) mirrorLine.x >= currMirror->getXLeft());
 
 }
 
@@ -469,7 +473,7 @@ bool GameField::isDirectionCorrect(Line &ray, Line &obj) {
 
 template<class type>
 bool GameField::isRayCollideWithObject(Ray &_ray, type &object, int mX, int mY) {
-    Line objectLine {};
+    Line objectLine{};
     objectLine.x = ((_ray.b - object.getLine().b) / (object.getLine().k - _ray.k));
     objectLine.y = objectLine.x * _ray.k + _ray.b;
     if ((int) objectLine.y >= object.transform.y - object.image.height / 2 * object.image.scale &&
@@ -502,4 +506,17 @@ bool GameField::rayCollider(Ray &_ray, int mX, int mY) {
         }
     }
     return false;
+}
+
+void GameField::setView(int x, int y) {
+    int tX = x, tY = y;
+
+    if (x < 0) tX = 0;
+    if (y < 0) tY = 0;
+    if (y > 1600) tY = 1600;
+    if (x > 2560) tX = 2560;
+
+    view.setCenter(tX, tY);
+
+
 }

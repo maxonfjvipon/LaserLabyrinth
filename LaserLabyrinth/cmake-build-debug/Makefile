@@ -285,6 +285,33 @@ cmake_modules/MainHero.cpp.s:
 	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.s
 .PHONY : cmake_modules/MainHero.cpp.s
 
+cmake_modules/Map.o: cmake_modules/Map.cpp.o
+
+.PHONY : cmake_modules/Map.o
+
+# target to build an object file
+cmake_modules/Map.cpp.o:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Map.cpp.o
+.PHONY : cmake_modules/Map.cpp.o
+
+cmake_modules/Map.i: cmake_modules/Map.cpp.i
+
+.PHONY : cmake_modules/Map.i
+
+# target to preprocess a source file
+cmake_modules/Map.cpp.i:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Map.cpp.i
+.PHONY : cmake_modules/Map.cpp.i
+
+cmake_modules/Map.s: cmake_modules/Map.cpp.s
+
+.PHONY : cmake_modules/Map.s
+
+# target to generate assembly for a file
+cmake_modules/Map.cpp.s:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Map.cpp.s
+.PHONY : cmake_modules/Map.cpp.s
+
 cmake_modules/Mirror.o: cmake_modules/Mirror.cpp.o
 
 .PHONY : cmake_modules/Mirror.o
@@ -420,6 +447,9 @@ help:
 	@echo "... cmake_modules/MainHero.o"
 	@echo "... cmake_modules/MainHero.i"
 	@echo "... cmake_modules/MainHero.s"
+	@echo "... cmake_modules/Map.o"
+	@echo "... cmake_modules/Map.i"
+	@echo "... cmake_modules/Map.s"
 	@echo "... cmake_modules/Mirror.o"
 	@echo "... cmake_modules/Mirror.i"
 	@echo "... cmake_modules/Mirror.s"

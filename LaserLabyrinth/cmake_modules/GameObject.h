@@ -28,14 +28,6 @@ public:
 
     virtual void set(std::ifstream &fin) = 0;
 
-    virtual int getYAbove() = 0;
-
-    virtual int getYBelow() = 0;
-
-    virtual int getXLeft() = 0;
-
-    virtual int getXRigth() = 0;
-
 };
 
 

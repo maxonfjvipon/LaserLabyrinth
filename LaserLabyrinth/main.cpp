@@ -15,13 +15,10 @@ void actions(float &time, sf::RenderWindow &window, GameField &gameField);
 int main() {
 
     //screen geometry
-//    const u_short screenWidth = 800;
-//    const u_short screenHeight = 600;
-    const u_short screenWidth = 5000;
-    const u_short screenHeight = 2000;
+    const u_short screenWidth = 2560;
+    const u_short screenHeight = 1600;
 
     float time = 0; //time
-
     //window
     sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "LASER_LABYRINTH");
 

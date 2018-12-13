@@ -30,7 +30,7 @@ public:
     };
 
     bool isStaying{};
-    u_short walkSpeed = 30; //speed of walking
+    u_short walkSpeed = 20; //speed of walking
     u_short mode{};
     ushort pushSpeed = static_cast<ushort>(walkSpeed / 2);
 

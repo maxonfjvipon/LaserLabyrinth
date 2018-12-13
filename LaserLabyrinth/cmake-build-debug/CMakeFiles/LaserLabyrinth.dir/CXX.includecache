@@ -32,10 +32,6 @@ LaserCannon.h
 Ray.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Ray.h
 
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameObject.cpp
-GameObject.h
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameObject.h
-
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameObject.h
 Transform.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Transform.h
@@ -46,12 +42,6 @@ SFML/Graphics.hpp
 Line.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.h
 
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Image.cpp
-Image.h
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Image.h
-fstream
--
-
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Image.h
 iostream
 -
@@ -61,12 +51,6 @@ SFML/Graphics.hpp
 -
 Transform.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Transform.h
-
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/LaserCannon.cpp
-LaserCannon.h
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/LaserCannon.h
-Mirror.h
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h
 
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/LaserCannon.h
 GameObject.h
@@ -107,12 +91,6 @@ Line.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.h
 GameObject.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameObject.h
-
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.cpp
-Mirror.h
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h
-fstream
--
 
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h
 iostream

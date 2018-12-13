@@ -30,7 +30,7 @@ int main() {
     while (window.isOpen()) {
         restartClock(clock, time);
         window.clear();
-        actions(time,window, gameField);
+        actions(time, window, gameField);
         gameField.draw(window);
         window.display();
     }
@@ -40,10 +40,10 @@ int main() {
 
 void actions(float &time, sf::RenderWindow &window, GameField &gameField) {
     float delay = 0.1; //delay
-    sf::Event event{};
-    if(time > delay) {
+    sf::Event event {};
+    if (time > delay) {
         while (window.pollEvent(event)) {
-            if(event.type == sf::Event::Closed) {
+            if (event.type == sf::Event::Closed) {
                 window.close();
             }
         }

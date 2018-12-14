@@ -20,8 +20,10 @@ public:
     GameObject() = default;
 
     sf::FloatRect getRect() {
-        return sf::FloatRect(transform.x, transform.y, image.width * image.scale / 2,
-                             image.height * image.scale / 2);
+        return sf::FloatRect(transform.x - image.width * image.scale / 2,
+                             transform.y - image.height * image.scale / 2,
+                             image.width * image.scale,
+                             image.height * image.scale);
     }
 
     virtual Line &getLine() = 0;

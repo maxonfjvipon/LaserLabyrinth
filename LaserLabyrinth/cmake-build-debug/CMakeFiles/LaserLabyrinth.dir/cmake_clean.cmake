@@ -9,7 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/LaserLabyrinth.dir/cmake_modules/LaserCannon.cpp.o"
   "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Line.cpp.o"
   "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Ray.cpp.o"
-  "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Map.cpp.o"
+  "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Object.cpp.o"
   "LaserLabyrinth.pdb"
   "LaserLabyrinth"
 )

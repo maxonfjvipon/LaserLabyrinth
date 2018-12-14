@@ -2,20 +2,14 @@
 #include "Mirror.h"
 #include <iostream>
 
-//Конструктор
-
-MainHero::MainHero() {
-    std::ifstream fin("files/constructMainHero.txt");
-
+void MainHero::set(std::ifstream &fin) {
     transform.set(fin);
     image.setParametersFromFile(fin);
 
-    image.set(transform.x,transform.x, transform.rotateAngle);
+    image.set(transform.x, transform.x, static_cast<ushort>(transform.rotateAngle));
 
     mode = Walk;
     isStaying = true;
 
     name = "Hero";
-
-    fin.close();
 }

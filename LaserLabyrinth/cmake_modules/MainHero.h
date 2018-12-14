@@ -19,13 +19,15 @@ enum mainHeroMode {
 //main hero
 class MainHero : public GameObject{
 
-    void set(std::ifstream &fin) override {};
-
 public:
+
+    void set(std::ifstream &fin) override;
+
+    MainHero(){}
 
     Line &getLine() override {
         Line line{};
-        line.set(transform.x, transform.y, 0);
+        line.set(transform.x, transform.y, angle);
         return line;
     };
 
@@ -38,8 +40,7 @@ public:
 
     int mirrorIndex = -1;
 
-    MainHero();
-
+    int angle = 0;
 
 };
 

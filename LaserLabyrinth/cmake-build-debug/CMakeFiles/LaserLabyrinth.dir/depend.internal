@@ -10,6 +10,7 @@ CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.o
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.h
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/MainHero.h
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h
+ /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Object.h
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Ray.h
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Transform.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameObject.cpp.o
@@ -41,15 +42,19 @@ CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/MainHero.h
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Transform.h
-CMakeFiles/LaserLabyrinth.dir/cmake_modules/Map.cpp.o
- /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Map.cpp
- /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Map.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.o
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameObject.h
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Image.h
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.h
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.cpp
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h
+ /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Transform.h
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Object.cpp.o
+ /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameObject.h
+ /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Image.h
+ /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.h
+ /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Object.cpp
+ /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Object.h
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Transform.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Ray.cpp.o
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.h
@@ -66,6 +71,7 @@ CMakeFiles/LaserLabyrinth.dir/main.cpp.o
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.h
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/MainHero.h
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h
+ /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Object.h
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Ray.h
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Transform.h
  /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/main.cpp

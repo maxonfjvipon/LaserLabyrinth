@@ -1,3 +1,0 @@
-100 100
-0 32 32
-images/heroStays.png

@@ -8,10 +8,13 @@
 #include "GameObject.h"
 #include "LaserCannon.h"
 #include "Ray.h"
+#include "Object.h"
 
 class GameField {
 
     std::vector<Ray> rays;
+
+    Image map;
 
     Line ray;
 
@@ -20,7 +23,7 @@ class GameField {
 
     ushort laserCannonIndex;
     ushort mirrorsQuantity;
-    ushort distanceForInteract = static_cast<ushort>(30 * hero.image.scale);
+    ushort distanceForInteract = static_cast<ushort>(50 * hero.image.scale);
 
     void setRays();
 
@@ -32,14 +35,15 @@ class GameField {
 
     bool collider();
 
-    bool rayCollider(Ray &ray, int mX, int mY);
+    template<class type>
+    void rayCollideWithObject(Ray &_ray, type &object, int &mX, int &mY);
 
-    template <class type>
-    bool isRayCollideWithObject(Ray &ray, type &object, int mX, int mY);
+    bool rayCollider(Ray &_ray, int mX, int mY);
 
     bool isMirrorOnHerosWay(Mirror *mirror);
 
-    bool getIntersectionPoint(Mirror *currentMirror, Line &intersectPoint);
+    template <class type>
+    bool getIntersectionPoint(type &object, Line &intersectPoint, Line &_ray);
 
     void noActions();
 

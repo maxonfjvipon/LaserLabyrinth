@@ -1,0 +1,26 @@
+720 450 images/level1/floorLevel1.png 720 450 0
+1110 600 0 32 32 images/heroStays.png
+10
+1310 100 45 32 32 images/mirror.png
+100 100 108 32 32 images/mirror.png
+350 285 98 32 32 images/mirror.png
+110 372 90 32 32 images/mirror.png
+350 460 90 32 32 images/mirror.png
+110 538 91 32 32 images/mirror.png
+340 635 83 32 32 images/mirror.png
+110 800 72 32 32 images/mirror.png
+850 800 135 32 32 images/mirror.png
+500 500 135 32 32 images/mirror.png
+11
+30 450 0 30 450 images/level1/verticalWall.png
+1410 450 0 30 450 images/level1/verticalWall.png
+720 30 0 720 30 images/level1/horizontalWall.png
+720 870 0 720 30 images/level1/horizontalWall.png
+1200 570 0 30 450 images/level1/verticalWall.png
+1200 30 0 30 50 images/level1/verticalWall.png
+780 150 0 390 30 images/level1/horizontalWall.png
+420 450 0 30 300 images/level1/verticalWall.png
+1000 700 0 30 300 images/level1/verticalWall.png
+620 720 0 200 30 images/level1/horizontalWall.png
+930 720 0 60 30 images/level1/horizontalWall.png
+1110 260 180 32 32 images/laserCannon.png

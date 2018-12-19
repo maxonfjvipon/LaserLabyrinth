@@ -1,0 +1,5 @@
+1440 900 images/background.png
+New_Game 720 300 30 2 0
+Continue 720 450 30 2 1
+Volume_ON 720 600 30 2 2
+Exit 720 750 30 2 3

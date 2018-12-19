@@ -96,18 +96,18 @@ CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.cpp -o CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.s
 
-CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.o: CMakeFiles/LaserLabyrinth.dir/flags.make
-CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.o: ../cmake_modules/GameField.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.o -c /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameField.cpp
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.o: CMakeFiles/LaserLabyrinth.dir/flags.make
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.o: ../cmake_modules/Level.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.o -c /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Level.cpp
 
-CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameField.cpp > CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.i
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Level.cpp > CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.i
 
-CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameField.cpp -o CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.s
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Level.cpp -o CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.s
 
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Transform.cpp.o: CMakeFiles/LaserLabyrinth.dir/flags.make
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Transform.cpp.o: ../cmake_modules/Transform.cpp
@@ -200,19 +200,47 @@ CMakeFiles/LaserLabyrinth.dir/cmake_modules/Object.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LaserLabyrinth.dir/cmake_modules/Object.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Object.cpp -o CMakeFiles/LaserLabyrinth.dir/cmake_modules/Object.cpp.s
 
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.o: CMakeFiles/LaserLabyrinth.dir/flags.make
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.o: ../cmake_modules/Menu.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.o -c /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Menu.cpp
+
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Menu.cpp > CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.i
+
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Menu.cpp -o CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.s
+
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.o: CMakeFiles/LaserLabyrinth.dir/flags.make
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.o: ../cmake_modules/Game.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.o -c /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Game.cpp
+
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Game.cpp > CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.i
+
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Game.cpp -o CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.s
+
 # Object files for target LaserLabyrinth
 LaserLabyrinth_OBJECTS = \
 "CMakeFiles/LaserLabyrinth.dir/main.cpp.o" \
 "CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o" \
 "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.o" \
-"CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.o" \
+"CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.o" \
 "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Transform.cpp.o" \
 "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Image.cpp.o" \
 "CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameObject.cpp.o" \
 "CMakeFiles/LaserLabyrinth.dir/cmake_modules/LaserCannon.cpp.o" \
 "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Line.cpp.o" \
 "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Ray.cpp.o" \
-"CMakeFiles/LaserLabyrinth.dir/cmake_modules/Object.cpp.o"
+"CMakeFiles/LaserLabyrinth.dir/cmake_modules/Object.cpp.o" \
+"CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.o" \
+"CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.o"
 
 # External object files for target LaserLabyrinth
 LaserLabyrinth_EXTERNAL_OBJECTS =
@@ -220,7 +248,7 @@ LaserLabyrinth_EXTERNAL_OBJECTS =
 LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/main.cpp.o
 LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/cmake_modules/MainHero.cpp.o
 LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.o
-LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameField.cpp.o
+LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.o
 LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/cmake_modules/Transform.cpp.o
 LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/cmake_modules/Image.cpp.o
 LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameObject.cpp.o
@@ -228,9 +256,11 @@ LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/cmake_modules/LaserCannon.cpp.o
 LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/cmake_modules/Line.cpp.o
 LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/cmake_modules/Ray.cpp.o
 LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/cmake_modules/Object.cpp.o
+LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.o
+LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.o
 LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/build.make
 LaserLabyrinth: CMakeFiles/LaserLabyrinth.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable LaserLabyrinth"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable LaserLabyrinth"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/LaserLabyrinth.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

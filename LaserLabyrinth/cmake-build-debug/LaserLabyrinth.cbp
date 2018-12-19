@@ -82,10 +82,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameField.cpp">
+		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Game.cpp">
 			<Option target="LaserLabyrinth"/>
 		</Unit>
-		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameField.h">
+		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Game.h">
 			<Option target="LaserLabyrinth"/>
 		</Unit>
 		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameObject.cpp">
@@ -106,6 +106,12 @@
 		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/LaserCannon.h">
 			<Option target="LaserLabyrinth"/>
 		</Unit>
+		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Level.cpp">
+			<Option target="LaserLabyrinth"/>
+		</Unit>
+		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Level.h">
+			<Option target="LaserLabyrinth"/>
+		</Unit>
 		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.cpp">
 			<Option target="LaserLabyrinth"/>
 		</Unit>
@@ -116,6 +122,12 @@
 			<Option target="LaserLabyrinth"/>
 		</Unit>
 		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/MainHero.h">
+			<Option target="LaserLabyrinth"/>
+		</Unit>
+		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Menu.cpp">
+			<Option target="LaserLabyrinth"/>
+		</Unit>
+		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Menu.h">
 			<Option target="LaserLabyrinth"/>
 		</Unit>
 		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.cpp">

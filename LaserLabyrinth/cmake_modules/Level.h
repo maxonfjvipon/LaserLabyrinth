@@ -1,5 +1,5 @@
-#ifndef LASERLABYRINTH_GAMEFIELD_H
-#define LASERLABYRINTH_GAMEFIELD_H
+#ifndef LASERLABYRINTH_LEVEL_H
+#define LASERLABYRINTH_LEVEL_H
 
 #include <SFML/Graphics.hpp>
 
@@ -10,20 +10,27 @@
 #include "Ray.h"
 #include "Object.h"
 
-class GameField {
+class Level {
+
+    sf::Text doorText;
+    sf::Font font;
+
+    ushort currentLevel;
 
     std::vector<Ray> rays;
 
     Image map;
 
-    Line ray;
+    Line ray{};
 
     MainHero hero;
     std::vector<GameObject *> gameObjects;
 
-    ushort laserCannonIndex;
-    ushort mirrorsQuantity;
+    ushort laserCannonIndex{};
+    ushort mirrorsQuantity{};
     ushort distanceForInteract = static_cast<ushort>(50 * hero.image.scale);
+
+    bool isDoorOpen = false;
 
     void setRays();
 
@@ -31,7 +38,7 @@ class GameField {
 
     bool isDirectionCorrect(Line &ray, Line &obj);
 
-    bool wasButtonPressed(sf::Event &event);
+    bool wasButtonPressed();
 
     bool collider();
 
@@ -55,15 +62,27 @@ class GameField {
 
     void E();
 
+    void F();
+
+    void pause();
+
 public:
 
-    GameField();
+    bool isPause;
+
+    Level() = default;
+
+    void set(const std::string &levelFileName, ushort level);
 
     void draw(sf::RenderWindow &window);
 
-    void actions(sf::Event &event);
+    void actions();
+
+    bool checkNextLevel(ushort level) {
+        return level != currentLevel;
+    }
 
 };
 
 
-#endif //LASERLABYRINTH_GAMEFIELD_H
+#endif //LASERLABYRINTH_LEVEL_H

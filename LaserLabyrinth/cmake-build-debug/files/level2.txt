@@ -10,8 +10,8 @@
 340 635 83 32 32 images/mirror.png
 110 800 72 32 32 images/mirror.png
 850 800 135 32 32 images/mirror.png
-850 260 135 32 32 images/mirror.png
-13
+500 500 135 32 32 images/mirror.png
+10
 Wall 30 450 0 30 450 images/level1/verticalWall.png
 Wall 1410 450 0 30 450 images/level1/verticalWall.png
 Wall 720 30 0 720 30 images/level1/horizontalWall.png
@@ -20,9 +20,6 @@ Wall 1200 570 0 30 450 images/level1/verticalWall.png
 Wall 1200 30 0 30 50 images/level1/verticalWall.png
 Wall 780 150 0 390 30 images/level1/horizontalWall.png
 Wall 420 450 0 30 300 images/level1/verticalWall.png
-Wall 1000 700 0 30 300 images/level1/verticalWall.png
-Wall 620 720 0 200 30 images/level1/horizontalWall.png
-Wall 930 720 0 60 30 images/level1/horizontalWall.png
 Button 1310 835 90 6 22 images/button.png
 Door 1110 835 90 6 28 images/door.png
 1110 260 180 32 32 images/laserCannon.png

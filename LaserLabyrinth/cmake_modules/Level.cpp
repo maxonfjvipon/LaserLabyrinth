@@ -1,4 +1,4 @@
-#include "GameField.h"
+#include "Level.h"
 #include "MainHero.h"
 #include <fstream>
 #include <iostream>
@@ -10,9 +10,24 @@ void setNewImage(T &object, const std::string &fileName, ushort rotateAngle) {
     object.image.set(object.transform.x, object.transform.y, rotateAngle);
 }
 
-GameField::GameField() {
+void Level::set(const std::string &levelFileName, ushort level){
 
-    std::ifstream fin("files/level1.txt");
+    currentLevel = level;
+
+    rays.clear();
+    gameObjects.clear();
+    isPause = false;
+    isDoorOpen = false;
+
+    font.loadFromFile("fonts/pixel.ttf");
+    doorText.setFont(font);
+    doorText.setCharacterSize(20);
+    doorText.setString("");
+    doorText.setFillColor(sf::Color::White);
+    doorText.setOutlineColor(sf::Color::Black);
+    doorText.setOrigin(doorText.getLocalBounds().width / 2, doorText.getLocalBounds().height / 2);
+
+    std::ifstream fin(levelFileName);
 
     map.setParametersFromFile(fin);
     int mapX, mapY;
@@ -29,10 +44,10 @@ GameField::GameField() {
         gameObjects[i]->set(fin);
     }
 
-    uint otherObjectCount;
-    fin >> otherObjectCount;
+    uint otherObjectsCount;
+    fin >> otherObjectsCount;
 
-    for (short i = 0; i < otherObjectCount; i++) {
+    for (short i = 0; i < otherObjectsCount; i++) {
         gameObjects.push_back(new Object());
         gameObjects[i + mirrorsQuantity]->set(fin);
     }
@@ -49,15 +64,20 @@ GameField::GameField() {
 
 }
 
-void GameField::actions(sf::Event &event) {
-    if (wasButtonPressed(event)) {
+void Level::actions() {
+    if (wasButtonPressed()) {
         setRays();
+        auto *door = (Object *) gameObjects[laserCannonIndex - 1];
+        if (sqrt(pow((hero.transform.x - door->transform.x), 2)
+                 + pow((hero.transform.y - door->transform.y), 2)) > distanceForInteract) {
+            doorText.setString("");
+        }
         return;
     }
     noActions();
 }
 
-void GameField::setRays() {
+void Level::setRays() {
     rays.clear();
     auto *laserCannon = gameObjects[laserCannonIndex];
     isRayCollideNow = false;
@@ -75,7 +95,7 @@ void GameField::setRays() {
     }
 }
 
-void GameField::draw(sf::RenderWindow &window) {
+void Level::draw(sf::RenderWindow &window) {
     window.draw(map.sprite);
     for (auto &gameObject : gameObjects) {
         window.draw(gameObject->image.sprite);
@@ -85,38 +105,51 @@ void GameField::draw(sf::RenderWindow &window) {
         window.draw(ray.line);
     }
     window.draw(hero.image.sprite);
+    doorText.setPosition(hero.transform.x - doorText.getLocalBounds().width / 2,
+                         hero.transform.y - 70);
+    window.draw(doorText);
 }
 
-bool GameField::wasButtonPressed(sf::Event &event) {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        WASD(2);
-        return true;
+bool Level::wasButtonPressed() {
+    if(!isPause) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+            WASD(2);
+            return true;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+            WASD(0);
+            return true;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+            WASD(1);
+            return true;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+            WASD(3);
+            return true;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
+            R();
+            return true;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
+            E();
+            return true;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
+            F();
+            return true;
+        }
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        WASD(0);
-        return true;
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        WASD(1);
-        return true;
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        WASD(3);
-        return true;
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
-        R();
-        return true;
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
-        E();
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+        isPause = !isPause;
         return true;
     }
     return false;
 }
 
 // no actions
-void GameField::noActions() {
+void Level::noActions() {
     if (!hero.isStaying) {
         hero.isStaying = true;
         switch (hero.mode) {
@@ -136,7 +169,7 @@ void GameField::noActions() {
     }
 }
 
-void GameField::WASD(ushort direction) {
+void Level::WASD(ushort direction) {
     switch (hero.mode) {
         case Walk:
             if (hero.isStaying) {
@@ -240,7 +273,7 @@ void GameField::WASD(ushort direction) {
 
 
 // R button
-void GameField::R() {
+void Level::R() {
     switch (hero.mode) {
         case RotateMirror:
             hero.mode = Walk;
@@ -271,8 +304,7 @@ void GameField::R() {
     }
 }
 
-//fixme
-void GameField::E() {
+void Level::E() {
     switch (hero.mode) {
         case PushMirror:
             hero.mode = Walk;
@@ -287,7 +319,7 @@ void GameField::E() {
             Mirror *mirror;
             for (auto i = 0; i < mirrorsQuantity; i++) {
                 mirror = (Mirror *) gameObjects[i];
-                if (isMirrorOnHerosWay(mirror)) { //fixme
+                if (isMirrorOnHerosWay(mirror)) {
                     hero.mirrorIndex = i;
                     break;
                 }
@@ -303,100 +335,60 @@ void GameField::E() {
     }
 }
 
-bool GameField::isMirrorOnHerosWay(Mirror *mirror) {
-//    std::cout << heso.currentDirection << std::endl;
+void Level::F() {
+    auto *door = (Object *) gameObjects[laserCannonIndex - 1];
+    if (sqrt(pow((hero.transform.x - door->transform.x), 2)
+             + pow((hero.transform.y - door->transform.y), 2)) <= distanceForInteract) {
+        if (!isDoorOpen) {
+            doorText.setString("Door is closed");
+        } else {
+            currentLevel++;
+        }
+    }
+}
+
+bool Level::isMirrorOnHerosWay(Mirror *mirror) {
     if (sqrt(pow((hero.transform.x - mirror->transform.x), 2)
              + pow((hero.transform.y - mirror->transform.y), 2)) <= distanceForInteract) {
-        switch(hero.currentDirection) {
+        switch (hero.currentDirection) {
             case 0:
-                hero.transform.x = mirror->transform.x - distanceForInteract
-                                   + 10 * mirror->image.scale;
-                hero.transform.y = mirror->transform.y;
+                if (mirror->transform.x > hero.transform.x) {
+                    hero.transform.x = mirror->transform.x - distanceForInteract
+                                       + 10 * mirror->image.scale;
+                    hero.transform.y = mirror->transform.y;
+                    return true;
+                }
                 break;
             case 1:
-                hero.transform.y = mirror->transform.y - distanceForInteract
-                                   + 10 * mirror->image.scale;
-                hero.transform.x = mirror->transform.x;
+                if (mirror->transform.y > hero.transform.y) {
+                    hero.transform.y = mirror->transform.y - distanceForInteract
+                                       + 10 * mirror->image.scale;
+                    hero.transform.x = mirror->transform.x;
+                    return true;
+                }
                 break;
             case 2:
-                hero.transform.x = mirror->transform.x + distanceForInteract
-                                   - 10 * mirror->image.scale;
-                hero.transform.y = mirror->transform.y;
+                if (mirror->transform.x < hero.transform.x) {
+                    hero.transform.x = mirror->transform.x + distanceForInteract
+                                       - 10 * mirror->image.scale;
+                    hero.transform.y = mirror->transform.y;
+                    return true;
+                }
                 break;
             case 3:
-                hero.transform.y = mirror->transform.y + distanceForInteract
-                                   - 10 * mirror->image.scale;
-                hero.transform.x = mirror->transform.x;
+                if (mirror->transform.y < hero.transform.y) {
+                    hero.transform.y = mirror->transform.y + distanceForInteract
+                                       - 10 * mirror->image.scale;
+                    hero.transform.x = mirror->transform.x;
+                    return true;
+                }
                 break;
         }
-        return true;
     }
-//    switch (hero.currentDirection) {
-//        case 0: //Hero -> Mirror
-//
-//
-//
-//            if (mirror->transform.x - mirror->image.width / 2 * mirror->image.scale
-//                - hero.transform.x + hero.image.width / 2 * hero.image.scale <=
-//                distanceForInteract) {
-//                if (abs(mirror->transform.y - hero.transform.y) <=
-//                    distanceForInteract / 2) {
-//                    hero.transform.x = mirror->transform.x - distanceForInteract
-//                                       + 10 * mirror->image.scale;
-//                    hero.transform.y = mirror->transform.y;
-//                    return true;
-//                }
-//            }
-//
-//            break;
-//        case 2: // Mirror <- Hero
-//            if (hero.transform.x - hero.image.width / 2 * hero.image.scale -
-//                mirror->transform.x + mirror->image.width / 2 * mirror->image.scale <=
-//                distanceForInteract) {
-//                if (abs(mirror->transform.y - hero.transform.y) <=
-//                    distanceForInteract / 2) {
-//                    hero.transform.x = mirror->transform.x + distanceForInteract
-//                                       - 10 * mirror->image.scale;
-//                    hero.transform.y = mirror->transform.y;
-//                    return true;
-//                }
-//            }
-//            break;
-//            Hero
-//            Mirror
-//        case 1:
-//            if (mirror->transform.y -
-//                mirror->image.height / 2 * mirror->image.scale
-//                - hero.transform.y + hero.image.height / 2 * hero.image.scale <=
-//                distanceForInteract) {
-//                if (abs(mirror->transform.x - hero.transform.x) <=
-//                    distanceForInteract / 2) {
-//                    hero.transform.y = mirror->transform.y - distanceForInteract
-//                                       + 10 * mirror->image.scale;
-//                    hero.transform.x = mirror->transform.x;
-//                    return true;
-//                }
-//            }
-//            break;
-//            Mirror
-//            Hero
-//        case 3:
-//            if (hero.transform.y - hero.image.height / 2 * hero.image.scale
-//                - mirror->transform.y +
-//                mirror->image.height / 2 * mirror->image.scale <= distanceForInteract) {
-//                if (abs(mirror->transform.x - hero.transform.x) <= distanceForInteract / 2) {
-//                    hero.transform.y = mirror->transform.y + distanceForInteract
-//                                       - 10 * mirror->image.scale;
-//                    hero.transform.x = mirror->transform.x;
-//                    return true;
-//                }
-//            }
-//            break;
-//    }
     return false;
 }
 
-bool GameField::collider() {
+bool Level::collider() {
     for (auto it = gameObjects.begin(); it < gameObjects.end(); it++) {
         if (hero.getRect().intersects((*it)->getRect())) {
             return true;
@@ -429,13 +421,11 @@ void reflectRay(double &rayAngle, double &mirrorAngle) {
     }
 }
 
-bool GameField::drawAnyRay() {
+bool Level::drawAnyRay() {
 
     while (ray.angle < 0) {
         ray.angle += 2 * M_PI;
     }
-//    ray.k = tan(ray.angle);
-
     short globalIndex = 0;
     std::vector<short> globalIndexes;
     ushort index;
@@ -497,7 +487,7 @@ bool GameField::drawAnyRay() {
 }
 
 template<class type>
-bool GameField::getIntersectionPoint(type &object, Line &intersectionPoint, Line &_ray) {
+bool Level::getIntersectionPoint(type &object, Line &intersectionPoint, Line &_ray) {
     Line intLine;
     intLine.x = ((_ray.b - object.getLine().b) / (object.getLine().k - _ray.k));
     if ((int) (_ray.angle * 180 / M_PI) % 360 == 90 ||
@@ -515,18 +505,18 @@ bool GameField::getIntersectionPoint(type &object, Line &intersectionPoint, Line
 
 }
 
-bool GameField::isDirectionCorrect(Line &ray, Line &obj) {
+bool Level::isDirectionCorrect(Line &ray, Line &obj) {
     return (sqrt(pow((ray.x + cos(ray.angle) - obj.x), 2)
                  + pow((ray.y + sin(ray.angle) - obj.y), 2)) <
             sqrt(pow((ray.x - obj.x), 2) + pow((ray.y - obj.y), 2)));
 }
 
 template<class type>
-void GameField::rayCollideWithObject(Ray &_ray, type &object, int &x, int &y) {
+void Level::rayCollideWithObject(Ray &_ray, type &object, int &x, int &y) {
     Line objectLine{};
     if (getIntersectionPoint(object, objectLine, _ray)) {
-        if ((int) abs(objectLine.x - _ray.x) <= (int) abs(x - _ray.x) &&
-            (int) abs(objectLine.y - _ray.y) <= (int) abs(y - _ray.y)) {
+        if ((int) abs(objectLine.x - _ray.x) <= (int) abs(x - _ray.x) + 10 &&
+            (int) abs(objectLine.y - _ray.y) <= (int) abs(y - _ray.y) + 10) { //fixme погрешность??
             Line intersectLine = objectLine;
             objectLine.set(_ray.x, _ray.y, _ray.angle * 180 / M_PI);
             if (isDirectionCorrect(objectLine, intersectLine)) {
@@ -537,13 +527,16 @@ void GameField::rayCollideWithObject(Ray &_ray, type &object, int &x, int &y) {
                                 object.image.scale;
                 _ray.set(_ray.x, _ray.y, intersectLine.x - radius * cos(_ray.angle),
                          intersectLine.y - radius * sin(_ray.angle), _ray.angle);
+                if (object.name == "Button" && !isDoorOpen) {
+                    isDoorOpen = true;
+                }
                 isRayCollideNow = true;
             }
         }
     }
 }
 
-bool GameField::rayCollider(Ray &_ray, int mX, int mY) {
+bool Level::rayCollider(Ray &_ray, int mX, int mY) {
     while (_ray.angle < 0) {
         _ray.angle += 2 * M_PI;
     }

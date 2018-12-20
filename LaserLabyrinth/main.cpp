@@ -28,7 +28,8 @@ int main() {
     float delay = 0.15; // time delay
     sf::Event event{}; // main event
     //window
-    sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "LASER_LABYRINTH");
+    sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "LASER_LABYRINTH",
+            sf::Style::Fullscreen);
 
     sf::Clock clock; //clock
 

@@ -101,10 +101,10 @@ void Level::draw(sf::RenderWindow &window) {
         window.draw(gameObject->image.sprite);
         gameObject->canReflect = false;
     }
+    window.draw(hero.image.sprite); //fixme hero не рисуется в начале игры
     for (auto &ray : rays) {
         window.draw(ray.line);
     }
-    window.draw(hero.image.sprite);
     doorText.setPosition(hero.transform.x - doorText.getLocalBounds().width / 2,
                          hero.transform.y - 70);
     window.draw(doorText);

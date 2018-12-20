@@ -9,6 +9,7 @@
 #include "LaserCannon.h"
 #include "Ray.h"
 #include "Object.h"
+#include "Sound.h"
 
 class Level {
 
@@ -18,6 +19,7 @@ class Level {
     ushort currentLevel;
 
     std::vector<Ray> rays;
+    std::vector<Sound> sounds;
 
     Image map;
 

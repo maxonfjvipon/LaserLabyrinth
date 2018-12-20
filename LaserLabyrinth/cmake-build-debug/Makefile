@@ -366,6 +366,33 @@ cmake_modules/Mirror.cpp.s:
 	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.s
 .PHONY : cmake_modules/Mirror.cpp.s
 
+cmake_modules/Music.o: cmake_modules/Music.cpp.o
+
+.PHONY : cmake_modules/Music.o
+
+# target to build an object file
+cmake_modules/Music.cpp.o:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Music.cpp.o
+.PHONY : cmake_modules/Music.cpp.o
+
+cmake_modules/Music.i: cmake_modules/Music.cpp.i
+
+.PHONY : cmake_modules/Music.i
+
+# target to preprocess a source file
+cmake_modules/Music.cpp.i:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Music.cpp.i
+.PHONY : cmake_modules/Music.cpp.i
+
+cmake_modules/Music.s: cmake_modules/Music.cpp.s
+
+.PHONY : cmake_modules/Music.s
+
+# target to generate assembly for a file
+cmake_modules/Music.cpp.s:
+	$(MAKE) -f CMakeFiles/LaserLabyrinth.dir/build.make CMakeFiles/LaserLabyrinth.dir/cmake_modules/Music.cpp.s
+.PHONY : cmake_modules/Music.cpp.s
+
 cmake_modules/Object.o: cmake_modules/Object.cpp.o
 
 .PHONY : cmake_modules/Object.o
@@ -510,6 +537,9 @@ help:
 	@echo "... cmake_modules/Mirror.o"
 	@echo "... cmake_modules/Mirror.i"
 	@echo "... cmake_modules/Mirror.s"
+	@echo "... cmake_modules/Music.o"
+	@echo "... cmake_modules/Music.i"
+	@echo "... cmake_modules/Music.s"
 	@echo "... cmake_modules/Object.o"
 	@echo "... cmake_modules/Object.i"
 	@echo "... cmake_modules/Object.s"

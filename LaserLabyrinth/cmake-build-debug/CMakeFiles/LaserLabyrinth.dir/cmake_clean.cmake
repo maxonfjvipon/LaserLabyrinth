@@ -12,6 +12,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Object.cpp.o"
   "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.o"
   "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.o"
+  "CMakeFiles/LaserLabyrinth.dir/cmake_modules/Music.cpp.o"
   "LaserLabyrinth.pdb"
   "LaserLabyrinth"
 )

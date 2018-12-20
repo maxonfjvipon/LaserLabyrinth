@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Game.h
-iostream
--
-Level.h
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Level.h
-
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameObject.h
 Transform.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Transform.h
@@ -21,6 +15,12 @@ SFML/Graphics.hpp
 -
 Line.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.h
+
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Image.cpp
+Image.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Image.h
+fstream
+-
 
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Image.h
 iostream
@@ -37,6 +37,18 @@ GameObject.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameObject.h
 Line.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.h
+
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Level.cpp
+Level.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Level.h
+MainHero.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/MainHero.h
+fstream
+-
+iostream
+-
+cmath
+-
 
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Level.h
 SFML/Graphics.hpp
@@ -79,20 +91,6 @@ Line.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.h
 GameObject.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/GameObject.h
-
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Menu.cpp
-Menu.h
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Menu.h
-fstream
--
-
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Menu.h
-Image.h
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Image.h
-Game.h
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Game.h
-vector
--
 
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h
 iostream

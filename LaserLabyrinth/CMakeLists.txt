@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES main.cpp cmake_modules/MainHero.cpp cmake_modules/MainHero.h
         cmake_modules/Mirror.cpp cmake_modules/Mirror.h
-        cmake_modules/Level.cpp cmake_modules/Level.h cmake_modules/Transform.cpp cmake_modules/Transform.h cmake_modules/Image.cpp cmake_modules/Image.h cmake_modules/GameObject.cpp cmake_modules/GameObject.h cmake_modules/LaserCannon.cpp cmake_modules/LaserCannon.h cmake_modules/Line.cpp cmake_modules/Line.h cmake_modules/Ray.cpp cmake_modules/Ray.h cmake_modules/Object.cpp cmake_modules/Object.h cmake_modules/Menu.cpp cmake_modules/Menu.h cmake_modules/Game.cpp cmake_modules/Game.h)
+        cmake_modules/Level.cpp cmake_modules/Level.h cmake_modules/Transform.cpp cmake_modules/Transform.h cmake_modules/Image.cpp cmake_modules/Image.h cmake_modules/GameObject.cpp cmake_modules/GameObject.h cmake_modules/LaserCannon.cpp cmake_modules/LaserCannon.h cmake_modules/Line.cpp cmake_modules/Line.h cmake_modules/Ray.cpp cmake_modules/Ray.h cmake_modules/Object.cpp cmake_modules/Object.h cmake_modules/Menu.cpp cmake_modules/Menu.h cmake_modules/Game.cpp cmake_modules/Game.h cmake_modules/Sound.cpp cmake_modules/Sound.h)
 
 add_executable(LaserLabyrinth ${SOURCE_FILES})
 

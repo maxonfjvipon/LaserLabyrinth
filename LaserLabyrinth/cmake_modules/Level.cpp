@@ -6,11 +6,30 @@
 
 template<class T>
 void setNewImage(T &object, const std::string &fileName, ushort rotateAngle) {
-    object.image.setParameters(fileName, 32, 32);
+    object.image.setParameters(fileName, object.image.width, object.image.height);
     object.image.set(object.transform.x, object.transform.y, rotateAngle);
 }
 
-void Level::set(const std::string &levelFileName, ushort level){
+void updateCurrentStep(ushort &currentStep) {
+    currentStep++;
+    if (currentStep >= 12) {
+        currentStep -= 12;
+    }
+}
+
+sf::Text setText(sf::Font &font, const std::string &string, ushort size, const sf::Color &color,
+                 ushort scale) {
+    sf::Text text;
+    text.setFont(font);
+    text.setString(string);
+    text.setCharacterSize(size);
+    text.setFillColor(color);
+    text.setOutlineColor(sf::Color::Black);
+    text.setScale(scale, scale);
+    return text;
+}
+
+void Level::set(const std::string &levelFileName, ushort level, ushort volume) {
 
     currentLevel = level;
 
@@ -20,12 +39,13 @@ void Level::set(const std::string &levelFileName, ushort level){
     isDoorOpen = false;
 
     font.loadFromFile("fonts/pixel.ttf");
-    doorText.setFont(font);
-    doorText.setCharacterSize(20);
-    doorText.setString("");
-    doorText.setFillColor(sf::Color::White);
+
+    doorText = setText(font, "", 20, sf::Color::White, 1);
     doorText.setOutlineColor(sf::Color::Black);
     doorText.setOrigin(doorText.getLocalBounds().width / 2, doorText.getLocalBounds().height / 2);
+
+    modeText = setText(font, "W", 30, sf::Color::White, 2); //fixme test
+    modeText.setPosition(5, 5); //fixme test
 
     std::ifstream fin(levelFileName);
 
@@ -60,11 +80,45 @@ void Level::set(const std::string &levelFileName, ushort level){
     laserCannonIndex = static_cast<ushort>(gameObjects.size() - 1);
     ray.set(laserCannon->transform.x, laserCannon->transform.y, laserCannon->transform.rotateAngle);
     setRays();
+
+    ushort soundsCount;
+    fin >> soundsCount;
+
+    sounds.resize(soundsCount);
+
+    for (auto i = 0; i < soundsCount; i++) {
+        sounds[i].set(fin, volume);
+    }
+
+    stepSounds.resize(12);
+
+    for (auto i = 0; i < 12; i++) {
+        if (i % 3 == 0) {
+            stepSounds[i].set(fin, volume);
+        } else {
+            stepSounds[i] = stepSounds[i - 1];
+        }
+    }
+
     fin.close();
 
 }
 
-void Level::actions() {
+void updateModeText(sf::Text &modeText, MainHero hero) {
+    switch (hero.mode) {
+        case Walk:
+            modeText.setString("W");
+            break;
+        case PushMirror:
+            modeText.setString("P");
+            break;
+        case RotateMirror:
+            modeText.setString("R");
+            break;
+    }
+}
+
+void Level::actions(ushort volume) {
     if (wasButtonPressed()) {
         setRays();
         auto *door = (Object *) gameObjects[laserCannonIndex - 1];
@@ -72,9 +126,18 @@ void Level::actions() {
                  + pow((hero.transform.y - door->transform.y), 2)) > distanceForInteract) {
             doorText.setString("");
         }
-        return;
+        updateModeText(modeText, hero);
+    } else {
+        noActions();
     }
-    noActions();
+
+    for (auto &sound : sounds) {
+        sound.setVolume(volume);
+    }
+
+    for (auto &sound : stepSounds) {
+        sound.setVolume(volume);
+    }
 }
 
 void Level::setRays() {
@@ -108,10 +171,11 @@ void Level::draw(sf::RenderWindow &window) {
     doorText.setPosition(hero.transform.x - doorText.getLocalBounds().width / 2,
                          hero.transform.y - 70);
     window.draw(doorText);
+    window.draw(modeText);
 }
 
 bool Level::wasButtonPressed() {
-    if(!isPause) {
+    if (!isPause) {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
             WASD(2);
             return true;
@@ -150,6 +214,7 @@ bool Level::wasButtonPressed() {
 
 // no actions
 void Level::noActions() {
+    hero.currentStep = 0;
     if (!hero.isStaying) {
         hero.isStaying = true;
         switch (hero.mode) {
@@ -202,6 +267,10 @@ void Level::WASD(ushort direction) {
                     }
                     break;
             }
+            if(hero.currentStep % 3 == 0) {
+                stepSounds[hero.currentStep].play();
+            }
+            updateCurrentStep(hero.currentStep);
             hero.image.animate(hero.transform.x, hero.transform.y, direction,
                                hero.currentDirection, true);
             break;
@@ -219,6 +288,7 @@ void Level::WASD(ushort direction) {
                     mirror->rotate(-1);
                     break;
             }
+            sounds[0].play();
             hero.image.animate(hero.transform.x, hero.transform.y, direction,
                                hero.currentDirection, false);
         }
@@ -263,6 +333,7 @@ void Level::WASD(ushort direction) {
                     }
                     break;
             }
+            sounds[1].play();
             mirror->image.sprite.setPosition(mirror->transform.x, mirror->transform.y);
             hero.image.animate(hero.transform.x, hero.transform.y, direction,
                                hero.currentDirection, false);
@@ -348,6 +419,8 @@ void Level::F() {
 }
 
 bool Level::isMirrorOnHerosWay(Mirror *mirror) {
+    int hX = hero.transform.x;
+    int hY = hero.transform.y;
     if (sqrt(pow((hero.transform.x - mirror->transform.x), 2)
              + pow((hero.transform.y - mirror->transform.y), 2)) <= distanceForInteract) {
         switch (hero.currentDirection) {
@@ -356,6 +429,11 @@ bool Level::isMirrorOnHerosWay(Mirror *mirror) {
                     hero.transform.x = mirror->transform.x - distanceForInteract
                                        + 10 * mirror->image.scale;
                     hero.transform.y = mirror->transform.y;
+                    if(collider()) {
+                        hero.transform.x = hX;
+                        hero.transform.y = hY;
+                        return false;
+                    }
                     return true;
                 }
                 break;
@@ -364,6 +442,11 @@ bool Level::isMirrorOnHerosWay(Mirror *mirror) {
                     hero.transform.y = mirror->transform.y - distanceForInteract
                                        + 10 * mirror->image.scale;
                     hero.transform.x = mirror->transform.x;
+                    if(collider()) {
+                        hero.transform.x = hX;
+                        hero.transform.y = hY;
+                        return false;
+                    }
                     return true;
                 }
                 break;
@@ -372,6 +455,11 @@ bool Level::isMirrorOnHerosWay(Mirror *mirror) {
                     hero.transform.x = mirror->transform.x + distanceForInteract
                                        - 10 * mirror->image.scale;
                     hero.transform.y = mirror->transform.y;
+                    if(collider()) {
+                        hero.transform.x = hX;
+                        hero.transform.y = hY;
+                        return false;
+                    }
                     return true;
                 }
                 break;
@@ -380,6 +468,11 @@ bool Level::isMirrorOnHerosWay(Mirror *mirror) {
                     hero.transform.y = mirror->transform.y + distanceForInteract
                                        - 10 * mirror->image.scale;
                     hero.transform.x = mirror->transform.x;
+                    if(collider()) {
+                        hero.transform.x = hX;
+                        hero.transform.y = hY;
+                        return false;
+                    }
                     return true;
                 }
                 break;
@@ -515,8 +608,8 @@ template<class type>
 void Level::rayCollideWithObject(Ray &_ray, type &object, int &x, int &y) {
     Line objectLine{};
     if (getIntersectionPoint(object, objectLine, _ray)) {
-        if ((int) abs(objectLine.x - _ray.x) <= (int) abs(x - _ray.x) + 10 &&
-            (int) abs(objectLine.y - _ray.y) <= (int) abs(y - _ray.y) + 10) { //fixme погрешность??
+        if ((int) abs(objectLine.x - _ray.x) <= (int) abs(x - _ray.x) + 40 &&
+            (int) abs(objectLine.y - _ray.y) <= (int) abs(y - _ray.y) + 40) { //fixme погрешность??
             Line intersectLine = objectLine;
             objectLine.set(_ray.x, _ray.y, _ray.angle * 180 / M_PI);
             if (isDirectionCorrect(objectLine, intersectLine)) {
@@ -529,6 +622,7 @@ void Level::rayCollideWithObject(Ray &_ray, type &object, int &x, int &y) {
                          intersectLine.y - radius * sin(_ray.angle), _ray.angle);
                 if (object.name == "Button" && !isDoorOpen) {
                     isDoorOpen = true;
+                    sounds[2].play();
                 }
                 isRayCollideNow = true;
             }
@@ -551,4 +645,41 @@ bool Level::rayCollider(Ray &_ray, int mX, int mY) {
         return true;
     }
     return false;
+}
+
+void Level::save(const std::string &fileName) {
+
+    std::ofstream fout(fileName, std::ios::trunc);
+    fout << map.width << " " << map.height << " " << map.textureFileName << " "
+         << 720 << " " << 450 << " " << 0 << "\n";
+
+    fout << hero.transform.x << " " << hero.transform.y << " " << hero.image.sprite.getRotation()
+         << " " << hero.image.width << " " << hero.image.height << " images/heroStays.png\n";
+
+    fout << mirrorsQuantity << "\n";
+    for (auto i = 0; i < mirrorsQuantity; i++) {
+        fout << gameObjects[i]->transform.x << " " << gameObjects[i]->transform.y
+             << " " << gameObjects[i]->image.sprite.getRotation() << " " << 32 << " " << 32
+             << " images/mirror.png\n";
+    }
+
+    uint otherObjectsCount = static_cast<uint>(gameObjects.size() - mirrorsQuantity);
+    fout << otherObjectsCount - 1 << "\n";
+    for (auto i = mirrorsQuantity; i < otherObjectsCount - 1 + mirrorsQuantity; i++) {
+        fout << gameObjects[i]->name << " " << gameObjects[i]->transform.x << " "
+             << gameObjects[i]->transform.y << " " << gameObjects[i]->image.sprite.getRotation()
+             << " " << gameObjects[i]->image.width << " " << gameObjects[i]->image.height
+             << " " <<gameObjects[i]->image.textureFileName << "\n";
+    }
+
+    auto *lc = (LaserCannon *) gameObjects[laserCannonIndex];
+
+    fout << lc->transform.x << " " << lc->transform.y << " " << lc->image.sprite.getRotation()
+         << " " << 32 << " " << 32 << " " << lc->image.textureFileName << "\n";
+
+    fout << 3 << "\nmusic/rotateMirror.wav\n" << "music/pushMirror.wav\n"
+         << "music/openDoor.wav\n" << "music/step1.wav\n" << "music/step2.wav\n"
+         << "music/step3.wav\n" << "music/step2.wav";
+
+    fout.close();
 }

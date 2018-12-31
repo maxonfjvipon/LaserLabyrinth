@@ -136,12 +136,6 @@
 		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Mirror.h">
 			<Option target="LaserLabyrinth"/>
 		</Unit>
-		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Music.cpp">
-			<Option target="LaserLabyrinth"/>
-		</Unit>
-		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Music.h">
-			<Option target="LaserLabyrinth"/>
-		</Unit>
 		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Object.cpp">
 			<Option target="LaserLabyrinth"/>
 		</Unit>
@@ -152,6 +146,12 @@
 			<Option target="LaserLabyrinth"/>
 		</Unit>
 		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Ray.h">
+			<Option target="LaserLabyrinth"/>
+		</Unit>
+		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Sound.cpp">
+			<Option target="LaserLabyrinth"/>
+		</Unit>
+		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Sound.h">
 			<Option target="LaserLabyrinth"/>
 		</Unit>
 		<Unit filename="/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Transform.cpp">

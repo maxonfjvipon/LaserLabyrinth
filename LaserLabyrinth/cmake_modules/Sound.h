@@ -7,7 +7,6 @@
 
 class Sound {
 
-    std::string soundName;
     sf::SoundBuffer soundBuffer;
     sf::Sound sound;
 
@@ -17,8 +16,14 @@ public:
 
     void set(std::ifstream &fin, ushort volume);
 
+    void setArrowsSound(ushort volume);
+
     void play() {
         sound.play();
+    }
+
+    void setVolume(ushort volume) {
+        sound.setVolume(volume);
     }
 
 };

@@ -12,6 +12,7 @@ CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.o: ../cmake_modules/MainHer
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.o: ../cmake_modules/Mirror.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.o: ../cmake_modules/Object.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.o: ../cmake_modules/Ray.h
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.o: ../cmake_modules/Sound.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Game.cpp.o: ../cmake_modules/Transform.h
 
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/GameObject.cpp.o: ../cmake_modules/GameObject.cpp
@@ -42,6 +43,7 @@ CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.o: ../cmake_modules/MainHe
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.o: ../cmake_modules/Mirror.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.o: ../cmake_modules/Object.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.o: ../cmake_modules/Ray.h
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.o: ../cmake_modules/Sound.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Level.cpp.o: ../cmake_modules/Transform.h
 
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Line.cpp.o: ../cmake_modules/Line.cpp
@@ -67,6 +69,7 @@ CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.o: ../cmake_modules/Menu.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.o: ../cmake_modules/Mirror.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.o: ../cmake_modules/Object.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.o: ../cmake_modules/Ray.h
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.o: ../cmake_modules/Sound.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Menu.cpp.o: ../cmake_modules/Transform.h
 
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Mirror.cpp.o: ../cmake_modules/GameObject.h
@@ -87,6 +90,9 @@ CMakeFiles/LaserLabyrinth.dir/cmake_modules/Ray.cpp.o: ../cmake_modules/Line.h
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Ray.cpp.o: ../cmake_modules/Ray.cpp
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Ray.cpp.o: ../cmake_modules/Ray.h
 
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Sound.cpp.o: ../cmake_modules/Sound.cpp
+CMakeFiles/LaserLabyrinth.dir/cmake_modules/Sound.cpp.o: ../cmake_modules/Sound.h
+
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Transform.cpp.o: ../cmake_modules/Transform.cpp
 CMakeFiles/LaserLabyrinth.dir/cmake_modules/Transform.cpp.o: ../cmake_modules/Transform.h
 
@@ -101,6 +107,7 @@ CMakeFiles/LaserLabyrinth.dir/main.cpp.o: ../cmake_modules/Menu.h
 CMakeFiles/LaserLabyrinth.dir/main.cpp.o: ../cmake_modules/Mirror.h
 CMakeFiles/LaserLabyrinth.dir/main.cpp.o: ../cmake_modules/Object.h
 CMakeFiles/LaserLabyrinth.dir/main.cpp.o: ../cmake_modules/Ray.h
+CMakeFiles/LaserLabyrinth.dir/main.cpp.o: ../cmake_modules/Sound.h
 CMakeFiles/LaserLabyrinth.dir/main.cpp.o: ../cmake_modules/Transform.h
 CMakeFiles/LaserLabyrinth.dir/main.cpp.o: ../main.cpp
 

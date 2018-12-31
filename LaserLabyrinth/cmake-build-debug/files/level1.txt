@@ -1,5 +1,5 @@
-720 450 images/level1/floorLevel1.png 720 450 0
-1110 600 0 32 32 images/heroStays.png
+720 450 images/level1/floor.png 720 450 0
+1110 600 0 24 24 images/heroStays.png
 10
 1310 100 45 32 32 images/mirror.png
 100 100 108 32 32 images/mirror.png
@@ -10,7 +10,7 @@
 340 635 83 32 32 images/mirror.png
 110 800 72 32 32 images/mirror.png
 850 800 135 32 32 images/mirror.png
-850 260 135 32 32 images/mirror.png
+500 500 135 32 32 images/mirror.png
 13
 Wall 30 450 0 30 450 images/level1/verticalWall.png
 Wall 1410 450 0 30 450 images/level1/verticalWall.png
@@ -26,3 +26,11 @@ Wall 930 720 0 60 30 images/level1/horizontalWall.png
 Button 1310 835 90 6 22 images/button.png
 Door 1110 835 90 6 28 images/door.png
 1110 260 180 32 32 images/laserCannon.png
+3
+music/rotateMirror.wav
+music/pushMirror.wav
+music/openDoor.wav
+music/step1.wav
+music/step2.wav
+music/step3.wav
+music/step4.wav

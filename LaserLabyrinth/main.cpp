@@ -12,11 +12,11 @@
 
 void restartClock(sf::Clock &clock, float &time);
 
-void actions(float &time, sf::RenderWindow &window);
-
 void draw(sf::RenderWindow &window, Menu &mainMenu, Menu &pauseMenu, Game &game);
 
-void fromPauseToMain(Menu &mainMenu, Menu &pauseMenu);
+void fromPauseToMain(Menu &mainMenu, Menu &pauseMenu, ushort volume);
+
+void checkGameOver(Game &game, Menu &mainMenu);
 
 int main() {
 
@@ -25,21 +25,26 @@ int main() {
     const u_short screenHeight = 900;
 
     float time = 0; // time
-    float delay = 0.15; // time delay
+    float delay = 0.12; // time delay
+
+    ushort volume = 0; // volume
+
     sf::Event event{}; // main event
     //window
-    sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "LASER_LABYRINTH",
-            sf::Style::Fullscreen);
+//    sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "LASER_LABYRINTH",
+//            sf::Style::Fullscreen);
+
+    sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "LASER_LABYRINTH");
 
     sf::Clock clock; //clock
 
 //    main menu
     Menu mainMenu;
-    mainMenu.setMainMenu();
+    mainMenu.setMainMenu(volume);
 
 //    pause menu
     Menu pauseMenu;
-    pauseMenu.setPauseMenu();
+    pauseMenu.setPauseMenu(volume);
 
 //    game
     Game game;
@@ -55,14 +60,15 @@ int main() {
                 }
             }
             if (mainMenu.isActive) {
-                mainMenu.menu(time, game, window);
+                mainMenu.menu(time, game, window, volume);
             } else {
                 if (pauseMenu.isActive) {
-                    pauseMenu.menu(time, game, window);
+                    pauseMenu.menu(time, game, window, volume);
                 }
-                game.actions(time, window);
+                game.actions(time, window, volume);
+                checkGameOver(game, mainMenu);
                 pauseMenu.isActive = game.isPause();
-                fromPauseToMain(mainMenu,pauseMenu);
+                fromPauseToMain(mainMenu,pauseMenu, volume);
             }
             time = 0;
         }
@@ -70,14 +76,22 @@ int main() {
         window.display();
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 // go to main menu from pause menu
-void fromPauseToMain(Menu &mainMenu, Menu &pauseMenu) {
+void fromPauseToMain(Menu &mainMenu, Menu &pauseMenu, ushort volume) {
     if(pauseMenu.goToMain) {
         mainMenu.isActive = true;
-        pauseMenu.setPauseMenu();
+        pauseMenu.setPauseMenu(volume);
+    }
+}
+
+// if game was over go to main menu
+void checkGameOver(Game &game, Menu &mainMenu) {
+    if(game.isGameOver) {
+        mainMenu.isActive = true;
+        game.isGameOver = false;
     }
 }
 

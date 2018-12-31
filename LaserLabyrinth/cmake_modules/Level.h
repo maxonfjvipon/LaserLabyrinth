@@ -16,9 +16,12 @@ class Level {
     sf::Text doorText;
     sf::Font font;
 
+    sf::Text modeText;
+
     ushort currentLevel;
 
     std::vector<Ray> rays;
+    std::vector<Sound> stepSounds;
     std::vector<Sound> sounds;
 
     Image map;
@@ -30,7 +33,7 @@ class Level {
 
     ushort laserCannonIndex{};
     ushort mirrorsQuantity{};
-    ushort distanceForInteract = static_cast<ushort>(50 * hero.image.scale);
+    ushort distanceForInteract = static_cast<ushort>(40 * hero.image.scale);
 
     bool isDoorOpen = false;
 
@@ -66,19 +69,19 @@ class Level {
 
     void F();
 
-    void pause();
-
 public:
 
     bool isPause;
 
     Level() = default;
 
-    void set(const std::string &levelFileName, ushort level);
+    void set(const std::string &levelFileName, ushort level, ushort volume);
 
     void draw(sf::RenderWindow &window);
 
-    void actions();
+    void actions(ushort volume);
+
+    void save(const std::string &fileName);
 
     bool checkNextLevel(ushort level) {
         return level != currentLevel;

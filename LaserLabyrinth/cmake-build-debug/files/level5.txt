@@ -1,0 +1,30 @@
+720 450 images/level5/floor.png 720 450 0
+600 700 0 24 24 images/heroStays.png
+5
+300 170 307 32 32 images/mirror.png
+680 700 67 32 32 images/mirror.png
+1330 800 135 32 32 images/mirror.png
+1200 460 46 32 32 images/mirror.png
+1290 200 67 32 32 images/mirror.png
+12
+Wall 30 450 0 30 450 images/level5/verticalWall.png
+Wall 1410 450 0 30 450 images/level5/verticalWall.png
+Wall 720 30 0 720 30 images/level5/horizontalWall.png
+Wall 720 870 0 720 30 images/level5/horizontalWall.png
+Wall 90 330 0 90 30 images/level5/horizontalWall.png
+Wall 120 570 0 120 30 images/level5/horizontalWall.png
+Wall 580 570 0 210 30 images/level5/horizontalWall.png
+Wall 680 330 0 360 30 images/level5/horizontalWall.png
+Wall 1410 330 0 210 30 images/level5/horizontalWall.png
+Wall 1120 570 0 180 30 images/level5/horizontalWall.png
+Button 65 450 180 6 22 images/button.png
+Door 65 700 180 6 28 images/door.png
+350 750 255 32 32 images/laserCannon.png
+3
+music/rotateMirror.wav
+music/pushMirror.wav
+music/openDoor.wav
+music/step1.wav
+music/step2.wav
+music/step3.wav
+music/step4.wav

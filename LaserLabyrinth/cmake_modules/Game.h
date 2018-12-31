@@ -3,29 +3,47 @@
 
 #include <iostream>
 #include "Level.h"
+#include <SFML/Audio.hpp>
 
 class Game {
 
-   Level level;
+    sf::Music music;
+    std::string musicNames[10];
 
-   void nextLevel();
+    std::string loadFile = "files/loadFile.txt";
+
+    Level level;
+
+    void checkMusicStatus();
+
+    bool gameOver();
 
 public:
 
-    bool volume = false;
+    bool isGameOver = false;
+
+    bool isActive = false;
 
     ushort _level;
 
     Game() = default;
 
-    void newGame();
+    void newGame(ushort volume);
 
-    void actions(float &time, sf::RenderWindow &window);
+    void saveGame();
+
+    void continueGame(ushort volume);
+
+    void actions(float &time, sf::RenderWindow &window, ushort volume);
 
     void draw(sf::RenderWindow &window);
 
     bool isPause() {
         return level.isPause;
+    }
+
+    sf::Music &getMusic() {
+        return music;
     }
 
 };

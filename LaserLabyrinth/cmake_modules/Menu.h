@@ -6,26 +6,27 @@
 #include <vector>
 
 enum buttonIndex {
-    NG_Cntrl, Cntn_Vlm, Vlm_MM, Exit
+    NG_Sv, Cntn_Vlm, Vlm_MM, Exit
 };
 
 class Menu {
+
     sf::Font font;
     sf::Text mainText;
     sf::Color buttonsColor;
     Image backGround;
     std::vector<sf::Text> buttons;
     std::vector<short> buttonsNames;
-    ushort activeButton;
+    ushort activeButton{};
 
-    void actionsInMenu(float &time, Game &game, sf::RenderWindow &window);
+    Sound sound;
+
+    void actionsInMenu(float &time, Game &game, sf::RenderWindow &window, ushort &volume);
 
     sf::Text setText(const std::string &string, int x, int y, const sf::Color &color, uint size,
                      uint scale);
 
     bool isMainMenu;
-
-    bool isControlWindowOpen = false;
 
 public:
 
@@ -33,13 +34,13 @@ public:
 
     Menu() = default;
 
-    bool isActive;
+    bool isActive{};
 
-    void setMainMenu();
+    void setMainMenu(ushort volume);
 
-    void setPauseMenu();
+    void setPauseMenu(ushort volume);
 
-    void menu(float &time, Game &game, sf::RenderWindow &window);
+    void menu(float &time, Game &game, sf::RenderWindow &window, ushort &volume);
 
     void draw(sf::RenderWindow &window);
 

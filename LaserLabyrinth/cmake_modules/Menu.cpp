@@ -1,41 +1,41 @@
 #include "Menu.h"
 #include <fstream>
 
-void Menu::actionsInMenu(float &time, Game &game, sf::RenderWindow &window) {
+void Menu::actionsInMenu(float &time, Game &game, sf::RenderWindow &window, ushort &volume) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
         activeButton = (activeButton + buttons.size() + 1) % buttons.size();
+        sound.play();
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         activeButton = (activeButton + buttons.size() - 1) % buttons.size();
+        sound.play();
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+        sound.play();
         switch (buttonsNames[activeButton]) {
-            case NG_Cntrl:
+            case NG_Sv:
                 if(isMainMenu) {
                     isActive = false;
-                    game.newGame();
+                    game.newGame(volume);
                 } else {
-                    if(!isControlWindowOpen) {
-//                        sf::Window
-                    }
-                    //todo control screen
+                    game.saveGame();
                 }
                 break;
             case Cntn_Vlm:
                 if(isMainMenu) {
-                    //todo load and continue
+                    isActive = false;
+                    game.continueGame(volume);
                 } else {
-                    buttons[activeButton].setString(game.volume ? "Volume_ON" : "Volume_OFF");
-                    game.volume = !game.volume;
+                    volume = static_cast<ushort>(volume != 0 ? 0 : 20);
                 }
                 break;
             case Vlm_MM:
                 if(isMainMenu) {
-                    buttons[activeButton].setString(game.volume ? "Volume_ON" : "Volume_OFF");
-                    game.volume = !game.volume;
+                    volume = static_cast<ushort>(volume != 0 ? 0 : 20);
                 } else {
-                    //todo save the game
                     goToMain = true;
+                    game.isActive = false;
+                    game.getMusic().stop();
                 }
                 break;
             case Exit:
@@ -45,12 +45,14 @@ void Menu::actionsInMenu(float &time, Game &game, sf::RenderWindow &window) {
     }
 }
 
-void Menu::menu(float &time, Game &game, sf::RenderWindow &window) {
-    actionsInMenu(time, game, window);
+void Menu::menu(float &time, Game &game, sf::RenderWindow &window, ushort &volume) {
+    actionsInMenu(time, game, window, volume);
     for (short i = 0; i < buttons.size(); i++) {
         buttons[i].setScale(i == activeButton ? (sf::Vector2f(2.5, 2.5)) : (sf::Vector2f(2, 2)));
         buttons[i].setFillColor(i == activeButton ? (sf::Color::Red) : (buttonsColor));
     }
+    buttons[(isMainMenu ? 2 : 1)].setString(volume != 0 ? "Volume_ON" : "Volume_OFF");
+    sound.setVolume(volume);
 }
 
 void Menu::draw(sf::RenderWindow &window) {
@@ -61,7 +63,10 @@ void Menu::draw(sf::RenderWindow &window) {
     }
 }
 
-void Menu::setMainMenu() {
+void Menu::setMainMenu(ushort volume) {
+
+    sound.setArrowsSound(volume);
+
     isMainMenu = true;
     goToMain = false;
     isActive = true;
@@ -90,7 +95,10 @@ void Menu::setMainMenu() {
     fin.close();
 }
 
-void Menu::setPauseMenu() {
+void Menu::setPauseMenu(ushort volume) {
+
+    sound.setArrowsSound(volume);
+
     goToMain = false;
     isMainMenu = false;
     isActive = false;

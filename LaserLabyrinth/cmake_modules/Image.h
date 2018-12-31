@@ -18,7 +18,7 @@ public:
 
     ushort width {}, height {}, scale = 2;
 
-    Image() {};
+    Image() = default;
 
     void setParametersFromFile(std::ifstream &fin) {
         fin >> width >> height >> textureFileName;

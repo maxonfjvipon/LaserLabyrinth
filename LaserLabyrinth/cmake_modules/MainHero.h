@@ -21,9 +21,11 @@ class MainHero : public GameObject{
 
 public:
 
+    ushort currentStep = 0;
+
     void set(std::ifstream &fin) override;
 
-    MainHero(){}
+    MainHero() = default;
 
     Line &getLine() override {
         Line line{};

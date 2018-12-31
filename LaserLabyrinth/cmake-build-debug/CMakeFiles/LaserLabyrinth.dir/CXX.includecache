@@ -16,12 +16,6 @@ SFML/Graphics.hpp
 Line.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.h
 
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Image.cpp
-Image.h
-/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Image.h
-fstream
--
-
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Image.h
 iostream
 -
@@ -65,6 +59,8 @@ Ray.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Ray.h
 Object.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Object.h
+Sound.h
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Sound.h
 
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.h
 SFML/Graphics.hpp
@@ -117,6 +113,14 @@ SFML/Graphics.hpp
 -
 Line.h
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Line.h
+
+/Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Sound.h
+SFML/Audio.hpp
+-
+iostream
+-
+fstream
+-
 
 /Users/maksimtrunnikov/LaserLabyrinth/LaserLabyrinth/cmake_modules/Transform.h
 iostream

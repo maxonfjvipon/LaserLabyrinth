@@ -1,0 +1,10 @@
+music/Immortals.ogg
+music/NothingElseMatters.ogg
+music/Skyrim.ogg
+music/StressedOut.ogg
+music/TheHills.ogg
+music/Unforgiven.ogg
+music/WhatIsLove.ogg
+music/EmperorsNewClothes.ogg
+music/PrayerInC.ogg
+music/Radioactive.ogg

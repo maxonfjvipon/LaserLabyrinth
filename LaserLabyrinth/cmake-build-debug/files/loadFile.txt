@@ -1,25 +1,35 @@
-720 450 images/level5/floor.png 720 450 0
-210 700 180 24 24 images/heroStays.png
+720 450 images/level2/floor.png 720 450 0
+100 320 270 24 24 images/heroStays.png
 5
-190 170 307 32 32 images/mirror.png
-720 700 67 32 32 images/mirror.png
-1330 700 135 32 32 images/mirror.png
-1330 460 46 32 32 images/mirror.png
-1290 150 67 32 32 images/mirror.png
-12
-Wall 30 450 0 30 450 images/level5/verticalWall.png
-Wall 1410 450 0 30 450 images/level5/verticalWall.png
-Wall 720 30 0 720 30 images/level5/horizontalWall.png
-Wall 720 870 0 720 30 images/level5/horizontalWall.png
-Wall 90 330 0 90 30 images/level5/horizontalWall.png
-Wall 120 570 0 120 30 images/level5/horizontalWall.png
-Wall 580 570 0 210 30 images/level5/horizontalWall.png
-Wall 680 330 0 360 30 images/level5/horizontalWall.png
-Wall 1410 330 0 210 30 images/level5/horizontalWall.png
-Wall 1120 570 0 180 30 images/level5/horizontalWall.png
-Button 65 450 180 6 22 images/button.png
-Door 65 700 180 6 28 images/door.png
-350 750 255 32 32 images/laserCannon.png
+735 100 9 32 32 images/mirror.png
+100 260 20 32 32 images/mirror.png
+1030 800 9 32 32 images/mirror.png
+320 800 51 32 32 images/mirror.png
+1330 480 0 32 32 images/mirror.png
+22
+Wall 30 450 0 30 450 images/level2/verticalWall.png
+Wall 1410 450 0 30 450 images/level2/verticalWall.png
+Wall 720 30 0 720 30 images/level2/horizontalWall.png
+Wall 720 870 0 720 30 images/level2/horizontalWall.png
+Wall 170 340 0 30 150 images/level2/verticalWall.png
+Wall 170 30 0 30 80 images/level2/verticalWall.png
+Wall 30 600 0 170 30 images/level2/horizontalWall.png
+Wall 400 820 0 30 150 images/level2/verticalWall.png
+Wall 620 80 0 30 100 images/level2/verticalWall.png
+Wall 820 100 0 30 120 images/level2/verticalWall.png
+Wall 600 820 0 30 120 images/level2/verticalWall.png
+Wall 1300 400 0 100 30 images/level2/horizontalWall.png
+Wall 1350 600 0 50 30 images/level2/horizontalWall.png
+Wall 1350 200 0 50 30 images/level2/horizontalWall.png
+Wall 1250 100 0 30 50 images/level2/verticalWall.png
+Wall 1150 530 0 30 70 images/level2/verticalWall.png
+Wall 940 800 0 30 100 images/level2/verticalWall.png
+Wall 1110 800 0 30 40 images/level2/verticalWall.png
+Wall 710 250 0 45 30 images/level2/horizontalWall.png
+Wall 1040 710 0 20 20 images/level2/horizontalWall.png
+Button 1350 100 320 6 22 images/button.png
+Door 500 835 90 6 28 images/door.png
+1350 820 209 32 32 images/laserCannon.png
 3
 music/rotateMirror.wav
 music/pushMirror.wav

@@ -22,7 +22,8 @@ class Level {
 
     std::vector<Ray> rays;
     std::vector<Sound> stepSounds;
-    std::vector<Sound> sounds;
+//    std::vector<Sound> sounds;
+    Sound openDoorSound;
 
     Image map;
 

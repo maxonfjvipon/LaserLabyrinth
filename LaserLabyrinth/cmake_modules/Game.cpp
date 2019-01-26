@@ -55,10 +55,12 @@ void Game::checkMusicStatus() {
 void Game::continueGame(ushort volume) {
     isActive = true;
     std::ifstream fin("files/musicNames.txt");
+
     for (auto &musicName : musicNames) {
         fin >> musicName;
     }
     music.openFromFile(musicNames[random() % 10]);
+    fin.close();
     fin.open("files/continueFile.txt");
     fin >> _level;
     level.set("files/loadFile.txt", _level, volume);

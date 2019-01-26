@@ -44,8 +44,8 @@ void Level::set(const std::string &levelFileName, ushort level, ushort volume) {
     doorText.setOutlineColor(sf::Color::Black);
     doorText.setOrigin(doorText.getLocalBounds().width / 2, doorText.getLocalBounds().height / 2);
 
-    modeText = setText(font, "W", 30, sf::Color::White, 2); //fixme test
-    modeText.setPosition(5, 5); //fixme test
+    modeText = setText(font, "W", 30, sf::Color::White, 2);
+    modeText.setPosition(5, 5);
 
     std::ifstream fin(levelFileName);
 
@@ -72,23 +72,12 @@ void Level::set(const std::string &levelFileName, ushort level, ushort volume) {
         gameObjects[i + mirrorsQuantity]->set(fin);
     }
 
-    //todo другие объекты
-
     auto *laserCannon = new LaserCannon();
     laserCannon->set(fin);
     gameObjects.push_back(laserCannon);
     laserCannonIndex = static_cast<ushort>(gameObjects.size() - 1);
-    ray.set(laserCannon->transform.x, laserCannon->transform.y, laserCannon->transform.rotateAngle);
-    setRays();
 
-    ushort soundsCount;
-    fin >> soundsCount;
-
-    sounds.resize(soundsCount);
-
-    for (auto i = 0; i < soundsCount; i++) {
-        sounds[i].set(fin, volume);
-    }
+    openDoorSound.set(fin, volume);
 
     stepSounds.resize(12);
 
@@ -101,6 +90,9 @@ void Level::set(const std::string &levelFileName, ushort level, ushort volume) {
     }
 
     fin.close();
+
+    ray.set(laserCannon->transform.x, laserCannon->transform.y, laserCannon->transform.rotateAngle);
+    setRays();
 
 }
 
@@ -131,9 +123,7 @@ void Level::actions(ushort volume) {
         noActions();
     }
 
-    for (auto &sound : sounds) {
-        sound.setVolume(volume);
-    }
+    openDoorSound.setVolume(volume);
 
     for (auto &sound : stepSounds) {
         sound.setVolume(volume);
@@ -164,7 +154,7 @@ void Level::draw(sf::RenderWindow &window) {
         window.draw(gameObject->image.sprite);
         gameObject->canReflect = false;
     }
-    window.draw(hero.image.sprite); //fixme hero не рисуется в начале игры
+    window.draw(hero.image.sprite);
     for (auto &ray : rays) {
         window.draw(ray.line);
     }
@@ -288,7 +278,6 @@ void Level::WASD(ushort direction) {
                     mirror->rotate(-1);
                     break;
             }
-            sounds[0].play();
             hero.image.animate(hero.transform.x, hero.transform.y, direction,
                                hero.currentDirection, false);
         }
@@ -333,7 +322,6 @@ void Level::WASD(ushort direction) {
                     }
                     break;
             }
-            sounds[1].play();
             mirror->image.sprite.setPosition(mirror->transform.x, mirror->transform.y);
             hero.image.animate(hero.transform.x, hero.transform.y, direction,
                                hero.currentDirection, false);
@@ -609,7 +597,7 @@ void Level::rayCollideWithObject(Ray &_ray, type &object, int &x, int &y) {
     Line objectLine{};
     if (getIntersectionPoint(object, objectLine, _ray)) {
         if ((int) abs(objectLine.x - _ray.x) <= (int) abs(x - _ray.x) + 40 &&
-            (int) abs(objectLine.y - _ray.y) <= (int) abs(y - _ray.y) + 40) { //fixme погрешность??
+            (int) abs(objectLine.y - _ray.y) <= (int) abs(y - _ray.y) + 40) {
             Line intersectLine = objectLine;
             objectLine.set(_ray.x, _ray.y, _ray.angle * 180 / M_PI);
             if (isDirectionCorrect(objectLine, intersectLine)) {
@@ -622,7 +610,7 @@ void Level::rayCollideWithObject(Ray &_ray, type &object, int &x, int &y) {
                          intersectLine.y - radius * sin(_ray.angle), _ray.angle);
                 if (object.name == "Button" && !isDoorOpen) {
                     isDoorOpen = true;
-                    sounds[2].play();
+                    openDoorSound.play();
                 }
                 isRayCollideNow = true;
             }

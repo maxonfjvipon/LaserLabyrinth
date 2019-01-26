@@ -26,9 +26,6 @@ Wall 930 720 0 60 30 images/level1/horizontalWall.png
 Button 1310 835 90 6 22 images/button.png
 Door 1110 835 90 6 28 images/door.png
 1110 260 180 32 32 images/laserCannon.png
-3
-music/rotateMirror.wav
-music/pushMirror.wav
 music/openDoor.wav
 music/step1.wav
 music/step2.wav

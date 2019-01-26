@@ -105,8 +105,6 @@ void Menu::setPauseMenu(ushort volume) {
     activeButton = 0;
     std::ifstream fin("files/pauseMenuFile.txt");
 
-    //fixme buttons position
-
     buttons.resize(4);
     buttonsNames.resize(4);
 

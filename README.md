@@ -1,6 +1,6 @@
 # LaserLabyrinth
 
-Third person action game :D
+Third person 2D Top view action game :D
 It was made as a course project when I was in the 2nd year of university
 
 Rules
